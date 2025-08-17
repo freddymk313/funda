@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import Navbar from "@/components/home/Navbar";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* ===== NAVBAR ===== */}
-      
+      <Navbar />
 
       {/* ===== HERO ===== */}
       <section className="flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 bg-gray-50">
