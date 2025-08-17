@@ -1,0 +1,174 @@
+"use client";
+
+import { Button } from "../ui/button";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Enregistrer les plugins GSAP
+gsap.registerPlugin(ScrollTrigger);
+
+const Hero = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Animation d'entrée
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    tl.fromTo(
+      headingRef.current,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8 }
+    )
+      .fromTo(
+        textRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6 },
+        "-=0.4"
+      )
+      .fromTo(
+        buttonsRef.current,
+        { y: 10, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5 },
+        "-=0.3"
+      );
+
+    // Animation de parallaxe au scroll
+    if (heroRef.current) {
+      gsap.to(heroRef.current, {
+        y: 50,
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
+
+  return (
+    <section
+      ref={heroRef}
+      className="relative flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 min-h-[90vh] overflow-hidden"
+      style={{ backgroundColor: "var(--muted)" }}
+    >
+      {/* Fond décoratif animé */}
+      <div className="absolute inset-0 overflow-hidden opacity-10">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[var(--primary)] animate-float-1"></div>
+        <div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-[var(--accent)] animate-float-2"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-32 h-32 rounded-full bg-[var(--ring)] animate-float-3"></div>
+      </div>
+
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <h1
+          ref={headingRef}
+          className="text-4xl md:text-6xl font-bold leading-tight mb-6"
+          style={{ color: "var(--foreground)" }}
+        >
+          Apprenez l'informatique{" "}
+          <span className="relative inline-block">
+            <span className="relative z-10">et transformez</span>
+            <span
+              className="absolute bottom-0 left-0 w-full h-2 bg-[var(--accent)] opacity-40"
+              style={{ transform: "skewX(-15deg)" }}
+            ></span>
+          </span>{" "}
+          votre avenir !
+        </h1>
+
+        <p
+          ref={textRef}
+          className="mt-4 text-lg md:text-xl max-w-2xl mx-auto"
+          style={{ color: "var(--muted-foreground)" }}
+        >
+          Bienvenue sur Funda, votre plateforme d'apprentissage en informatique.
+          Explorez nos ressources, événements et articles pour vous aider à
+          débuter votre carrière dans le domaine technologique.
+        </p>
+
+        {/* Boutons CTA */}
+        <div ref={buttonsRef} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <Button
+            size="lg"
+            className="rounded-full px-8 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all"
+            style={{
+              backgroundColor: "var(--primary)",
+              color: "var(--primary-foreground)",
+            }}
+          >
+            Découvrir les formations
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            className="rounded-full px-8 py-6 text-lg font-medium border-2 hover:bg-[var(--secondary)] transition-all"
+            style={{
+              borderColor: "var(--primary)",
+              color: "var(--primary)",
+              backgroundColor: "transparent",
+            }}
+          >
+            Voir les événements
+          </Button>
+        </div>
+      </div>
+
+      {/* Flèche indicateur de scroll */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ color: "var(--primary)" }}
+        >
+          <path
+            d="M19 14L12 21L5 14"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M19 8L12 15L5 8"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity="0.5"
+          />
+        </svg>
+      </div>
+
+      {/* Styles globaux pour les animations */}
+      <style jsx global>{`
+        @keyframes float-1 {
+          0%, 100% { transform: translate(0, 0) rotate(0deg); }
+          50% { transform: translate(20px, 20px) rotate(5deg); }
+        }
+        @keyframes float-2 {
+          0%, 100% { transform: translate(0, 0) rotate(0deg); }
+          50% { transform: translate(-15px, 15px) rotate(-3deg); }
+        }
+        @keyframes float-3 {
+          0%, 100% { transform: translate(0, 0) rotate(0deg); }
+          50% { transform: translate(10px, -10px) rotate(2deg); }
+        }
+        .animate-float-1 { animation: float-1 8s ease-in-out infinite; }
+        .animate-float-2 { animation: float-2 10s ease-in-out infinite; }
+        .animate-float-3 { animation: float-3 12s ease-in-out infinite; }
+      `}</style>
+    </section>
+  );
+};
+
+export default Hero;
