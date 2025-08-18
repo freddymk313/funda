@@ -6,6 +6,8 @@ import OurMission from "@/components/home/OurMission";
 import UpcomingEvent from "@/components/home/UpcomingEvent";
 import WhatsAppCTA from "@/components/home/WhatsAppCTA";
 import Newsletter from "@/components/home/Newsletter";
+import InspiringSection from "@/components/home/InspiringSection";
+import ArticlesGrid from "@/components/home/ArticlesGrid";
 
 export default function Home() {
   return (
@@ -19,6 +21,9 @@ export default function Home() {
       <UpcomingEvent />
       <WhatsAppCTA />
       <Newsletter />
+
+      <InspiringSection />
+      <ArticlesGrid />
     </div>
   );
 }
