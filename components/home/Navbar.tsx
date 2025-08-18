@@ -36,13 +36,13 @@ const Navbar = () => {
         </Link>
 
         {/* Menu */}
-         <NavigationMenu className="hidden md:flex gap-6 font-medium text-gray-700 items-center">
+         <NavigationMenu className="hidden md:flex gap-6 font-semibold text-base text-gray-700 items-center">
           <NavigationMenuList>
             {links.map((link) => (
               <NavigationMenuItem key={link.label}>
                 {link.children ? (
                   <>
-                    <NavigationMenuTrigger className="text-lg">{link.label}</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="">{link.label}</NavigationMenuTrigger>
                     <NavigationMenuContent className="p-4">
                       <ul className="flex flex-col gap-2 w-48">
                         {link.children.map((sublink) => (
@@ -73,7 +73,7 @@ const Navbar = () => {
         </NavigationMenu>
 
         {/* Bouton */}
-        <Button className="rounded-full">
+        <Button className="rounded-full font-semibold">
           S'inscrire
         </Button>
       </div>

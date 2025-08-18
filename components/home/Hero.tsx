@@ -76,10 +76,10 @@ const Hero = () => {
           Apprenez l'informatique{" "}
           <span className="relative inline-block">
             <span className="relative z-10">et transformez</span>
-            <span
+            {/* <span
               className="absolute bottom-0 left-0 w-full h-2 bg-[var(--accent)] opacity-40"
               style={{ transform: "skewX(-15deg)" }}
-            ></span>
+            ></span> */}
           </span>{" "}
           votre avenir !
         </h1>
@@ -98,7 +98,7 @@ const Hero = () => {
         <div ref={buttonsRef} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             size="lg"
-            className="rounded-full px-8 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all"
+            className="rounded-full px-8 py-6 text-base font-semibold border-2 border-primary shadow-lg hover:shadow-xl transition-all"
             style={{
               backgroundColor: "var(--primary)",
               color: "var(--primary-foreground)",
@@ -109,7 +109,7 @@ const Hero = () => {
           <Button
             variant="outline"
             size="lg"
-            className="rounded-full px-8 py-6 text-lg font-medium border-2 hover:bg-[var(--secondary)] transition-all"
+            className="rounded-full px-8 py-6 text-base font-semibold border-2 hover:bg-[var(--secondary)] transition-all"
             style={{
               borderColor: "var(--primary)",
               color: "var(--primary)",
