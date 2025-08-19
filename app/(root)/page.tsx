@@ -8,6 +8,7 @@ import WhatsAppCTA from "@/components/home/WhatsAppCTA";
 import Newsletter from "@/components/home/Newsletter";
 import InspiringSection from "@/components/home/InspiringSection";
 import ArticlesGrid from "@/components/home/ArticlesGrid";
+import Footer from "@/components/home/Footer";
 
 export default function Home() {
   return (
@@ -24,6 +25,8 @@ export default function Home() {
 
       <InspiringSection />
       <ArticlesGrid />
+
+      <Footer />
     </div>
   );
 }
