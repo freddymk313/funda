@@ -57,7 +57,7 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="*relative *py-4 px-4 md:px-16 lg:px-20 flex flex-col items-center justify-center text-center pt-32 pb-20 min-h-[90vh] overflow-hidden"
+      className="*relative *py-4 px-4 md:px-16 lg:px-20 flex flex-col items-center justify-center text-center pt-20 md:pt-32 pb-20 min-h-[90vh] overflow-hidden"
       style={{ backgroundColor: "var(--muted)" }}
     >
       {/* Fond décoratif animé */}
@@ -98,18 +98,18 @@ const Hero = () => {
         <div ref={buttonsRef} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             size="lg"
-            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-2 border-primary shadow-lg hover:shadow-xl transition-all"
-            style={{
-              backgroundColor: "var(--primary)",
-              color: "var(--primary-foreground)",
-            }}
+            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] border-primary transition-all"
+            // style={{
+            //   backgroundColor: "var(--primary)",
+            //   color: "var(--primary-foreground)",
+            // }}
           >
             Découvrir les formations
           </Button>
           <Button
-            variant="outline"
+            variant="ghost"
             size="lg"
-            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-2 hover:bg-[var(--secondary)] transition-all"
+            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] hover:bg-[var(--secondary)] transition-all"
             style={{
               borderColor: "var(--primary)",
               color: "var(--primary)",
