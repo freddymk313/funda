@@ -16,11 +16,11 @@ export default function Home() {
       <OurMission />
 
       <UpcomingEvent />
-      <WhatsAppCTA />
-      <Newsletter />
+      {/* <WhatsAppCTA /> */}
 
       <InspiringSection />
       <ArticlesGrid />
+      <Newsletter />
     </div>
   );
 }

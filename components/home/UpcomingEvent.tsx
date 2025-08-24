@@ -38,7 +38,7 @@ export default function UpcomingEvent() {
     tl.from(".event-date", { scale: 0.8, opacity: 0, duration: 0.6 })
       .from(".event-title", { y: 20, opacity: 0, duration: 0.4 }, "-=0.3")
       .from(".event-detail", { y: 10, opacity: 0, stagger: 0.1, duration: 0.3 }, "-=0.2")
-      .from(".event-button", { x: 20, opacity: 0, duration: 0.4 }, "-=0.2")
+      // .from(".event-button", { x: 20, opacity: 0, duration: 0.4 }, "-=0.2")
 
     return () => {
       tl.kill()
