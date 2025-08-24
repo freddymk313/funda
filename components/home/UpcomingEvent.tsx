@@ -46,25 +46,21 @@ export default function UpcomingEvent() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-20 px-6 bg-[var(--muted)]">
-      <div className="container mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 relative inline-block mx-auto">
-          <span style={{ color: "var(--foreground)" }}>Événement</span>
-          <span 
-            className="absolute -bottom-2 left-0 w-full h-1 rounded-full"
-            style={{ backgroundColor: "var(--primary)", opacity: 0.7 }}
-          ></span>
-        </h2>
+    <section ref={sectionRef} className="py-20 bg-[var(--muted)]">
+      <div className="container mx-auto px-4 md:px-16 lg:px-20">
+        {/* <h2 className="text-3xl md:text-4xl *lg:text-[44px] font-bold text-center mb-12 inline-block mx-auto">
+          <span style={{ color: "var(--foreground)" }}>Arrive bientot</span>
+        </h2> */}
 
         <div
           ref={cardRef}
-          className="max-w-4xl mx-auto bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
-          style={{ border: "1px solid var(--border)" }}
+          className="max-w-4xl mx-auto bg-white rounded-3xl overflow-hidden *shadow-xl hover:shadow-xl transition-shadow duration-300"
+          // style={{ border: "1px solid var(--border)" }}
         >
           <div className="flex flex-col md:flex-row">
             {/* Date */}
             <div 
-              className="event-date flex flex-col items-center justify-center p-6 md:p-8"
+              className="event-date flex flex-col items-center justify-center rounded-2xl m-6 py-2 px-8 *md:p-8"
               style={{ backgroundColor: "var(--primary)", color: "var(--primary-foreground)" }}
             >
               <Calendar className="w-8 h-8 mb-2" />
@@ -105,19 +101,20 @@ export default function UpcomingEvent() {
 
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <Button 
-                  className="event-button group rounded-full px-6 py-3 text-base font-medium transition-all"
+                  className="event-button group rounded-full px-6 py-[22px] text-sm font-semibold uppercase transition-all"
+                  size="lg"
                   style={{
                     backgroundColor: "var(--primary)",
                     color: "var(--primary-foreground)"
                   }}
                 >
                   <span className="relative z-10">S'inscrire maintenant</span>
-                  <MoveRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  {/* <MoveRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" /> */}
                 </Button>
 
                 <Button 
                   variant="outline" 
-                  className="event-button rounded-full px-6 py-3 text-base font-medium"
+                  className="event-button rounded-full px-6 py-3 text-sm font-semibold uppercase"
                   style={{
                     borderColor: "var(--primary)",
                     color: "var(--primary)"
@@ -128,14 +125,6 @@ export default function UpcomingEvent() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Indicateur d'autres événements */}
-        <div className="text-center mt-8">
-          <p className="inline-flex items-center gap-2 text-sm" style={{ color: "var(--muted-foreground)" }}>
-            <span>Plus d'événements à venir</span>
-            <ArrowRight className="w-4 h-4" />
-          </p>
         </div>
       </div>
     </section>

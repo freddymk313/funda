@@ -129,12 +129,12 @@ const OurMission = () => {
       {/* Contenu image */}
       <div
         ref={imageRef}
-        className="relative w-full h-80 md:h-96 rounded-lg overflow-hidden *shadow-xl"
+        className="relative w-full h-80 md:h-96 rounded-2xl overflow-hidden *shadow-xl"
       >
         {/* Placeholder remplacé par une image réelle */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] opacity-20"></div>
+        <div className="absolute inset-0 *bg-gradient-to-br *from-[var(--primary)] *to-[var(--accent)] opacity-20"></div>
         <Image
-          src="/img/1.jpg"
+          src="/images/m.jpg"
           alt="Étudiants en informatique"
           fill
           className="object-cover"
