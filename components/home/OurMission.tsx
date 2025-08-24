@@ -132,7 +132,7 @@ const OurMission = () => {
         className="relative w-full h-80 md:h-96 rounded-2xl overflow-hidden *shadow-xl"
       >
         {/* Placeholder remplacé par une image réelle */}
-        <div className="absolute inset-0 *bg-gradient-to-br *from-[var(--primary)] *to-[var(--accent)] opacity-20"></div>
+        <div className="absolute inset-0 *bg-gradient-to-br *from-[var(--primary)] *to-[var(--accent)] bg-primary *opacity-20"></div>
         <Image
           src="/images/m.jpg"
           alt="Étudiants en informatique"
@@ -143,10 +143,10 @@ const OurMission = () => {
         <div className="absolute inset-0 bg-black/10"></div>
 
         {/* Élément décoratif */}
-        <div
+        {/* <div
           className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full"
           style={{ backgroundColor: "var(--accent)", opacity: 0.3 }}
-        ></div>
+        ></div> */}
       </div>
     </section>
   );
