@@ -15,7 +15,6 @@ import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react";
 import { useState } from "react"
 
-// Définition des liens
 const links = [
   { label: "Accueil", href: "/" },
   {
@@ -41,7 +40,7 @@ const Navbar = () => {
           <Image src={"/logo/logo.png"} alt="logo" width={48} height={48} />
         </Link>
 
-        {/* Menu */}
+        {/* Menu desktop */}
         <NavigationMenu className="hidden md:flex gap-6 ml-6 font-semibold text-base text-gray-700 items-center">
           <NavigationMenuList>
             {links.map((link) => (
@@ -106,7 +105,6 @@ const Navbar = () => {
                         key={link.href}
                       >
                         <button
-                          // onClick={() => handleScrollToSection(link.href)}
                           className={`w-full px-4 py-3 text-left rounded-lg transition-colors ${pathname === link.href
                               ? "bg-accent/10 text-accent font-medium"
                               : "text-muted-foreground hover:bg-muted"
