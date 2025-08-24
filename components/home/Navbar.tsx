@@ -97,16 +97,16 @@ const Navbar = () => {
             <div>
               {isMenuOpen && (
                 <div
-                  className="absolute top-16 left-0 right-0 bg-background border-b border-border shadow-lg"
+                  className="absolute top-16 left-0 right-0 bg-background border-b border-border z-10 shadow-lg"
                 >
-                  <ul className="flex flex-col p-2">
-                    {links.map((link) => (
+                  <ul className="flex flex-col px-4 py-6 mt-5">
+                    {links.map((link, idx) => (
                       <li
-                        key={link.href}
+                        key={idx}
                       >
                         <button
                           className={`w-full px-4 py-3 text-left rounded-lg transition-colors ${pathname === link.href
-                              ? "bg-accent/10 text-accent font-medium"
+                              ? "bg-accent/10 text-accent *font-medium"
                               : "text-muted-foreground hover:bg-muted"
                             }`}
                         >
