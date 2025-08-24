@@ -57,17 +57,17 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 min-h-[90vh] overflow-hidden"
+      className="*relative *py-4 px-4 md:px-16 lg:px-20 flex flex-col items-center justify-center text-center pt-32 pb-20 min-h-[90vh] overflow-hidden"
       style={{ backgroundColor: "var(--muted)" }}
     >
       {/* Fond décoratif animé */}
-      <div className="absolute inset-0 overflow-hidden opacity-10">
+      {/* <div className="absolute inset-0 overflow-hidden opacity-10">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[var(--primary)] animate-float-1"></div>
         <div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-[var(--accent)] animate-float-2"></div>
         <div className="absolute bottom-1/4 left-1/3 w-32 h-32 rounded-full bg-[var(--ring)] animate-float-3"></div>
-      </div>
+      </div> */}
 
-      <div className="relative z-10 max-w-4xl mx-auto">
+      <div className="container *relative z-10 max-w-4xl mx-auto">
         <h1
           ref={headingRef}
           className="text-4xl md:text-6xl font-bold leading-tight mb-6"
@@ -98,7 +98,7 @@ const Hero = () => {
         <div ref={buttonsRef} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             size="lg"
-            className="rounded-full px-8 py-6 text-base font-semibold border-2 border-primary shadow-lg hover:shadow-xl transition-all"
+            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-2 border-primary shadow-lg hover:shadow-xl transition-all"
             style={{
               backgroundColor: "var(--primary)",
               color: "var(--primary-foreground)",
@@ -109,7 +109,7 @@ const Hero = () => {
           <Button
             variant="outline"
             size="lg"
-            className="rounded-full px-8 py-6 text-base font-semibold border-2 hover:bg-[var(--secondary)] transition-all"
+            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-2 hover:bg-[var(--secondary)] transition-all"
             style={{
               borderColor: "var(--primary)",
               color: "var(--primary)",
@@ -122,7 +122,7 @@ const Hero = () => {
       </div>
 
       {/* Flèche indicateur de scroll */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <svg
           width="24"
           height="24"
@@ -147,7 +147,7 @@ const Hero = () => {
             opacity="0.5"
           />
         </svg>
-      </div>
+      </div> */}
 
       {/* Styles globaux pour les animations */}
       <style jsx global>{`
