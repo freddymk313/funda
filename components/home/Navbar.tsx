@@ -11,6 +11,9 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
+import { usePathname } from "next/navigation"
+import { Menu, X } from "lucide-react";
+import { useState } from "react"
 
 // Définition des liens
 const links = [
@@ -18,8 +21,8 @@ const links = [
   {
     label: "Événements",
     children: [
-      { label: "À venir", href: "/events/upcoming" },
-      { label: "Passés", href: "/events/past" },
+      { label: "Événements a venir", href: "/events/upcoming" },
+      { label: "Événements passés", href: "/events/past" },
     ],
   },
   { label: "Blog", href: "/blog" },
@@ -27,30 +30,34 @@ const links = [
 ]
 
 const Navbar = () => {
+  const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="shadow-sm">
       <div className="container mx-auto flex items-center justify-between py-4 px-4 md:px-16 lg:px-20">
         {/* Logo */}
         <Link href="/">
-          <Image src={"/logo/logo.png"} alt="logo" width={47} height={47} />
+          <Image src={"/logo/logo.png"} alt="logo" width={48} height={48} />
         </Link>
 
         {/* Menu */}
-         <NavigationMenu className="hidden md:flex gap-6 font-semibold text-base text-gray-700 items-center">
+        <NavigationMenu className="hidden md:flex gap-6 ml-6 font-semibold text-base text-gray-700 items-center">
           <NavigationMenuList>
             {links.map((link) => (
               <NavigationMenuItem key={link.label}>
                 {link.children ? (
                   <>
-                    <NavigationMenuTrigger className="">{link.label}</NavigationMenuTrigger>
-                    <NavigationMenuContent className="p-4">
+                    <NavigationMenuTrigger className={`px-3 ${pathname === link.href ? 'text-primary' : 'hover:text-primary'
+                      }`}>{link.label}</NavigationMenuTrigger>
+                    <NavigationMenuContent className="p-4 border-none shadow-none">
                       <ul className="flex flex-col gap-2 w-48">
                         {link.children.map((sublink) => (
                           <li key={sublink.label}>
                             <NavigationMenuLink asChild>
                               <Link
                                 href={sublink.href}
-                                className="block px-3 py-2 rounded-md hover:bg-gray-100"
+                                className="block px-2 py-2 rounded-md hover:bg-gray-100"
                               >
                                 {sublink.label}
                               </Link>
@@ -61,8 +68,9 @@ const Navbar = () => {
                     </NavigationMenuContent>
                   </>
                 ) : (
-                  <NavigationMenuLink asChild className="text-base gap-4">
-                    <Link href={link.href}>
+                  <NavigationMenuLink asChild className="text-base gap-4 hover:bg-none">
+                    <Link href={link.href} className={`px-3 ${pathname === link.href ? 'text-primary' : 'hover:text-primary'
+                      }`}>
                       {link.label}
                     </Link>
                   </NavigationMenuLink>
@@ -72,10 +80,48 @@ const Navbar = () => {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* Bouton */}
-        <Button className="rounded-full font-semibold">
-          S'inscrire
-        </Button>
+        {/* Bouton and menu mobile */}
+        <div className="flex flex-row items-center gap-1">
+          <Button className="rounded-full text-sm font-semibold uppercase">
+            S'inscrire
+          </Button>
+
+          <div className="flex md:hidden items-center justify-between">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-lg hover:bg-muted transition-colors"
+              aria-label="Menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
+            <div>
+              {isMenuOpen && (
+                <div
+                  className="absolute top-16 left-0 right-0 bg-background border-b border-border shadow-lg"
+                >
+                  <ul className="flex flex-col p-2">
+                    {links.map((link) => (
+                      <li
+                        key={link.href}
+                      >
+                        <button
+                          // onClick={() => handleScrollToSection(link.href)}
+                          className={`w-full px-4 py-3 text-left rounded-lg transition-colors ${pathname === link.href
+                              ? "bg-accent/10 text-accent font-medium"
+                              : "text-muted-foreground hover:bg-muted"
+                            }`}
+                        >
+                          {link.label}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </header>
   )
