@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 // Enregistrer les plugins GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -41,48 +42,48 @@ const OurMission = () => {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      className="relative container mx-auto grid md:grid-cols-2 gap-12 items-center px-6 py-24"
+      className="relative container px-4 md:px-16 lg:px-20 mx-auto grid md:grid-cols-2 gap-12 items-center py-24 overflow-hidden"
     >
       {/* Fond décoratif */}
-      <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[var(--accent)] opacity-10 blur-3xl -z-10"></div>
-      <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-[var(--primary)] opacity-10 blur-3xl -z-10"></div>
+      {/* <div className="absolute -top-20 -right-24 w-64 h-64 rounded-full bg-[var(--accent)] opacity-10 blur-3xl -z-10"></div>
+      <div className="absolute -bottom-20 -left-24 w-64 h-64 rounded-full bg-[var(--primary)] opacity-10 blur-3xl -z-10"></div> */}
 
       {/* Contenu texte */}
-      <div 
+      <div
         ref={textRef}
         className="space-y-6"
       >
-        <h2 
-          className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
+        <h2
+          className="text-3xl md:text-4xl lg:text-[44px] font-bold leading-tight"
           style={{ color: "var(--foreground)" }}
         >
           Donner du pouvoir à la prochaine génération des{' '}
-          <span 
-            className="relative inline-block"
+          <span
+            className="relative inline-block text-3xl md:text-4xl uppercase"
             style={{ color: "var(--primary)" }}
           >
             leaders technologiques
-            <span 
+            {/* <span 
               className="absolute bottom-1 left-0 w-full h-2 opacity-30"
               style={{ 
                 backgroundColor: "var(--accent)",
                 transform: "skewX(-15deg)"
               }}
-            ></span>
+            ></span> */}
           </span>
         </h2>
 
         <div className="space-y-4">
-          <p 
+          <p
             className="text-lg leading-relaxed"
             style={{ color: "var(--muted-foreground)" }}
           >
             Chez Funda, nous pensons que tout le monde mérite d'avoir accès à une
             formation de qualité.
           </p>
-          <p 
+          <p
             className="text-lg leading-relaxed"
             style={{ color: "var(--muted-foreground)" }}
           >
@@ -91,8 +92,14 @@ const OurMission = () => {
           </p>
         </div>
 
-        <div className="pt-4">
-          <button 
+        {/* <div className="pt-4"> */}
+          <Button 
+          size="lg"
+            className="rounded-full *px-8 py-6 text-sm font-semibold border border-primary uppercase *shadow-lg *hover:shadow-xl transition-all"
+          >
+            Découvrir notre approche
+          </Button>
+          {/* <button 
             className="group relative inline-flex items-center px-6 py-3 rounded-full font-medium transition-all"
             style={{
               backgroundColor: "var(--primary)",
@@ -115,28 +122,28 @@ const OurMission = () => {
                 boxShadow: "0 0 0 2px var(--accent)"
               }}
             ></span>
-          </button>
-        </div>
+          </button> */}
+        {/* </div> */}
       </div>
 
       {/* Contenu image */}
-      <div 
+      <div
         ref={imageRef}
-        className="relative w-full h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl"
+        className="relative w-full h-80 md:h-96 rounded-lg overflow-hidden *shadow-xl"
       >
         {/* Placeholder remplacé par une image réelle */}
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] opacity-20"></div>
         <Image
-          src="/images/mission-section.jpg" // Remplacez par votre image
+          src="/img/1.jpg"
           alt="Étudiants en informatique"
           fill
           className="object-cover"
           quality={90}
         />
         <div className="absolute inset-0 bg-black/10"></div>
-        
+
         {/* Élément décoratif */}
-        <div 
+        <div
           className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full"
           style={{ backgroundColor: "var(--accent)", opacity: 0.3 }}
         ></div>
