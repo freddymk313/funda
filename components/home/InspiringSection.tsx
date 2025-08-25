@@ -57,12 +57,12 @@ export default function InspiringSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-24 px-4 md:px-16 lg:px-20 overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 *px-4 *md:px-16 *lg:px-20 overflow-hidden">
       {/* Fond décoratif */}
       {/* <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[var(--accent)] opacity-10 blur-3xl -z-10"></div>
       <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-[var(--primary)] opacity-10 blur-3xl -z-10"></div> */}
 
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto *max-w-6xl px-4 md:px-16 lg:px-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Contenu texte */}
           <div ref={textRef} className="space-y-6">
@@ -128,7 +128,7 @@ export default function InspiringSection() {
 
             {/* Badge */}
             <div 
-              className="absolute top-4 right-4 px-4 py-2 rounded-full text-sm font-medium shadow-md"
+              className="absolute top-4 right-4 px-4 py-2 uppercase rounded-full text-sm font-medium shadow-md"
               style={{ 
                 backgroundColor: "var(--primary)",
                 color: "var(--primary-foreground)"

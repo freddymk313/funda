@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight, BookOpen, Code, Shield } from "lucide-react"
 import Image from "next/image"
+import { Button } from "../ui/button"
 
 // Enregistrer le plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -88,25 +89,21 @@ export default function ArticlesGrid() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-24 px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 *px-6 overflow-hidden">
       {/* Fond décoratif */}
       <div className="absolute inset-0 bg-[var(--muted)] -z-10"></div>
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent opacity-20 -z-10"></div>
 
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4 md:px-16 lg:px-20">
         {/* En-tête */}
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             <span className="block mb-2" style={{ color: "var(--foreground)" }}>Explorez nos</span>
             <span 
-              className="relative inline-block"
+              className="relative inline-block uppercase"
               style={{ color: "var(--primary)" }}
             >
               Événements & Articles
-              <span 
-                className="absolute bottom-1 left-0 w-full h-1 rounded-full opacity-60"
-                style={{ backgroundColor: "var(--accent)" }}
-              ></span>
             </span>
           </h2>
           <p 
@@ -118,14 +115,14 @@ export default function ArticlesGrid() {
         </div>
 
         {/* Grille d'articles */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {articles.map((article, index) => (
             <div 
               key={index}
               ref={el => { cardsRef.current[index] = el as HTMLDivElement }}
               className="group relative h-full"
             >
-              <Card className="h-full transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1 overflow-hidden">
+              <Card className="h-full transition-all duration-300 *group-hover:shadow-xl group-hover:-translate-y-1 border-none overflow-hidden">
                 {/* Image */}
                 <div className="relative w-full h-48 overflow-hidden">
                   <Image
@@ -135,9 +132,9 @@ export default function ArticlesGrid() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                   {/* Badge de catégorie */}
-                  <div 
+                  {/* <div 
                     className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium"
                     style={{ 
                       backgroundColor: "var(--primary)",
@@ -146,11 +143,11 @@ export default function ArticlesGrid() {
                   >
                     {article.icon}
                     <span>{article.category}</span>
-                  </div>
+                  </div> */}
                 </div>
 
                 {/* Contenu */}
-                <CardHeader className="pb-3">
+                <CardHeader className="*pb-3">
                   <CardTitle 
                     className="text-xl"
                     style={{ color: "var(--foreground)" }}
@@ -169,8 +166,8 @@ export default function ArticlesGrid() {
                     className="flex items-center gap-1 text-sm font-medium transition-all group-hover:gap-2"
                     style={{ color: "var(--primary)" }}
                   >
-                    <span>Lire l'article</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    <span className="uppercase">Lire l'article</span>
+                    {/* <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" /> */}
                   </button>
                 </CardContent>
               </Card>
@@ -180,16 +177,20 @@ export default function ArticlesGrid() {
 
         {/* Bouton "Voir plus" */}
         <div className="text-center mt-16">
-          <button 
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all hover:gap-3"
+          <Button 
+          size={"lg"}
+          // className="uppercase text-sm rounded-full"
+                  className="event-button group rounded-full px-6 py-[22px] text-sm font-semibold uppercase transition-all"
+
+            // className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all hover:gap-3"
             style={{ 
               backgroundColor: "var(--primary)",
               color: "var(--primary-foreground)"
             }}
           >
             <span>Voir tous les articles</span>
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </button>
+            {/* <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" /> */}
+          </Button>
         </div>
       </div>
     </section>
