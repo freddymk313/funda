@@ -3,9 +3,10 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react"
+import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { Button } from "../ui/button"
 
 // Enregistrer le plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -29,13 +30,13 @@ export default function Footer() {
       duration: 0.8,
       ease: "power3.out"
     })
-    .from(columnsRef.current, {
-      y: 40,
-      opacity: 0,
-      stagger: 0.15,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.4")
+    // .from(columnsRef.current, {
+    //   y: 40,
+    //   opacity: 0,
+    //   stagger: 0.15,
+    //   duration: 0.6,
+    //   ease: "power3.out"
+    // }, "-=0.4")
     .from(footerRef.current?.querySelector(".footer-bottom")!, {
       y: 20,
       opacity: 0,
@@ -51,12 +52,12 @@ export default function Footer() {
       className="relative bg-[var(--foreground)] text-white overflow-hidden"
     >
       {/* Éléments décoratifs */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-5">
+      {/* <div className="absolute top-0 left-0 w-full h-full opacity-5">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[var(--primary)] animate-float-1"></div>
         <div className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-full bg-[var(--accent)] animate-float-2"></div>
-      </div>
+      </div> */}
 
-      <div className="container mx-auto px-6 py-16 relative z-10">
+      <div className="container mx-auto px-4 md:px-16 lg:px-20 pt-16 relative z-10">
         {/* Contenu principal */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Colonne 1 - Logo et description */}
@@ -66,10 +67,10 @@ export default function Footer() {
           >
             <Link href="/" className="inline-block mb-6">
               <Image 
-                src="/logo/logo-white.png" 
+                src="/logo/logo.png" 
                 alt="Funda Logo" 
-                width={120} 
-                height={40}
+                width={47} 
+                height={47}
               />
             </Link>
             <p className="mb-6 opacity-80">
@@ -157,8 +158,8 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
                 <span className="opacity-80">
-                  123 Rue de l'Innovation,<br />
-                  75000 Paris, France
+                  123 Av. Lumumba,<br />
+                  Lubumbashi, Haut katanga, RDC
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -167,16 +168,16 @@ export default function Footer() {
                   href="mailto:contact@funda.fr" 
                   className="opacity-80 hover:opacity-100 hover:underline transition-all"
                 >
-                  contact@funda.fr
+                  contact@funda.cd
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5" />
                 <a 
-                  href="tel:+33123456789" 
+                  href="tel:+243990000000" 
                   className="opacity-80 hover:opacity-100 hover:underline transition-all"
                 >
-                  +33 1 23 45 67 89
+                  +243 990 000 000
                 </a>
               </li>
             </ul>
@@ -188,21 +189,21 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder="Votre email"
-                  className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-sm placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                  className="flex-1 bg-white/10 relative border border-white/20 rounded-full px-4 py-2 text-sm placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
                 />
-                <button 
-                  className="bg-[var(--primary)] hover:bg-[var(--accent)] rounded-lg px-4 py-2 transition-colors"
+                <Button 
+                  className="absolute rounded-full"
                   aria-label="S'abonner à la newsletter"
                 >
-                  {/* <Send className="w-4 h-4" /> */}
-                </button>
+                  <Send className="w-4 h-4" />
+                </Button>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bas du footer */}
-        <div className="footer-bottom border-t border-white/10 mt-16 pt-8 text-center md:text-left">
+        <div className="footer-bottom border-t border-white/10 mt-16 py-8 text-center md:text-left">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm opacity-70">
               © {new Date().getFullYear()} Funda. Tous droits réservés.
