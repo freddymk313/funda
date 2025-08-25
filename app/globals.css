@@ -52,7 +52,8 @@
   --popover-foreground: #2C2C2C;
 
   /* Brand (Funda) */
-  --primary: #0096B2;              /* Bleu Funda */
+  --primary: #0799ba;              /* Bleu Funda */
+  /* --primary: #0096B2;              Bleu Funda */
   --primary-foreground: #ffffff;   /* Texte lisible sur bleu */
 
   --secondary: #F5F5F5;            /* Gris clair */
