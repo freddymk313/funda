@@ -67,7 +67,7 @@ export default function Footer() {
           >
             <Link href="/" className="inline-block mb-6">
               <Image 
-                src="/logo/logo.png" 
+                src="/logo/logo-2.webp" 
                 alt="Funda Logo" 
                 width={47} 
                 height={47}
