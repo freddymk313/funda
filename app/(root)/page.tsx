@@ -16,7 +16,6 @@ export default function Home() {
       <OurMission />
 
       <UpcomingEvent />
-      {/* <WhatsAppCTA /> */}
 
       <InspiringSection />
       <ArticlesGrid />
