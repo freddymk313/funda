@@ -128,43 +128,43 @@ const PastEventsPage = () => {
   const [selectedPlatform, setSelectedPlatform] = useState('Toutes')
   const sectionRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 70%",
-        toggleActions: "play none none none"
-      }
-    })
+  // useEffect(() => {
+  //   const tl = gsap.timeline({
+  //     scrollTrigger: {
+  //       trigger: sectionRef.current,
+  //       start: "top 70%",
+  //       toggleActions: "play none none none"
+  //     }
+  //   })
 
-    tl.from(sectionRef.current?.querySelector("h1")!, {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out"
-    })
-    .from(sectionRef.current?.querySelector("p")!, {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.4")
-    .from(".event-filters", {
-      y: 20,
-      opacity: 0,
-      duration: 0.5,
-      ease: "power3.out"
-    }, "-=0.3")
-    .from(".event-card", {
-      y: 40,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 0.6,
-      ease: "back.out(1.2)"
-    }, "-=0.2")
+  //   tl.from(sectionRef.current?.querySelector("h1")!, {
+  //     y: 50,
+  //     opacity: 0,
+  //     duration: 0.8,
+  //     ease: "power3.out"
+  //   })
+  //   .from(sectionRef.current?.querySelector("p")!, {
+  //     y: 30,
+  //     opacity: 0,
+  //     duration: 0.6,
+  //     ease: "power3.out"
+  //   }, "-=0.4")
+  //   .from(".event-filters", {
+  //     y: 20,
+  //     opacity: 0,
+  //     duration: 0.5,
+  //     ease: "power3.out"
+  //   }, "-=0.3")
+  //   .from(".event-card", {
+  //     y: 40,
+  //     opacity: 0,
+  //     stagger: 0.1,
+  //     duration: 0.6,
+  //     ease: "back.out(1.2)"
+  //   }, "-=0.2")
 
-    return () => tl.kill()
-  }, [])
+  //   return () => tl.kill()
+  // }, [])
 
   const filteredEvents = pastEvents.filter(event => {
     const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
