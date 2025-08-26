@@ -105,14 +105,15 @@ const Navbar = () => {
                         <li
                           key={idx}
                         >
-                          <button
-                            className={`w-full px-4 py-3 text-left rounded-lg transition-colors ${pathname === link.href
+                          <Link
+                            href="/blog"
+                            className={`w-full px-4 py-3 text-lg text-left rounded-lg transition-colors ${pathname === link.href
                               ? "bg-accent/10 text-accent *font-medium"
                               : "text-muted-foreground hover:bg-muted"
                               }`}
                           >
                             {link.label}
-                          </button>
+                          </Link>
                         </li>
                       ))}
                     </ul>
