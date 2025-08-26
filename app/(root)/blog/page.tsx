@@ -182,7 +182,7 @@ const BlogPage = () => {
                     placeholder="Rechercher un article..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
+                    className="w-full pl-10 pr-4 py-3 rounded-full border-1 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
                     style={{ borderColor: "var(--border)" }}
                   />
                 </div>
