@@ -40,83 +40,85 @@ const Navbar = () => {
           <Image src={"/logo/logo-3.png"} alt="logo" width={48} height={48} />
         </Link>
 
-        {/* Menu desktop */}
-        <NavigationMenu className="hidden md:flex gap-6 ml-6 font-semibold text-base text-gray-700 items-center">
-          <NavigationMenuList>
-            {links.map((link) => (
-              <NavigationMenuItem key={link.label}>
-                {link.children ? (
-                  <>
-                    <NavigationMenuTrigger className={`px-3 ${pathname === link.href ? 'text-primary' : 'hover:text-primary'
-                      }`}>{link.label}</NavigationMenuTrigger>
-                    <NavigationMenuContent className="p-4 border-none shadow-none">
-                      <ul className="flex flex-col gap-2 w-48">
-                        {link.children.map((sublink) => (
-                          <li key={sublink.label}>
-                            <NavigationMenuLink asChild>
-                              <Link
-                                href={sublink.href}
-                                className="block px-2 py-2 rounded-md hover:bg-gray-100"
-                              >
-                                {sublink.label}
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </>
-                ) : (
-                  <NavigationMenuLink asChild className="text-base gap-4 hover:bg-none">
-                    <Link href={link.href} className={`px-3 ${pathname === link.href ? 'text-primary' : 'hover:text-primary'
-                      }`}>
-                      {link.label}
-                    </Link>
-                  </NavigationMenuLink>
-                )}
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+        <div>
+          {/* Menu desktop */}
+          <NavigationMenu className="hidden md:flex gap-6 ml-6 font-semibold text-base text-gray-700 items-center">
+            <NavigationMenuList>
+              {links.map((link) => (
+                <NavigationMenuItem key={link.label}>
+                  {link.children ? (
+                    <>
+                      <NavigationMenuTrigger className={`px-3 ${pathname === link.href ? 'text-primary' : 'hover:text-primary'
+                        }`}>{link.label}</NavigationMenuTrigger>
+                      <NavigationMenuContent className="p-4 border-none shadow-none">
+                        <ul className="flex flex-col gap-2 w-48">
+                          {link.children.map((sublink) => (
+                            <li key={sublink.label}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  href={sublink.href}
+                                  className="block px-2 py-2 rounded-md hover:bg-gray-100"
+                                >
+                                  {sublink.label}
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </>
+                  ) : (
+                    <NavigationMenuLink asChild className="text-base gap-4 hover:bg-none">
+                      <Link href={link.href} className={`px-3 ${pathname === link.href ? 'text-primary' : 'hover:text-primary'
+                        }`}>
+                        {link.label}
+                      </Link>
+                    </NavigationMenuLink>
+                  )}
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
 
-        {/* Bouton and menu mobile */}
-        <div className="flex flex-row items-center gap-1">
-          <Button className="rounded-full text-sm font-semibold uppercase">
-            S'inscrire
-          </Button>
+          {/* Bouton and menu mobile */}
+          <div className="flex flex-row items-center gap-1">
+            <Button className="rounded-full text-sm font-semibold uppercase">
+              S'inscrire
+            </Button>
 
-          <div className="flex md:hidden items-center justify-between">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg hover:bg-muted transition-colors"
-              aria-label="Menu"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <div className="flex md:hidden items-center justify-between">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                aria-label="Menu"
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
 
-            <div>
-              {isMenuOpen && (
-                <div
-                  className="absolute top-16 left-0 right-0 bg-background border-b border-border z-10 shadow-lg"
-                >
-                  <ul className="flex flex-col px-4 py-6 mt-5">
-                    {links.map((link, idx) => (
-                      <li
-                        key={idx}
-                      >
-                        <button
-                          className={`w-full px-4 py-3 text-left rounded-lg transition-colors ${pathname === link.href
+              <div>
+                {isMenuOpen && (
+                  <div
+                    className="absolute top-16 left-0 right-0 bg-background border-b border-border z-10 shadow-lg"
+                  >
+                    <ul className="flex flex-col px-4 py-6 mt-5">
+                      {links.map((link, idx) => (
+                        <li
+                          key={idx}
+                        >
+                          <button
+                            className={`w-full px-4 py-3 text-left rounded-lg transition-colors ${pathname === link.href
                               ? "bg-accent/10 text-accent *font-medium"
                               : "text-muted-foreground hover:bg-muted"
-                            }`}
-                        >
-                          {link.label}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                              }`}
+                          >
+                            {link.label}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
