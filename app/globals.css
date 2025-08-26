@@ -43,7 +43,8 @@
 
   /* Base */
   --background: #ffffff;
-  --foreground: #2C2C2C;
+  --foreground: #023642;
+  /* --foreground: #2C2C2C; */
 
   /* Card / Popover */
   --card: #ffffff;
@@ -58,6 +59,7 @@
 
   --secondary: #F5F5F5;            /* Gris clair */
   --secondary-foreground: #2C2C2C;
+  /* --secondary-foreground: #023642; */
 
   --muted: #F5F5F5;
   --muted-foreground: #6B7280;     /* gris moyen */

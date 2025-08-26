@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react"
+import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone, Send, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "../ui/button"
@@ -113,9 +113,10 @@ export default function Footer() {
                 <li key={index}>
                   <Link 
                     href={link.href}
-                    className="opacity-80 hover:opacity-100 hover:underline transition-all"
+                    className="flex flex-row items-center gap-2"
                   >
-                    {link.label}
+                    <ChevronRight className="h-4 w-4" />
+                    <span className="opacity-80 hover:opacity-100 hover:underline transition-all">{link.label}</span>
                   </Link>
                 </li>
               ))}
@@ -139,9 +140,10 @@ export default function Footer() {
                 <li key={index}>
                   <Link 
                     href={link.href}
-                    className="opacity-80 hover:opacity-100 hover:underline transition-all"
+                    className="flex flex-row items-center gap-2"
                   >
-                    {link.label}
+                    <ChevronRight className="h-4 w-4" />
+                    <span className="opacity-80 hover:opacity-100 hover:underline transition-all">{link.label}</span>
                   </Link>
                 </li>
               ))}
