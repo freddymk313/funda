@@ -57,7 +57,7 @@ const ContactPage = () => {
     <div className="relative overflow-hidden">
       {/* Section Hero */}
       <section
-        className="relative py-28 px-6 text-center bg-primary text-white"
+        className="relative py-28 px-6 text-center bg-foreground text-white"
       >
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contactez-nous</h1>

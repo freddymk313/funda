@@ -108,31 +108,31 @@ const BlogPage = () => {
       }
     })
 
-    tl.from(sectionRef.current?.querySelector("h1")!, {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out"
-    })
-    .from(sectionRef.current?.querySelector("p")!, {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.4")
-    .from(".blog-search", {
-      y: 20,
-      opacity: 0,
-      duration: 0.5,
-      ease: "power3.out"
-    }, "-=0.3")
-    .from(".blog-post", {
-      y: 40,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 0.6,
-      ease: "back.out(1.2)"
-    }, "-=0.2")
+    // tl.from(sectionRef.current?.querySelector("h1")!, {
+    //   y: 50,
+    //   opacity: 0,
+    //   duration: 0.8,
+    //   ease: "power3.out"
+    // })
+    // .from(sectionRef.current?.querySelector("p")!, {
+    //   y: 30,
+    //   opacity: 0,
+    //   duration: 0.6,
+    //   ease: "power3.out"
+    // }, "-=0.4")
+    // .from(".blog-search", {
+    //   y: 20,
+    //   opacity: 0,
+    //   duration: 0.5,
+    //   ease: "power3.out"
+    // }, "-=0.3")
+    // .from(".blog-post", {
+    //   y: 40,
+    //   opacity: 0,
+    //   stagger: 0.1,
+    //   duration: 0.6,
+    //   ease: "back.out(1.2)"
+    // }, "-=0.2")
 
     return () => {
       tl.kill();
@@ -149,7 +149,7 @@ const BlogPage = () => {
   return (
     <div className="relative overflow-hidden">
       {/* Section Hero */}
-      <section className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] text-white">
+      <section className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white">
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Blog Funda</h1>
           <p className="text-xl opacity-90 max-w-2xl mx-auto">
@@ -158,15 +158,15 @@ const BlogPage = () => {
         </div>
         
         {/* Éléments décoratifs */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+        {/* <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="absolute top-1/4 left-1/4 w-48 h-48 rounded-full bg-white animate-float-1"></div>
           <div className="absolute bottom-1/3 right-1/4 w-32 h-32 rounded-full bg-white animate-float-2"></div>
-        </div>
+        </div> */}
       </section>
 
       {/* Section principale */}
-      <section ref={sectionRef} className="relative py-20 px-6 bg-[var(--muted)]">
-        <div className="container mx-auto max-w-7xl">
+      <section ref={sectionRef} className="relative py-20 bg-[var(--muted)]">
+        <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-7xl">
           <div className="grid lg:grid-cols-4 gap-8">
             {/* Sidebar */}
             <div className="lg:col-span-1 space-y-8">
