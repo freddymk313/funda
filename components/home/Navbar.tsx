@@ -104,13 +104,14 @@ const Navbar = () => {
                       {links.map((link, idx) => (
                         <li
                           key={idx}
-                        >
-                          <Link
-                            href="/blog"
-                            className={`w-full px-4 py-3 text-lg text-left rounded-lg transition-colors ${pathname === link.href
+                          className={`w-full px-4 py-3 text-lg text-left font-semibold rounded-lg transition-colors ${pathname === link.href
                               ? "bg-accent/10 text-accent *font-medium"
                               : "text-muted-foreground hover:bg-muted"
                               }`}
+                        >
+                          <Link
+                            href="/blog"
+          
                           >
                             {link.label}
                           </Link>
