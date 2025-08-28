@@ -186,21 +186,22 @@ export default function Footer() {
 
             {/* Newsletter */}
             <div className="mt-6">
-              <h4 className="text-sm font-medium mb-3">NEWSLETTER</h4>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Votre email"
-                  className="flex-1 bg-white/10 relative border border-white/20 rounded-full px-4 py-2 text-sm placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
-                />
-                <Button 
-                  className="absolute rounded-full"
-                  aria-label="S'abonner à la newsletter"
-                >
-                  <Send className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
+  <h4 className="text-sm font-medium mb-3">NEWSLETTER</h4>
+  <div className="relative w-full">
+    <input
+      type="email"
+      placeholder="Votre email"
+      className="w-full bg-white/10 border border-white/20 rounded-full px-4 pr-10 py-2 text-sm placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+    />
+    <Button
+      className="absolute top-1/2 right-1 -translate-y-1/2 rounded-full p-1.5 bg-[var(--primary)] hover:bg-[var(--primary-hover)] transition"
+      aria-label="S'abonner à la newsletter"
+    >
+      <Send className="w-3 h-3" />
+    </Button>
+  </div>
+</div>
+
           </div>
         </div>
 

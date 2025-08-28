@@ -13,28 +13,35 @@ const Hero = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Animation d'entrée
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
     tl.fromTo(
+      overlayRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 1 }
+    )
+    .fromTo(
       headingRef.current,
       { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8 }
+      { y: 0, opacity: 1, duration: 0.8 },
+      "-=0.5"
     )
-      .fromTo(
-        textRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6 },
-        "-=0.4"
-      )
-      .fromTo(
-        buttonsRef.current,
-        { y: 10, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5 },
-        "-=0.3"
-      );
+    .fromTo(
+      textRef.current,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6 },
+      "-=0.4"
+    )
+    .fromTo(
+      buttonsRef.current,
+      { y: 10, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5 },
+      "-=0.3"
+    );
 
     // Animation de parallaxe au scroll
     if (heroRef.current) {
@@ -57,37 +64,46 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="*relative *py-4 px-4 md:px-16 lg:px-20 flex flex-col items-center justify-center text-center pt-20 md:pt-32 pb-20 min-h-[90vh] overflow-hidden"
-      style={{ backgroundColor: "var(--muted)" }}
+      className="relative py-4 px-4 md:px-16 lg:px-20 flex flex-col items-center justify-center text-center pt-20 md:pt-32 pb-20 min-h-[90vh] overflow-hidden"
+      style={{
+        backgroundImage: "url('/hero-bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}
     >
-      {/* Fond décoratif animé */}
-      {/* <div className="absolute inset-0 overflow-hidden opacity-10">
+      {/* Overlay sombre pour améliorer la lisibilité */}
+      <div 
+        ref={overlayRef}
+        className="absolute inset-0 bg-black/50 opacity-0"
+      ></div>
+
+      {/* Éléments décoratifs */}
+      <div className="absolute inset-0 overflow-hidden opacity-30">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[var(--primary)] animate-float-1"></div>
         <div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-[var(--accent)] animate-float-2"></div>
         <div className="absolute bottom-1/4 left-1/3 w-32 h-32 rounded-full bg-[var(--ring)] animate-float-3"></div>
-      </div> */}
+      </div>
 
-      <div className="container *relative z-10 max-w-4xl mx-auto">
+      <div className="container relative z-10 max-w-4xl mx-auto">
         <h1
           ref={headingRef}
-          className="text-4xl md:text-6xl font-bold leading-tight mb-6"
-          style={{ color: "var(--foreground)" }}
+          className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-white"
         >
           Apprenez l'informatique{" "}
-          <span className="relative inline-block">
+          <span className="relative inline-block text-[var(--accent)]">
             <span className="relative z-10">et transformez</span>
-            {/* <span
+            <span
               className="absolute bottom-0 left-0 w-full h-2 bg-[var(--accent)] opacity-40"
               style={{ transform: "skewX(-15deg)" }}
-            ></span> */}
+            ></span>
           </span>{" "}
           votre avenir !
         </h1>
 
         <p
           ref={textRef}
-          className="mt-4 text-lg md:text-xl max-w-2xl mx-auto"
-          style={{ color: "var(--muted-foreground)" }}
+          className="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-gray-100"
         >
           Bienvenue sur Funda, votre plateforme d'apprentissage en informatique.
           Explorez nos ressources, événements et articles pour vous aider à
@@ -98,23 +114,18 @@ const Hero = () => {
         <div ref={buttonsRef} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             size="lg"
-            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] border-primary transition-all"
-            // style={{
-            //   backgroundColor: "var(--primary)",
-            //   color: "var(--primary-foreground)",
-            // }}
+            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] border-primary transition-all hover:scale-105"
+            style={{
+              backgroundColor: "var(--primary)",
+              color: "var(--primary-foreground)",
+            }}
           >
             Découvrir les formations
           </Button>
           <Button
-            variant="ghost"
+            variant="outline"
             size="lg"
-            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] hover:bg-[var(--secondary)] transition-all"
-            style={{
-              borderColor: "var(--primary)",
-              color: "var(--primary)",
-              backgroundColor: "transparent",
-            }}
+            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] transition-all hover:scale-105 bg-transparent text-white border-white hover:bg-white/10"
           >
             Voir les événements
           </Button>
@@ -122,14 +133,14 @@ const Hero = () => {
       </div>
 
       {/* Flèche indicateur de scroll */}
-      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
         <svg
-          width="24"
-          height="24"
+          width="32"
+          height="32"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          style={{ color: "var(--primary)" }}
+          className="text-white"
         >
           <path
             d="M19 14L12 21L5 14"
@@ -147,7 +158,7 @@ const Hero = () => {
             opacity="0.5"
           />
         </svg>
-      </div> */}
+      </div>
 
       {/* Styles globaux pour les animations */}
       <style jsx global>{`
