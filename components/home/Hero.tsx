@@ -66,24 +66,23 @@ const Hero = () => {
       ref={heroRef}
       className="relative py-4 px-4 md:px-16 lg:px-20 flex flex-col items-center justify-center text-center pt-20 md:pt-32 pb-20 min-h-[90vh] overflow-hidden"
       style={{
-        backgroundImage: "url('/hero-bg.jpg')",
+        backgroundImage: "url('/img/4.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat"
       }}
     >
-      {/* Overlay sombre pour améliorer la lisibilité */}
       <div 
         ref={overlayRef}
         className="absolute inset-0 bg-black/50 opacity-0"
       ></div>
 
       {/* Éléments décoratifs */}
-      <div className="absolute inset-0 overflow-hidden opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[var(--primary)] animate-float-1"></div>
-        <div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-[var(--accent)] animate-float-2"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-32 h-32 rounded-full bg-[var(--ring)] animate-float-3"></div>
-      </div>
+      // <div className="absolute inset-0 overflow-hidden opacity-30">
+      //   <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[var(--primary)] animate-float-1"></div>
+      //   <div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-[var(--accent)] animate-float-2"></div>
+      //   <div className="absolute bottom-1/4 left-1/3 w-32 h-32 rounded-full bg-[var(--ring)] animate-float-3"></div>
+      // </div>
 
       <div className="container relative z-10 max-w-4xl mx-auto">
         <h1
@@ -93,10 +92,10 @@ const Hero = () => {
           Apprenez l'informatique{" "}
           <span className="relative inline-block text-[var(--accent)]">
             <span className="relative z-10">et transformez</span>
-            <span
+            {/* <span
               className="absolute bottom-0 left-0 w-full h-2 bg-[var(--accent)] opacity-40"
               style={{ transform: "skewX(-15deg)" }}
-            ></span>
+            ></span> */}
           </span>{" "}
           votre avenir !
         </h1>
@@ -114,7 +113,7 @@ const Hero = () => {
         <div ref={buttonsRef} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             size="lg"
-            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] border-primary transition-all hover:scale-105"
+            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] border-primary transition-all *hover:scale-105"
             style={{
               backgroundColor: "var(--primary)",
               color: "var(--primary-foreground)",
@@ -125,41 +124,13 @@ const Hero = () => {
           <Button
             variant="outline"
             size="lg"
-            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] transition-all hover:scale-105 bg-transparent text-white border-white hover:bg-white/10"
+            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] transition-all *hover:scale-105 bg-transparent text-white border-white hover:bg-white/10"
           >
             Voir les événements
           </Button>
         </div>
       </div>
-
-      {/* Flèche indicateur de scroll */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="text-white"
-        >
-          <path
-            d="M19 14L12 21L5 14"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M19 8L12 15L5 8"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            opacity="0.5"
-          />
-        </svg>
-      </div>
-
+      
       {/* Styles globaux pour les animations */}
       <style jsx global>{`
         @keyframes float-1 {
