@@ -136,7 +136,7 @@ export default function Newsletter() {
                 className="relative flex-1 py-5 px-4 rounded-full border-2 focus:border-[var(--primary)]"
                 style={{ borderColor: "var(--border)" }}
               />
-              <Button
+              {/* <Button
                 className="newsletter-button absolute flex items-center rounded-full px-6 py-5 text-sm font-medium"
                 style={{
                   backgroundColor: "var(--primary)",
@@ -144,6 +144,13 @@ export default function Newsletter() {
                 }}
               >
                 <span className="uppercase">S'abonner</span>
+              </Button> */}
+              <Button
+                size="lg"
+                className="absolute top-1/2 right-0.5 -translate-y-1/2 rounded-full py-1.5 px-4 bg-[var(--primary)] *hover:bg-[var(--primary)]/50 transition"
+                aria-label="S'abonner à la newsletter"
+              >
+                <span className="uppercase text-sm font-semibold">S'abonner</span>
               </Button>
             </div>
 
