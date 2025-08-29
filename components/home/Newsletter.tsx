@@ -80,7 +80,7 @@ export default function Newsletter() {
             {/* Image réelle */}
             <div className="absolute inset-0 bg-primary opacity-20"></div>
             <Image
-              src="/img/news.webp"
+              src="/img/news.jpg"
               alt="Personne lisant une newsletter"
               fill
               className="object-cover"
