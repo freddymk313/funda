@@ -50,7 +50,7 @@ const Navbar = () => {
                     <>
                       <NavigationMenuTrigger className={`px-3 ${pathname === link.href ? 'text-primary' : 'hover:text-primary'
                         }`}>{link.label}</NavigationMenuTrigger>
-                      <NavigationMenuContent className="p-4 border-none shadow-none">
+                      <NavigationMenuContent className="p-2">
                         <ul className="flex flex-col gap-2 w-48">
                           {link.children.map((sublink) => (
                             <li key={sublink.label}>
@@ -83,7 +83,7 @@ const Navbar = () => {
           {/* Bouton and menu mobile */}
           <div className="flex flex-row items-center gap-1">
             <Button className="rounded-full text-sm font-semibold uppercase">
-              S'inscrire
+              Rejoindre
             </Button>
 
             <div className="flex md:hidden items-center justify-between">
