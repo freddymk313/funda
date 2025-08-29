@@ -59,11 +59,11 @@ export default function Footer() {
 
       <div className="container mx-auto px-4 md:px-16 lg:px-20 pt-16 relative z-10">
         {/* Contenu principal */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="*grid *grid-cols-1 *md:grid-cols-2 *lg:grid-cols-3 gap-y-12 *gap-12 *border-2 flex flex-col md:flex-row">
           {/* Colonne 1 - Logo et description */}
           <div
             ref={el => { columnsRef.current[0] = el as HTMLDivElement }}
-            className="footer-logo"
+            className="footer-logo md:mr-20 w-full md:w-[50%]"
           >
             <Link href="/" className="inline-block mb-6">
               <Image
@@ -74,8 +74,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mb-6 opacity-80">
-              Funda accompagne les nouveaux apprenants en informatique avec des
-              ressources pédagogiques de qualité et une communauté bienveillante.
+              Funda est une plateforme numérique dédiée à guider les nouveaux apprenants en informatique. Nous simplifions votre parcours en vous orientant vers les meilleures formations et programmes de mentorat adaptés à vos besoins. Funda encourage l’auto-apprentissage et vous aide à exploiter pleinement les ressources en ligne pour acquérir des compétences numériques à votre rythme.
             </p>
             <div className="flex gap-4">
               {[
@@ -99,7 +98,7 @@ export default function Footer() {
           {/* Colonne 2 - Liens rapides */}
           <div
             ref={el => { columnsRef.current[1] = el as HTMLDivElement }}
-            className="space-y-4"
+            className="space-y-4 w-full md:w-[25%]"
           >
             <h3 className="text-lg font-semibold mb-4">Liens rapides</h3>
             <ul className="space-y-3">
@@ -124,7 +123,7 @@ export default function Footer() {
           </div>
 
           {/* Colonne 3 - Ressources */}
-          <div
+          {/* <div
             ref={el => { columnsRef.current[2] = el as HTMLDivElement }}
             className="space-y-4"
           >
@@ -148,20 +147,19 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Colonne 4 - Contact */}
           <div
             ref={el => { columnsRef.current[3] = el as HTMLDivElement }}
-            className="space-y-6"
+            className="space-y-6 w-full md:w-[25%]"
           >
             <h3 className="text-lg font-semibold">Contactez-nous</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
                 <span className="opacity-80">
-                  123 Av. Lumumba,<br />
-                  Lubumbashi, Haut katanga, RDC
+                  15, chaussée de Kasenga,<br /> Bel air, Lubumbashi, RDC
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -170,16 +168,16 @@ export default function Footer() {
                   href="mailto:contact@funda.fr"
                   className="opacity-80 hover:opacity-100 hover:underline transition-all"
                 >
-                  contact@funda.cd
+                  info@funda-online.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5" />
                 <a
-                  href="tel:+243990000000"
+                  href="tel:+243973900363"
                   className="opacity-80 hover:opacity-100 hover:underline transition-all"
                 >
-                  +243 990 000 000
+                  +243 973 900 363
                 </a>
               </li>
             </ul>
