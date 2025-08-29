@@ -5,6 +5,7 @@ import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { CheckCircle2, PlayCircle, Download, Video } from "lucide-react"
 import Image from "next/image"
+import ConferenceSwiper from "./ConferenceSwiper"
 
 // Enregistrer le plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -58,10 +59,6 @@ export default function InspiringSection() {
 
   return (
     <section ref={sectionRef} className="relative py-24 *px-4 *md:px-16 *lg:px-20 overflow-hidden">
-      {/* Fond décoratif */}
-      {/* <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-[var(--accent)] opacity-10 blur-3xl -z-10"></div>
-      <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-[var(--primary)] opacity-10 blur-3xl -z-10"></div> */}
-
       <div className="container mx-auto *max-w-6xl px-4 md:px-16 lg:px-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Contenu texte */}
@@ -102,41 +99,7 @@ export default function InspiringSection() {
           </div>
 
           {/* Contenu image */}
-          <div ref={imageRef} className="relative w-full h-80 md:h-96 rounded-2xl overflow-hidden *shadow-2xl">
-            {/* Placeholder remplacé par une image réelle */}
-            <div className="absolute inset-0 bg-primary opacity-20"></div>
-            <Image
-              src="/images/conference-section.jpg" // Remplacez par votre image
-              alt="Conférence en informatique"
-              fill
-              className="object-cover"
-              quality={90}
-            />
-            
-            {/* Overlay et bouton play */}
-            {/* <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-              <button 
-                className="video-play-button flex items-center justify-center w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm shadow-lg transition-all hover:scale-110"
-                aria-label="Lire la vidéo"
-              >
-                <PlayCircle 
-                  className="w-10 h-10" 
-                  style={{ color: "var(--primary)" }} 
-                />
-              </button>
-            </div> */}
-
-            {/* Badge */}
-            <div 
-              className="absolute top-4 right-4 px-4 py-2 uppercase rounded-full text-sm font-medium shadow-md"
-              style={{ 
-                backgroundColor: "var(--primary)",
-                color: "var(--primary-foreground)"
-              }}
-            >
-              Nouveauté
-            </div>
-          </div>
+          <ConferenceSwiper />
         </div>
       </div>
     </section>
