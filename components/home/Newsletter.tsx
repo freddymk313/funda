@@ -133,7 +133,7 @@ export default function Newsletter() {
               <Input
                 type="email"
                 placeholder="Votre adresse email"
-                className="relative flex-1 py-5 px-4 rounded-full border-2 focus:border-[var(--primary)]"
+                className="relative flex-1 py-2.5 md:py-5 px-4 rounded-full border-2 focus:border-[var(--primary)]"
                 style={{ borderColor: "var(--border)" }}
               />
               {/* <Button
