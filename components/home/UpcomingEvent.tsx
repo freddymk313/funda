@@ -55,7 +55,7 @@ export default function UpcomingEvent() {
         >
           <div className="flex flex-col md:flex-row">
             {/* Date */}
-            <div 
+            <div
               className="event-date flex flex-col items-center justify-center rounded-2xl m-6 py-2 px-8"
               style={{ backgroundColor: "var(--primary)", color: "var(--primary-foreground)" }}
             >
@@ -66,7 +66,7 @@ export default function UpcomingEvent() {
             </div>
 
             {/* Image d'espace */}
-            <div className="event-image relative w-full md:w-1/3 h-48 md:h-auto overflow-hidden">
+            <div className="event-image relative w-full *md:w-1/3 h-96 *md:h-auto overflow-hidden">
               <Image
                 src="/img/meet.jpg" // Remplacez par votre image d'espace
                 alt="Atelier de programmation Python"
@@ -79,25 +79,18 @@ export default function UpcomingEvent() {
 
             {/* Content */}
             <div className="flex-1 p-6 md:p-8">
-              <h3 
+              <h3
                 className="event-title text-2xl md:text-3xl font-bold mb-4"
                 style={{ color: "var(--foreground)" }}
               >
                 Atelier de programmation Python
               </h3>
 
-              {/* <div className="space-y-3">
+              <div className="*space-y-3 flex items-center justify-between">
                 <div className="event-detail flex items-center gap-3">
                   <Clock className="w-5 h-5" style={{ color: "var(--primary)" }} />
                   <span style={{ color: "var(--muted-foreground)" }}>
-                    14h00 - 16h00 (HNB)
-                  </span>
-                </div>
-
-                <div className="event-detail flex items-center gap-3">
-                  <MapPin className="w-5 h-5" style={{ color: "var(--primary)" }} />
-                  <span style={{ color: "var(--muted-foreground)" }}>
-                    Salle de conférence, Campus Principal
+                    14h00 - 16h00
                   </span>
                 </div>
 
@@ -107,15 +100,10 @@ export default function UpcomingEvent() {
                     Dr. Jonas MUBISA
                   </span>
                 </div>
-
-                <p className="event-detail mt-4 text-gray-600" style={{ color: "var(--muted-foreground)" }}>
-                  Apprenez les bases de Python et ses applications pratiques dans ce workshop interactif.
-                  Parfait pour les débutants en programmation. Explorez l'univers du code avec nous!
-                </p>
-              </div> */}
+              </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Button 
+                <Button
                   className="event-button group rounded-full px-6 py-[22px] text-sm font-semibold uppercase transition-all *hover:scale-105"
                   size="lg"
                   style={{
@@ -126,8 +114,8 @@ export default function UpcomingEvent() {
                   <span className="relative z-10">S'inscrire maintenant</span>
                 </Button>
 
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="event-button rounded-full px-6 py-3 w-full md:w-fit text-sm font-semibold uppercase *hover:scale-105 transition-transform"
                   style={{
                     borderColor: "var(--primary)",
