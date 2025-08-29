@@ -78,7 +78,7 @@ export default function UpcomingEvent() {
             </div>
 
             {/* Content */}
-            <div className="flex-1 p-6 md:p-8">
+            <div className="flex-1 p-6 md:p-8 *border">
               <h3
                 className="event-title text-2xl md:text-3xl font-bold mb-4"
                 style={{ color: "var(--foreground)" }}

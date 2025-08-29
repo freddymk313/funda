@@ -30,24 +30,24 @@ export default function Footer() {
       duration: 0.8,
       ease: "power3.out"
     })
-    // .from(columnsRef.current, {
-    //   y: 40,
-    //   opacity: 0,
-    //   stagger: 0.15,
-    //   duration: 0.6,
-    //   ease: "power3.out"
-    // }, "-=0.4")
-    .from(footerRef.current?.querySelector(".footer-bottom")!, {
-      y: 20,
-      opacity: 0,
-      duration: 0.5
-    }, "-=0.3")
+      // .from(columnsRef.current, {
+      //   y: 40,
+      //   opacity: 0,
+      //   stagger: 0.15,
+      //   duration: 0.6,
+      //   ease: "power3.out"
+      // }, "-=0.4")
+      .from(footerRef.current?.querySelector(".footer-bottom")!, {
+        y: 20,
+        opacity: 0,
+        duration: 0.5
+      }, "-=0.3")
 
     return () => { tl.kill(); }
   }, [])
 
   return (
-    <footer 
+    <footer
       ref={footerRef}
       className="relative bg-[var(--foreground)] text-white overflow-hidden"
     >
@@ -61,20 +61,20 @@ export default function Footer() {
         {/* Contenu principal */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Colonne 1 - Logo et description */}
-          <div 
+          <div
             ref={el => { columnsRef.current[0] = el as HTMLDivElement }}
             className="footer-logo"
           >
             <Link href="/" className="inline-block mb-6">
-              <Image 
-                src="/logo/logo-3.png" 
-                alt="Funda Logo" 
-                width={47} 
+              <Image
+                src="/logo/logo-3.png"
+                alt="Funda Logo"
+                width={47}
                 height={47}
               />
             </Link>
             <p className="mb-6 opacity-80">
-              Funda accompagne les nouveaux apprenants en informatique avec des 
+              Funda accompagne les nouveaux apprenants en informatique avec des
               ressources pédagogiques de qualité et une communauté bienveillante.
             </p>
             <div className="flex gap-4">
@@ -97,7 +97,7 @@ export default function Footer() {
           </div>
 
           {/* Colonne 2 - Liens rapides */}
-          <div 
+          <div
             ref={el => { columnsRef.current[1] = el as HTMLDivElement }}
             className="space-y-4"
           >
@@ -111,7 +111,7 @@ export default function Footer() {
                 { label: "Contact", href: "/contact" }
               ].map((link, index) => (
                 <li key={index}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="flex flex-row items-center gap-2"
                   >
@@ -124,7 +124,7 @@ export default function Footer() {
           </div>
 
           {/* Colonne 3 - Ressources */}
-          <div 
+          <div
             ref={el => { columnsRef.current[2] = el as HTMLDivElement }}
             className="space-y-4"
           >
@@ -138,7 +138,7 @@ export default function Footer() {
                 { label: "Forum", href: "/forum" }
               ].map((link, index) => (
                 <li key={index}>
-                  <Link 
+                  <Link
                     href={link.href}
                     className="flex flex-row items-center gap-2"
                   >
@@ -151,7 +151,7 @@ export default function Footer() {
           </div>
 
           {/* Colonne 4 - Contact */}
-          <div 
+          <div
             ref={el => { columnsRef.current[3] = el as HTMLDivElement }}
             className="space-y-6"
           >
@@ -166,8 +166,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5" />
-                <a 
-                  href="mailto:contact@funda.fr" 
+                <a
+                  href="mailto:contact@funda.fr"
                   className="opacity-80 hover:opacity-100 hover:underline transition-all"
                 >
                   contact@funda.cd
@@ -175,8 +175,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5" />
-                <a 
-                  href="tel:+243990000000" 
+                <a
+                  href="tel:+243990000000"
                   className="opacity-80 hover:opacity-100 hover:underline transition-all"
                 >
                   +243 990 000 000
@@ -186,22 +186,22 @@ export default function Footer() {
 
             {/* Newsletter */}
             <div className="mt-6">
-  <h4 className="text-sm font-medium mb-3">NEWSLETTER</h4>
-  <div className="relative w-full">
-    <input
-      type="email"
-      placeholder="Votre email"
-      className="w-full bg-white/10 border border-white/20 rounded-full px-4 pr-10 py-2 text-sm placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
-    />
-    <Button
-      className="absolute top-1/2 right-1 -translate-y-1/2 rounded-full p-1.5 bg-[var(--primary)] hover:bg-[var(--primary-hover)] transition"
-      aria-label="S'abonner à la newsletter"
-    >
-      <Send className="w-3 h-3" />
-    </Button>
-  </div>
-</div>
-
+              <h4 className="text-sm font-medium mb-3">NEWSLETTER</h4>
+              <div className="relative w-full">
+                <input
+                  type="email"
+                  placeholder="Votre email"
+                  className="w-full bg-white/10 border border-white/20 rounded-full px-4 pr-10 py-2 text-sm placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                />
+                <Button
+                size="sm"
+                  className="absolute top-1/2 right-1 -translate-y-1/2 rounded-full p-1.5 bg-[var(--primary)] hover:bg-[var(--primary)]/50 transition"
+                  aria-label="S'abonner à la newsletter"
+                >
+                  <Send className="w-3 h-3" />
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
 
