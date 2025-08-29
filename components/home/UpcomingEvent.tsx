@@ -63,12 +63,12 @@ export default function UpcomingEvent() {
             </div>
 
             {/* Image */}
-            <div className="event-image relative w-full md:w-1/2 min-h-[300px] md:min-h-[400px]">
+            <div className="event-image relative w-full md:w-1/2 min-h-[400px] md:min-h-[400px]">
               <Image
                 src="/img/meet.jpg"
                 alt="Atelier de programmation Python"
                 fill
-                className="object-cover"
+                className="object-cover md:mt-2"
                 priority
               />
             </div>
@@ -96,7 +96,7 @@ export default function UpcomingEvent() {
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
                 <Button
-                  className="rounded-full px-6 py-5 text-sm font-semibold uppercase transition-all hover:scale-105"
+                  className="rounded-full px-6 py-5 text-sm font-semibold uppercase transition-all"
                   size="lg"
                   style={{
                     backgroundColor: "var(--primary)",
@@ -108,7 +108,7 @@ export default function UpcomingEvent() {
 
                 <Button
                   variant="outline"
-                  className="rounded-full px-6 py-3 w-full md:w-auto text-sm font-semibold uppercase hover:scale-105 transition-transform"
+                  className="rounded-full px-6 py-3 w-full md:w-auto text-sm font-semibold uppercase transition-transform"
                   style={{
                     borderColor: "var(--primary)",
                     color: "var(--primary)",

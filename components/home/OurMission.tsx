@@ -133,7 +133,7 @@ const OurMission = () => {
         {/* Placeholder remplacé par une image réelle */}
         <div className="absolute inset-0 *bg-gradient-to-br *from-[var(--primary)] *to-[var(--accent)] bg-primary *opacity-20"></div>
         <Image
-          src="/images/m.jpg"
+          src="/img/our.jpg"
           alt="Étudiants en informatique"
           fill
           className="object-cover"
