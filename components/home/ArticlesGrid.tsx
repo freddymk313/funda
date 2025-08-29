@@ -17,7 +17,7 @@ const articles = [
     id: 1,
     title: "Introduction au développement web moderne",
     excerpt: "Découvrez les fondamentaux du développement web avec les dernières technologies et meilleures pratiques.",
-    image: "/images/blog/web-dev.jpg",
+    image: "/img/6.jpeg",
     category: "Développement",
     author: "Dr. Sarah Tech",
     date: "15 Jan 2025",
@@ -28,7 +28,7 @@ const articles = [
     id: 2,
     title: "Python pour la data science : par où commencer ?",
     excerpt: "Un guide complet pour débuter en data science avec Python et ses bibliothèques essentielles.",
-    image: "/images/blog/python-ds.jpg",
+    image: "/img/8.jpeg",
     category: "Data Science",
     author: "Prof. Data Analyst",
     date: "12 Jan 2025",
@@ -39,7 +39,7 @@ const articles = [
     id: 3,
     title: "Python pour la data science : par où commencer ?",
     excerpt: "Un guide complet pour débuter en data science avec Python et ses bibliothèques essentielles.",
-    image: "/images/blog/python-ds.jpg",
+    image: "/img/5.jpeg",
     category: "Data Science",
     author: "Prof. Data Analyst",
     date: "12 Jan 2025",
@@ -166,18 +166,18 @@ export default function ArticlesGrid() {
                   </p>
 
                   {/* Métadonnées */}
-                  <div className="flex items-center gap-4 text-sm mb-4" style={{ color: "var(--muted-foreground)" }}>
-                    <div className="flex items-center gap-1">
+                  <div className="flex items-center justify-between gap-4 text-sm mb-4" style={{ color: "var(--muted-foreground)" }}>
+                    {/* <div className="flex items-center gap-1">
                       <User className="w-4 h-4" />
                       {article.author}
+                    </div> */}
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {article.readTime}
                     </div>
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
                       {article.date}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      {article.readTime}
                     </div>
                   </div>
 

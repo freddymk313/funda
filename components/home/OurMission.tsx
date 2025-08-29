@@ -66,8 +66,7 @@ const OurMission = () => {
           >
             leaders technologiques
             {/* <span 
-              className="absolute bottom-1 left-0 w-full h-2 opacity-30"
-              style={{ 
+              className="absolute bottom-1 left
                 backgroundColor: "var(--accent)",
                 transform: "skewX(-15deg)"
               }}
