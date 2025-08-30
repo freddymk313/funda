@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Mail, Phone, MapPin, Send, Clock, Facebook, MessageCircleDashed, Youtube, Linkedin, WholeWord } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Clock, Facebook, MessageCircleDashed, Youtube, Linkedin, WholeWord, Globe } from 'lucide-react'
 import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -250,7 +250,7 @@ const ContactPage = () => {
 
                   <div className="flex items-start gap-4 p-4 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm">
                     <div className="w-6 h-6 mt-1 flex-shrink-0 flex items-center justify-center">
-                      <WholeWord className='text-primary' />
+                      <Globe className='text-primary' />
                     </div>
                     <div>
                       <h3 className="font-medium mb-1" style={{ color: "var(--foreground)" }}>Réseaux sociaux</h3>
