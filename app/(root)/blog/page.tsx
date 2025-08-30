@@ -10,13 +10,13 @@ import Link from 'next/link'
 // Enregistrer le plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
 
-// Données d'exemple pour les articles
+// Données d'exemple pour les articles 
 const blogPosts = [
   {
     id: 1,
     title: "Introduction au développement web moderne",
     excerpt: "Découvrez les fondamentaux du développement web avec les dernières technologies et meilleures pratiques.",
-    image: "/images/blog/web-dev.jpg",
+    image: "/img/6.jpeg",
     category: "Développement",
     author: "Dr. Sarah Tech",
     date: "15 Jan 2025",
@@ -27,7 +27,7 @@ const blogPosts = [
     id: 2,
     title: "Python pour la data science : par où commencer ?",
     excerpt: "Un guide complet pour débuter en data science avec Python et ses bibliothèques essentielles.",
-    image: "/images/blog/python-ds.jpg",
+    image: "/img/8.jpeg",
     category: "Data Science",
     author: "Prof. Data Analyst",
     date: "12 Jan 2025",
@@ -38,7 +38,7 @@ const blogPosts = [
     id: 3,
     title: "Cybersécurité : les bonnes pratiques essentielles",
     excerpt: "Protégez vos données et systèmes avec ces pratiques de sécurité fondamentales.",
-    image: "/images/blog/cybersecurity.jpg",
+    image: "/img/6.jpeg",
     category: "Sécurité",
     author: "Expert Security",
     date: "10 Jan 2025",
@@ -49,7 +49,7 @@ const blogPosts = [
     id: 4,
     title: "React vs Vue : lequel choisir en 2025 ?",
     excerpt: "Comparaison détaillée des deux frameworks JavaScript les plus populaires.",
-    image: "/images/blog/react-vue.jpg",
+    image: "/img/8.jpeg",
     category: "Frontend",
     author: "Dev Frontend",
     date: "8 Jan 2025",
@@ -60,7 +60,7 @@ const blogPosts = [
     id: 5,
     title: "L'IA dans le développement web : tendances 2025",
     excerpt: "Comment l'intelligence artificielle transforme le paysage du développement web.",
-    image: "/images/blog/ai-web.jpg",
+    image: "/img/6.jpeg",
     category: "IA",
     author: "AI Specialist",
     date: "5 Jan 2025",
@@ -71,7 +71,7 @@ const blogPosts = [
     id: 6,
     title: "Débuter avec Docker : un guide pratique",
     excerpt: "Apprenez à containeriser vos applications avec Docker étape par étape.",
-    image: "/images/blog/docker.jpg",
+    image: "/img/8.jpeg",
     category: "DevOps",
     author: "DevOps Engineer",
     date: "3 Jan 2025",
