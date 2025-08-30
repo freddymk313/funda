@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Search, Calendar, User, Clock, ArrowRight, Tag } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Input } from '@/components/ui/input'
 
 // Enregistrer le plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -249,12 +250,12 @@ const BlogPage = () => {
                   Recevez les nouveaux articles directement dans votre boîte mail
                 </p>
                 <div className="space-y-3">
-                  <input
+                  <Input
                     type="email"
                     placeholder="Votre email"
-                    className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 placeholder-white/70 text-white"
+                    className="w-full px-4 *py-2 rounded-xl bg-white/20 border border-white/30 placeholder-white/90 text-white"
                   />
-                  <button className="w-full bg-white text-[var(--primary)] py-2 rounded-lg font-medium hover:bg-gray-100 transition-all">
+                  <button className="w-full uppercase text-sm bg-white text-[var(--primary)] py-2 rounded-full font-semibold hover:bg-gray-100 transition-all">
                     S'abonner
                   </button>
                 </div>
