@@ -26,76 +26,6 @@ const upcomingEvents = [
     level: "Débutant",
     registrationLink: "#"
   },
-  {
-    id: 2,
-    title: "Conférence sur l'IA Générative",
-    description: "Explorez les dernières avancées en intelligence artificielle générative et leurs applications pratiques.",
-    image: "/images/events/ai-conference.jpg",
-    date: "28 Janvier 2025",
-    time: "18:00 - 20:00",
-    location: "Campus Principal",
-    speaker: "Prof. Sarah TECH",
-    capacity: "100 participants",
-    category: "Conférence",
-    level: "Intermediaire",
-    registrationLink: "#"
-  },
-  {
-    id: 3,
-    title: "Hackathon Web Development",
-    description: "24 heures de codage intensif pour développer des solutions web innovantes. Nourriture et boissons incluses.",
-    image: "/images/events/hackathon.jpg",
-    date: "2-3 Février 2025",
-    time: "09:00 - 09:00",
-    location: "Espace Innovation",
-    speaker: "Équipe Funda",
-    capacity: "30 équipes",
-    category: "Hackathon",
-    level: "Avancé",
-    registrationLink: "#"
-  },
-  {
-    id: 4,
-    title: "Webinaire Cybersécurité",
-    description: "Apprenez les bonnes pratiques pour protéger vos données et systèmes contre les cybermenaces.",
-    image: "/images/events/cybersecurity.jpg",
-    date: "5 Février 2025",
-    time: "16:00 - 17:30",
-    location: "En ligne (Microsoft Teams)",
-    speaker: "Expert Security",
-    capacity: "200 participants",
-    category: "Webinaire",
-    level: "Tous niveaux",
-    registrationLink: "#"
-  },
-  {
-    id: 5,
-    title: "Meetup React.js",
-    description: "Rencontrez d'autres développeurs React et partagez vos expériences sur les meilleures pratiques.",
-    image: "/images/events/react-meetup.jpg",
-    date: "8 Février 2025",
-    time: "19:00 - 21:00",
-    location: "Café Tech",
-    speaker: "Communauté React",
-    capacity: "40 participants",
-    category: "Meetup",
-    level: "Intermediaire",
-    registrationLink: "#"
-  },
-  {
-    id: 6,
-    title: "Formation Docker & Kubernetes",
-    description: "Maîtrisez la containerisation et l'orchestration de vos applications avec Docker et Kubernetes.",
-    image: "/images/events/docker-training.jpg",
-    date: "12 Février 2025",
-    time: "10:00 - 17:00",
-    location: "Lab Informatique",
-    speaker: "DevOps Engineer",
-    capacity: "25 participants",
-    category: "Formation",
-    level: "Avancé",
-    registrationLink: "#"
-  }
 ]
 
 const eventCategories = [
@@ -176,7 +106,7 @@ const UpComingEventPage = () => {
   return (
     <div className="relative overflow-hidden">
       {/* Section Hero */}
-      <section className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] text-white">
+      <section className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white">
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Événements à Venir</h1>
           <p className="text-xl opacity-90 max-w-2xl mx-auto">
@@ -185,15 +115,15 @@ const UpComingEventPage = () => {
         </div>
         
         {/* Éléments décoratifs */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+        {/* <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="absolute top-1/4 left-1/4 w-48 h-48 rounded-full bg-white animate-float-1"></div>
           <div className="absolute bottom-1/3 right-1/4 w-32 h-32 rounded-full bg-white animate-float-2"></div>
-        </div>
+        </div> */}
       </section>
 
       {/* Section principale */}
       <section ref={sectionRef} className="relative py-20 px-6 bg-[var(--muted)]">
-        <div className="container mx-auto max-w-7xl">
+        <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-7xl">
           {/* En-tête et filtres */}
           <div className="mb-12">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8">
@@ -260,7 +190,7 @@ const UpComingEventPage = () => {
           {/* Grille d'événements */}
           <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {filteredEvents.map((event) => (
-              <div key={event.id} className="event-card group">
+              <div key={event.id} className="*event-card group">
                 <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-full flex flex-col">
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
