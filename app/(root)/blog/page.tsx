@@ -312,18 +312,14 @@ const BlogPage = () => {
                         </p>
 
                         {/* Métadonnées */}
-                        <div className="flex items-center gap-4 text-sm mb-4" style={{ color: "var(--muted-foreground)" }}>
+                        <div className="flex items-center justify-between gap-4 text-sm mb-4" style={{ color: "var(--muted-foreground)" }}>
                           <div className="flex items-center gap-1">
-                            <User className="w-4 h-4" />
-                            {post.author}
+                            <Clock className="w-4 h-4" />
+                            {post.readTime}
                           </div>
                           <div className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
                             {post.date}
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Clock className="w-4 h-4" />
-                            {post.readTime}
                           </div>
                         </div>
 
