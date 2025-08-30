@@ -178,19 +178,19 @@ const BlogPage = () => {
                 </h3>
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" style={{ color: "var(--muted-foreground)" }} />
-                  <input
+                  <Input
                     type="text"
                     placeholder="Rechercher un article..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 rounded-full border-1 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
+                    className="w-full pl-10 pr-4 py-5 rounded-full border-1 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
                     style={{ borderColor: "var(--border)" }}
                   />
                 </div>
               </div>
 
               {/* Catégories */}
-              <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="bg-white hidden md:block rounded-xl p-6 shadow-lg">
                 <h3 className="text-lg font-semibold mb-4" style={{ color: "var(--foreground)" }}>
                   Catégories
                 </h3>
@@ -222,7 +222,7 @@ const BlogPage = () => {
               </div>
 
               {/* Tags populaires */}
-              <div className="bg-white rounded-xl p-6 shadow-lg">
+              <div className="bg-white hidden md:block rounded-xl p-6 shadow-lg">
                 <h3 className="text-lg font-semibold mb-4" style={{ color: "var(--foreground)" }}>
                   Tags populaires
                 </h3>
@@ -244,7 +244,7 @@ const BlogPage = () => {
               </div>
 
               {/* Newsletter */}
-              <div className="bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] rounded-xl p-6 text-white">
+              <div className="hidden md:block bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] rounded-xl p-6 text-white">
                 <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
                 <p className="text-sm opacity-90 mb-4">
                   Recevez les nouveaux articles directement dans votre boîte mail
@@ -377,7 +377,9 @@ const BlogPage = () => {
               {/* Aucun résultat */}
               {filteredPosts.length === 0 && (
                 <div className="text-center py-12">
-                  <div className="text-6xl mb-4">🔍</div>
+                  <div className="text-6xl mb-4 flex items-center justify-center">
+                    <Search className="h-10 w-10" />
+                  </div>
                   <h3 className="text-xl font-semibold mb-2" style={{ color: "var(--foreground)" }}>
                     Aucun article trouvé
                   </h3>
