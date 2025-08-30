@@ -290,8 +290,8 @@ const PastEventsPage = () => {
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 rounded-full text-sm font-medium bg-white/90 backdrop-blur-sm"
-                        style={{ color: "var(--muted-foreground)" }}
+                      <span className="px-3 py-1 rounded-full text-sm text-white  bg-primary font-medium *bg-white/90 backdrop-blur-sm"
+                        // style={{ color: "var(--muted-foreground)" }}
                       >
                         {event.category}
                       </span>
