@@ -16,7 +16,7 @@ const pastEvents = [
     id: 1,
     title: "Introduction à l'Intelligence Artificielle",
     description: "Découvrez les concepts fondamentaux de l'IA et ses applications pratiques dans le monde réel.",
-    image: "/images/events/ai-past.jpg",
+    image: "/img/8.jpg",
     date: "15 Décembre 2024",
     time: "14:00 - 16:00",
     location: "En ligne",
@@ -32,7 +32,7 @@ const pastEvents = [
     id: 2,
     title: "Hackathon Innovation 2024",
     description: "24 heures de codage intensif pour développer des solutions innovantes aux défis technologiques.",
-    image: "/images/events/hackathon-past.jpg",
+    image: "/img/6.jpg",
     date: "10-11 Novembre 2024",
     time: "24 heures",
     location: "Espace Innovation",
@@ -48,7 +48,7 @@ const pastEvents = [
     id: 3,
     title: "Atelier Cloud Computing",
     description: "Apprenez à déployer et manager vos applications dans le cloud avec AWS et Azure.",
-    image: "/images/events/cloud-past.jpg",
+    image: "/img/8.jpg",
     date: "5 Novembre 2024",
     time: "10:00 - 17:00",
     location: "Lab Cloud",
@@ -64,7 +64,7 @@ const pastEvents = [
     id: 4,
     title: "Conférence Blockchain",
     description: "Explorez les technologies blockchain et leurs applications au-delà des cryptomonnaies.",
-    image: "/images/events/blockchain-past.jpg",
+    image: "/img/6.jpg",
     date: "28 Octobre 2024",
     time: "18:00 - 20:00",
     location: "Amphithéâtre Principal",
@@ -80,7 +80,7 @@ const pastEvents = [
     id: 5,
     title: "Meetup DevOps",
     description: "Échangez avec la communauté DevOps sur les meilleures pratiques et outils modernes.",
-    image: "/images/events/devops-past.jpg",
+    image: "/img/8.jpg",
     date: "20 Octobre 2024",
     time: "19:00 - 21:00",
     location: "Café Tech",
@@ -96,7 +96,7 @@ const pastEvents = [
     id: 6,
     title: "Formation UX/UI Design",
     description: "Maîtrisez les principes du design d'expérience utilisateur et d'interface moderne.",
-    image: "/images/events/ux-past.jpg",
+    image: "/img/6.jpg",
     date: "12 Octobre 2024",
     time: "09:00 - 17:00",
     location: "Studio Design",
@@ -188,8 +188,8 @@ const PastEventsPage = () => {
   return (
     <div className="relative overflow-hidden">
       {/* Section Hero */}
-      <section className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] text-white">
-        <div className="container mx-auto max-w-4xl">
+      <section className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white">
+        <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-4xl">
           <Link 
             href="/events/upcoming" 
             className="inline-flex items-center gap-2 mb-6 text-white/80 hover:text-white transition-colors"
@@ -205,25 +205,25 @@ const PastEventsPage = () => {
         </div>
         
         {/* Éléments décoratifs */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+        {/* <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="absolute top-1/4 left-1/4 w-48 h-48 rounded-full bg-white animate-float-1"></div>
           <div className="absolute bottom-1/3 right-1/4 w-32 h-32 rounded-full bg-white animate-float-2"></div>
-        </div>
+        </div> */}
       </section>
 
       {/* Section principale */}
-      <section ref={sectionRef} className="relative py-20 px-6 bg-[var(--muted)]">
-        <div className="container mx-auto max-w-7xl">
+      <section ref={sectionRef} className="relative py-20 *px-6 bg-[var(--muted)]">
+        <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-7xl">
           {/* En-tête et filtres */}
           <div className="mb-12">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8">
               <div>
-                <h2 className="text-2xl font-bold mb-2" style={{ color: "var(--foreground)" }}>
+                <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: "var(--foreground)" }}>
                   Archives des événements
                 </h2>
-                <p style={{ color: "var(--muted-foreground)" }}>
+                {/* <p style={{ color: "var(--muted-foreground)" }}>
                   {filteredEvents.length} événement{filteredEvents.length !== 1 ? 's' : ''} archivé{filteredEvents.length !== 1 ? 's' : ''}
-                </p>
+                </p> */}
               </div>
 
               {/* Barre de recherche */}
@@ -261,7 +261,6 @@ const PastEventsPage = () => {
                 </select>
               </div>
 
-              {/* Filtre par plateforme */}
               <select
                 value={selectedPlatform}
                 onChange={(e) => setSelectedPlatform(e.target.value)}
@@ -355,7 +354,7 @@ const PastEventsPage = () => {
                         href={event.replayUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all hover:gap-3"
+                        className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-full text-sm uppercase font-medium transition-all hover:gap-3"
                         style={{
                           backgroundColor: "var(--primary)",
                           color: "var(--primary-foreground)"
@@ -370,7 +369,7 @@ const PastEventsPage = () => {
                         <a
                           href={event.slidesUrl}
                           download
-                          className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg border-2 transition-all hover:gap-3"
+                          className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm uppercase border-2 transition-all hover:gap-3"
                           style={{
                             borderColor: "var(--primary)",
                             color: "var(--primary)"
@@ -412,24 +411,24 @@ const PastEventsPage = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/events/upcoming"
-                  className="flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all hover:gap-3"
+                  className="flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all hover:gap-3"
                   style={{
                     backgroundColor: "var(--primary)",
                     color: "var(--primary-foreground)"
                   }}
                 >
-                  <span>Voir les événements à venir</span>
+                  <span className='text-center'>Voir les événements à venir</span>
                   <ArrowLeft className="w-4 h-4 rotate-180" />
                 </Link>
                 <Link
                   href="/newsletter"
-                  className="flex items-center gap-2 px-6 py-3 rounded-lg border-2 transition-all hover:gap-3"
+                  className="flex items-center gap-2 px-6 py-3 rounded-full border-2 transition-all hover:gap-3"
                   style={{
                     borderColor: "var(--primary)",
                     color: "var(--primary)"
                   }}
                 >
-                  <span>S'inscrire à la newsletter</span>
+                  <span className='text-center'>S'inscrire à la newsletter</span>
                 </Link>
               </div>
             </div>
