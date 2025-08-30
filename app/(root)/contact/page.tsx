@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Mail, Phone, MapPin, Send, Clock } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Clock, Facebook, MessageCircleDashed, Youtube, Linkedin, WholeWord } from 'lucide-react'
 import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -65,12 +65,6 @@ const ContactPage = () => {
             Nous sommes là pour répondre à vos questions et vous accompagner dans votre apprentissage.
           </p>
         </div>
-
-        {/* Éléments décoratifs */}
-        {/* <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute top-1/4 left-1/4 w-48 h-48 rounded-full bg-white animate-float-1"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-32 h-32 rounded-full bg-white animate-float-2"></div>
-        </div> */}
       </section>
 
       {/* Section principale */}
@@ -85,68 +79,76 @@ const ContactPage = () => {
               ref={formRef}
               className="bg-white rounded-2xl shadow-xl p-8 md:p-10"
             >
-              <h2 className="text-2xl font-bold mb-6" style={{ color: "var(--foreground)" }}>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ color: "var(--foreground)" }}>
                 Envoyez-nous un message
               </h2>
 
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: "var(--muted-foreground)" }}>
-                      Nom complet *
+                    <label htmlFor="name" className="block *text-sm font-medium mb-2" style={{ color: "var(--muted-foreground)" }}>
+                      Nom complet <span className="text-primary">*</span>
                     </label>
                     <Input
                       type="text"
                       id="name"
                       required
-                      className="w-full px-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
-                      style={{ borderColor: "var(--border)" }}
+                      className="flex-1 py-2.5 md:py-5 px-4 rounded-2xl border-2 focus:border-[var(--primary)]"
+                      placeholder='Eddy Banza'
+                    // className="w-full px-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
+                    // style={{ borderColor: "var(--border)" }}
                     />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: "var(--muted-foreground)" }}>
-                      Email *
+                      Email <span className="text-primary">*</span>
                     </label>
                     <Input
                       type="email"
                       id="email"
                       required
-                      className="w-full px-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
-                      style={{ borderColor: "var(--border)" }}
+                      className="flex-1 py-2.5 md:py-5 px-4 rounded-2xl border-2 focus:border-[var(--primary)]"
+                      placeholder='eddybanza@gmail.com'
+                    // className="w-full px-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
+                    // style={{ borderColor: "var(--border)" }}
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium mb-2" style={{ color: "var(--muted-foreground)" }}>
-                    Sujet *
+                    Sujet <span className="text-primary">*</span>
                   </label>
                   <Input
                     type="text"
                     id="subject"
                     required
-                    className="w-full px-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
-                    style={{ borderColor: "var(--border)" }}
+                    className="flex-1 py-2.5 md:py-5 px-4 rounded-2xl border-2 focus:border-[var(--primary)]"
+                    placeholder='Demande...'
+                  // className="w-full px-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
+                  // style={{ borderColor: "var(--border)" }}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: "var(--muted-foreground)" }}>
-                    Message *
+                    Message <span className="text-primary">*</span>
                   </label>
                   <textarea
                     id="message"
                     rows={5}
                     required
-                    className="w-full px-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
-                    style={{ borderColor: "var(--border)" }}
+                    className="flex-1 py-2.5 md:py-5 px-4 w-full rounded-2xl border-2 focus:border-[var(--primary)]"
+                    placeholder='Bonjour Funda...'
+                  // className="w-full px-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
+                  // style={{ borderColor: "var(--border)" }}
                   ></textarea>
                 </div>
 
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full uppercase *absolute flex items-center rounded-full px-6 py-5 text-sm font-medium"
+                  className="w-full uppercase *absolute flex items-center rounded-full px-6 py-6 text-sm font-medium"
                   // className="w-full md:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-medium transition-all hover:gap-3"
                   style={{
                     backgroundColor: "var(--primary)",
@@ -176,18 +178,30 @@ const ContactPage = () => {
               <div className="space-y-6">
                 {/* Carte de localisation */}
                 <div className="relative h-64 rounded-xl overflow-hidden shadow-lg">
-                  <Image
+                  {/* <Image
                     src="/images/map-placeholder.jpg"
                     alt="Localisation de Funda"
                     fill
                     className="object-cover"
-                  />
+                  /> */}
+
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.1841609656462!2d27.481204699999996!3d-11.6641824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19723ec0cdb98177%3A0xc6af1c88bd7b317b!2scs%20bisounours!5e1!3m2!1sfr!2scd!4v1754569684344!5m2!1sfr!2scd"
+                    width="100%"
+                    height="400"
+                    style={{ border: 0 }}
+                    // allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Localisation de Funda online"
+                  ></iframe>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-4">
                     <div className="flex items-center gap-3">
                       <MapPin className="w-5 h-5 flex-shrink-0" style={{ color: "var(--primary)" }} />
                       <span className="font-medium" style={{ color: "var(--foreground)" }}>
-                        123 Rue de l'Innovation, 75000 Paris
+                        15, chaussée de Kasenga,
+                        Bel air, Lubumbashi, RDC
                       </span>
                     </div>
                   </div>
@@ -200,11 +214,11 @@ const ContactPage = () => {
                     <div>
                       <h3 className="font-medium mb-1" style={{ color: "var(--foreground)" }}>Email</h3>
                       <a
-                        href="mailto:contact@funda.fr"
+                        href="mailto:info@funda-online.com"
                         className="text-sm opacity-80 hover:opacity-100 hover:underline transition-all"
                         style={{ color: "var(--muted-foreground)" }}
                       >
-                        contact@funda.fr
+                        info@funda-online.com
                       </a>
                     </div>
                   </div>
@@ -218,7 +232,7 @@ const ContactPage = () => {
                         className="text-sm opacity-80 hover:opacity-100 hover:underline transition-all"
                         style={{ color: "var(--muted-foreground)" }}
                       >
-                        +33 1 23 45 67 89
+                        +243 973 900 363
                       </a>
                     </div>
                   </div>
@@ -236,22 +250,24 @@ const ContactPage = () => {
 
                   <div className="flex items-start gap-4 p-4 rounded-xl bg-white/80 backdrop-blur-sm shadow-sm">
                     <div className="w-6 h-6 mt-1 flex-shrink-0 flex items-center justify-center">
-                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 3H5C3.89543 3 3 3.89543 3 5V8M21 8V5C21 3.89543 20.1046 3 19 3H16M16 21H19C20.1046 21 21 20.1046 21 19V16M3 16V19C3 20.1046 3.89543 21 5 21H8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
+                      <WholeWord className='text-primary' />
                     </div>
                     <div>
                       <h3 className="font-medium mb-1" style={{ color: "var(--foreground)" }}>Réseaux sociaux</h3>
                       <div className="flex gap-3 mt-2">
-                        {['Facebook', 'Twitter', 'LinkedIn', 'Instagram'].map((social, index) => (
+                        {[
+                          { icon: <Facebook className="w-5 h-5" />, label: "Facebook" },
+                          { icon: <MessageCircleDashed className="w-5 h-5" />, label: "Whatsapp" },
+                          { icon: <Youtube className="w-5 h-5" />, label: "Youtube" },
+                          { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn" }
+                        ].map((social, index) => (
                           <a
                             key={index}
                             href="#"
-                            aria-label={social}
-                            className="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm hover:shadow-md transition-all"
-                            style={{ color: "var(--primary)" }}
+                            aria-label={social.label}
+                            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                           >
-                            {social.charAt(0)}
+                            {social.icon}
                           </a>
                         ))}
                       </div>
