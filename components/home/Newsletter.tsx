@@ -86,7 +86,7 @@ export default function Newsletter() {
               className="object-cover"
               quality={90}
             />
-            {/* <div className="absolute inset-0 bg-black/20"></div> */}
+            <div className="absolute inset-0 bg-black/10"></div>
 
             {/* Élément décoratif */}
             {/* <div
