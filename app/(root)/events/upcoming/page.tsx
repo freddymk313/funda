@@ -6,6 +6,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Calendar, Clock, MapPin, Users, ArrowRight, Search, Filter, BookOpen, Video } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 
 // Enregistrer le plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -61,25 +63,25 @@ const UpComingEventPage = () => {
       duration: 0.8,
       ease: "power3.out"
     })
-    .from(sectionRef.current?.querySelector("p")!, {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.4")
-    .from(".event-filters", {
-      y: 20,
-      opacity: 0,
-      duration: 0.5,
-      ease: "power3.out"
-    }, "-=0.3")
-    .from(".event-card", {
-      y: 40,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 0.6,
-      ease: "back.out(1.2)"
-    }, "-=0.2")
+      .from(sectionRef.current?.querySelector("p")!, {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out"
+      }, "-=0.4")
+      .from(".event-filters", {
+        y: 20,
+        opacity: 0,
+        duration: 0.5,
+        ease: "power3.out"
+      }, "-=0.3")
+      .from(".event-card", {
+        y: 40,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: "back.out(1.2)"
+      }, "-=0.2")
 
     return () => {
       tl.kill()
@@ -88,10 +90,10 @@ const UpComingEventPage = () => {
 
   const filteredEvents = upcomingEvents.filter(event => {
     const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         event.description.toLowerCase().includes(searchTerm.toLowerCase())
+      event.description.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesCategory = selectedCategory === 'Tous' || event.category === selectedCategory
     const matchesLevel = selectedLevel === 'Tous niveaux' || event.level === selectedLevel
-    
+
     return matchesSearch && matchesCategory && matchesLevel
   })
 
@@ -113,7 +115,7 @@ const UpComingEventPage = () => {
             Découvrez nos prochains événements, conférences et ateliers pour développer vos compétences
           </p>
         </div>
-        
+
         {/* Éléments décoratifs */}
         {/* <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="absolute top-1/4 left-1/4 w-48 h-48 rounded-full bg-white animate-float-1"></div>
@@ -122,7 +124,7 @@ const UpComingEventPage = () => {
       </section>
 
       {/* Section principale */}
-      <section ref={sectionRef} className="relative py-20 px-6 bg-[var(--muted)]">
+      <section ref={sectionRef} className="py-20 px-6 bg-[var(--muted)]">
         <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-7xl">
           {/* En-tête et filtres */}
           <div className="mb-12">
@@ -308,7 +310,7 @@ const UpComingEventPage = () => {
                 </p>
               </div>
               <div className="space-y-4">
-                <div className="flex gap-3">
+                {/* <div className="flex gap-3">
                   <input
                     type="email"
                     placeholder="Votre email"
@@ -317,8 +319,23 @@ const UpComingEventPage = () => {
                   <button className="bg-white text-[var(--primary)] px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-all">
                     S'abonner
                   </button>
+                </div> */}
+                <div className="flex flex-col sm:flex-row mt-8">
+                  <Input
+                    type="email"
+                    placeholder="Votre adresse email"
+                    className="relative flex-1 py-2.5 md:py-[22px] px-4 rounded-full bg-white/20 border border-primary/30 placeholder:text-white/70 text-white focus:border-[var(--primary)]"
+                    style={{ borderColor: "var(--border)" }}
+                  />
+                  <Button
+                    size="lg"
+                    className="absolute *top-1/2 *right-0.5 -translate-y-1/2 rounded-full *z-50 *py-1.5 *px-4 *bg-[var(--primary)] bg-white text-[var(--primary)] px-6 py-3 *rounded-lg font-medium hover:bg-gray-100 transition-all"
+                    aria-label="S'abonner à la newsletter"
+                  >
+                    <span className="uppercase text-sm font-semibold">S'abonner</span>
+                  </Button>
                 </div>
-                <p className="text-sm opacity-70">
+                <p className="text-sm opacity-70 text-center">
                   Vous pouvez vous désabonner à tout moment
                 </p>
               </div>
@@ -327,7 +344,7 @@ const UpComingEventPage = () => {
         </div>
 
         {/* Éléments décoratifs */}
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent opacity-20 -z-10"></div>
+        {/* <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent opacity-20 -z-10"></div> */}
       </section>
 
       {/* Styles d'animation */}
