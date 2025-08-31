@@ -82,9 +82,14 @@ const Navbar = () => {
 
           {/* Bouton and menu mobile */}
           <div className="flex flex-row items-center gap-1">
-            <Button className="rounded-full text-sm font-semibold uppercase">
-              Rejoindre
-            </Button>
+            <a href="https://wa.me/243991040032"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="rounded-full text-sm font-semibold uppercase">
+                Rejoindre
+              </Button>
+            </a>
 
             <div className="flex md:hidden items-center justify-between">
               <button
@@ -105,13 +110,13 @@ const Navbar = () => {
                         <li
                           key={idx}
                           className={`w-full px-4 py-3 text-lg text-left font-semibold rounded-lg transition-colors ${pathname === link.href
-                              ? "bg-accent/10 text-accent *font-medium"
-                              : "text-muted-foreground hover:bg-muted"
-                              }`}
+                            ? "bg-accent/10 text-accent *font-medium"
+                            : "text-muted-foreground hover:bg-muted"
+                            }`}
                         >
                           <Link
                             href="/blog"
-          
+
                           >
                             {link.label}
                           </Link>

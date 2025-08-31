@@ -124,156 +124,11 @@ const UpComingEventPage = () => {
       </section>
 
       {/* Section principale */}
-      <section ref={sectionRef} className="py-20 px-6 bg-[var(--muted)]">
+      <section ref={sectionRef} className="py-20 bg-[var(--muted)]">
         <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-7xl">
-          {/* En-tête et filtres */}
-          <div className="mb-12">
-            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8">
-              <div>
-                <h2 className="text-2xl font-bold mb-2" style={{ color: "var(--foreground)" }}>
-                  Nos prochains événements
-                </h2>
-                <p style={{ color: "var(--muted-foreground)" }}>
-                  {filteredEvents.length} événement{filteredEvents.length !== 1 ? 's' : ''} programmé{filteredEvents.length !== 1 ? 's' : ''}
-                </p>
-              </div>
-
-              {/* Barre de recherche */}
-              <div className="event-filters w-full lg:w-auto">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" style={{ color: "var(--muted-foreground)" }} />
-                  <input
-                    type="text"
-                    placeholder="Rechercher un événement..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full lg:w-80 pl-10 pr-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
-                    style={{ borderColor: "var(--border)" }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Filtres */}
-            <div className="event-filters flex flex-wrap gap-4">
-              {/* Filtre par catégorie */}
-              <div className="flex items-center gap-2">
-                <Filter className="w-4 h-4" style={{ color: "var(--muted-foreground)" }} />
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="px-3 py-2 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
-                  style={{ borderColor: "var(--border)", backgroundColor: "var(--card)" }}
-                >
-                  {eventCategories.map((category) => (
-                    <option key={category.name} value={category.name}>
-                      {category.name} ({category.count})
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Filtre par niveau */}
-              <select
-                value={selectedLevel}
-                onChange={(e) => setSelectedLevel(e.target.value)}
-                className="px-3 py-2 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
-                style={{ borderColor: "var(--border)", backgroundColor: "var(--card)" }}
-              >
-                {eventLevels.map((level) => (
-                  <option key={level} value={level}>
-                    {level}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
           {/* Grille d'événements */}
-          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {filteredEvents.map((event) => (
-              <div key={event.id} className="*event-card group">
-                <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-full flex flex-col">
-                  {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={event.image}
-                      alt={event.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 rounded-full text-sm font-medium flex items-center gap-2"
-                        style={{
-                          backgroundColor: "var(--primary)",
-                          color: "var(--primary-foreground)"
-                        }}
-                      >
-                        {getCategoryIcon(event.category)}
-                        {event.category}
-                      </span>
-                    </div>
-                    <div className="absolute top-4 right-4">
-                      <span className="px-3 py-1 rounded-full text-sm font-medium bg-white/90 backdrop-blur-sm"
-                        style={{ color: "var(--muted-foreground)" }}
-                      >
-                        {event.level}
-                      </span>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                  </div>
-
-                  {/* Contenu */}
-                  <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-xl font-semibold mb-3 group-hover:text-[var(--primary)] transition-colors">
-                      {event.title}
-                    </h3>
-
-                    <p className="text-gray-600 mb-4 flex-1" style={{ color: "var(--muted-foreground)" }}>
-                      {event.description}
-                    </p>
-
-                    {/* Métadonnées */}
-                    <div className="space-y-3 mb-4">
-                      <div className="flex items-center gap-2 text-sm" style={{ color: "var(--muted-foreground)" }}>
-                        <Calendar className="w-4 h-4 flex-shrink-0" />
-                        <span>{event.date}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm" style={{ color: "var(--muted-foreground)" }}>
-                        <Clock className="w-4 h-4 flex-shrink-0" />
-                        <span>{event.time}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm" style={{ color: "var(--muted-foreground)" }}>
-                        <MapPin className="w-4 h-4 flex-shrink-0" />
-                        <span>{event.location}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm" style={{ color: "var(--muted-foreground)" }}>
-                        <Users className="w-4 h-4 flex-shrink-0" />
-                        <span>{event.capacity}</span>
-                      </div>
-                      <div className="text-sm" style={{ color: "var(--muted-foreground)" }}>
-                        <span className="font-medium">Intervenant:</span> {event.speaker}
-                      </div>
-                    </div>
-
-                    {/* Bouton d'inscription */}
-                    <div className="mt-auto pt-4">
-                      <Link
-                        href={event.registrationLink}
-                        className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all hover:gap-3"
-                        style={{
-                          backgroundColor: "var(--primary)",
-                          color: "var(--primary-foreground)"
-                        }}
-                      >
-                        <span>S'inscrire</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="bg-white rounded-xl">
+            
           </div>
 
           {/* Aucun résultat */}
@@ -329,7 +184,7 @@ const UpComingEventPage = () => {
                   />
                   <Button
                     size="lg"
-                    className="absolute *top-1/2 *right-0.5 -translate-y-1/2 rounded-full *z-50 *py-1.5 *px-4 *bg-[var(--primary)] bg-white text-[var(--primary)] px-6 py-3 *rounded-lg font-medium hover:bg-gray-100 transition-all"
+                    className="absolute *top-1/2 right-0 *-translate-y-1/2 rounded-full *z-50 *py-1.5 *px-4 *bg-[var(--primary)] bg-white text-[var(--primary)] px-6 py-3 *rounded-lg font-medium hover:bg-gray-100 transition-all"
                     aria-label="S'abonner à la newsletter"
                   >
                     <span className="uppercase text-sm font-semibold">S'abonner</span>
