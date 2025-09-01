@@ -86,7 +86,7 @@ const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="rounded-full text-sm font-semibold uppercase">
+              <Button className="rounded-full *text-base font-semibold *uppercase">
                 Rejoindre
               </Button>
             </a>
