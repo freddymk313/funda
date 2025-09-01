@@ -115,7 +115,7 @@ const Hero = () => {
           <Link href="/events/past" className="cursor-pointer">
             <Button
               size="lg"
-              className="rounded-full px-8 py-6 *text-sm font-semibold *uppercase border-[1.5px] border-primary transition-all *hover:scale-105"
+              className="rounded-full px-8 py-[22.5px] *text-sm font-semibold *uppercase border-[1.5px] border-primary transition-all *hover:scale-105"
               style={{
                 backgroundColor: "var(--primary)",
                 color: "var(--primary-foreground)",
@@ -128,7 +128,7 @@ const Hero = () => {
             <Button
               variant="outline"
               size="lg"
-              className="rounded-full px-8 py-6 text-base font-semibold *uppercase border-[1.5px] transition-all *hover:scale-105 bg-transparent text-white border-white hover:bg-white/10"
+              className="rounded-full px-8 py-[22.5px] text-base font-semibold *uppercase border-[1.5px] transition-all *hover:scale-105 bg-transparent text-white border-white hover:bg-white/10"
             >
               Voir les événements
             </Button>

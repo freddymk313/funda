@@ -62,7 +62,7 @@ const OurMission = () => {
         >
           Donner du pouvoir à la prochaine génération des{' '}
           <span
-            className="relative inline-block text-3xl md:text-4xl uppercase"
+            className="relative inline-block text-3xl *md:text-[32px] uppercase"
             style={{ color: "var(--primary)" }}
           >
             leaders technologiques
@@ -103,7 +103,7 @@ const OurMission = () => {
                       <Button
                         variant="outline"
                         size="lg"
-                        className="rounded-full px-8 py-6 text-base font-semibold *uppercase border-[1.5px] transition-all *hover:scale-105 bg-transparent text-primary border-primary hover:bg-primary"
+                        className="rounded-full px-8 py-[22.5px] text-base font-semibold *uppercase border-[1.5px] transition-all *hover:scale-105 bg-transparent text-primary border-primary hover:bg-primary"
                       >
                         Voir les événements
                       </Button>
