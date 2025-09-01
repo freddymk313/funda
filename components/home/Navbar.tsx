@@ -50,14 +50,14 @@ const Navbar = () => {
                     <>
                       <NavigationMenuTrigger className={`px-3 ${pathname === link.href ? 'text-primary' : 'hover:text-primary'
                         }`}>{link.label}</NavigationMenuTrigger>
-                      <NavigationMenuContent className="p-2">
+                      <NavigationMenuContent className="p-2 bg-white shadow-white">
                         <ul className="flex flex-col gap-2 w-48">
                           {link.children.map((sublink) => (
                             <li key={sublink.label}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   href={sublink.href}
-                                  className="block px-2 py-2 rounded-md hover:bg-gray-100"
+                                  className="block px-2 py-2 rounded-md text-base hover:bg-gray-100"
                                 >
                                   {sublink.label}
                                 </Link>

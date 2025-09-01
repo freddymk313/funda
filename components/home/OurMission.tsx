@@ -56,7 +56,7 @@ const OurMission = () => {
         className="space-y-6"
       >
         <h2
-          className="text-3xl md:text-4xl lg:text-[44px] font-bold leading-tight"
+          className="text-3xl md:text-4xl *lg:text-[44px] font-bold leading-tight"
           style={{ color: "var(--foreground)" }}
         >
           Donner du pouvoir à la prochaine génération des{' '}
@@ -94,7 +94,7 @@ const OurMission = () => {
         {/* <div className="pt-4"> */}
           <Button 
           size="lg"
-            className="rounded-full *px-8 py-6 text-sm font-semibold border border-primary uppercase *shadow-lg *hover:shadow-xl transition-all"
+            className="rounded-full *px-8 py-6 text-base font-semibold border border-primary *uppercase *shadow-lg *hover:shadow-xl transition-all"
           >
             Découvrir notre approche
           </Button>
