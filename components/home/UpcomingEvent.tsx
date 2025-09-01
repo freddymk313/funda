@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -79,7 +80,7 @@ export default function UpcomingEvent() {
                 className="event-title text-2xl md:text-3xl font-bold mb-6"
                 style={{ color: "var(--foreground)" }}
               >
-                Atelier de programmation Python
+                Le role du cloud computing dans la transformation numerique
               </h3>
 
               <div className="space-y-4">
@@ -95,27 +96,35 @@ export default function UpcomingEvent() {
               </div>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Button
-                  className="rounded-full px-6 py-5 text-sm font-semibold uppercase transition-all"
-                  size="lg"
-                  style={{
-                    backgroundColor: "var(--primary)",
-                    color: "var(--primary-foreground)",
-                  }}
+                <a href="https://wa.me/243991040032"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  S'inscrire maintenant
-                </Button>
+                  <Button
+                    className="rounded-full px-6 py-[22px] text-base font-semibold *border-[1.5px] transition-all"
+                    size="lg"
+                    style={{
+                      backgroundColor: "var(--primary)",
+                      color: "var(--primary-foreground)",
+                    }}
+                  >
+                    S'inscrire maintenant
+                  </Button>
+                </a>
 
-                <Button
-                  variant="outline"
-                  className="rounded-full px-6 py-3 w-full md:w-auto text-sm font-semibold uppercase transition-transform"
-                  style={{
-                    borderColor: "var(--primary)",
-                    color: "var(--primary)",
-                  }}
-                >
-                  Voir les détails
-                </Button>
+                <Link href={"/events/upcoming"}>
+                  <Button
+                    variant="outline"
+                        className="rounded-full px-8 py-3 text-base font-semibold *uppercase border-[1.5px] transition-all bg-transparent text-primary border-primary hover:bg-primary"
+                    // className="rounded-full px-6 py-3 w-full md:w-auto text-base font-semibold transition-transform"
+                    // style={{
+                    //   borderColor: "var(--primary)",
+                    //   color: "var(--primary)",
+                    // }}
+                  >
+                    Voir les détails
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
