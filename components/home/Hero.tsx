@@ -112,7 +112,7 @@ const Hero = () => {
 
         {/* Boutons CTA */}
         <div ref={buttonsRef} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/events/past" className="">
+          <Link href="/events/past" className="cursor-pointer">
             <Button
               size="lg"
               className="rounded-full px-8 py-6 *text-sm font-semibold *uppercase border-[1.5px] border-primary transition-all *hover:scale-105"
@@ -124,7 +124,7 @@ const Hero = () => {
               Découvrir les webinaires
             </Button>
           </Link>
-          <Link href="/events/upcoming" className="">
+          <Link href="/events/upcoming" className="cursor-pointer">
             <Button
               variant="outline"
               size="lg"

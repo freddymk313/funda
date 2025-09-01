@@ -40,7 +40,7 @@ const Navbar = () => {
           <Image src={"/logo/logo-3.png"} alt="logo" width={48} height={48} />
         </Link>
 
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-6">
           {/* Menu desktop */}
           <NavigationMenu className="hidden md:flex gap-6 ml-6 font-semibold text-base text-gray-700 items-center">
             <NavigationMenuList>
