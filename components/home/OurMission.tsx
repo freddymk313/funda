@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 // Enregistrer les plugins GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -92,12 +93,21 @@ const OurMission = () => {
         </div>
 
         {/* <div className="pt-4"> */}
-          <Button 
+          {/* <Button 
           size="lg"
             className="rounded-full *px-8 py-6 text-base font-semibold border border-primary *uppercase *shadow-lg *hover:shadow-xl transition-all"
           >
             Découvrir notre approche
-          </Button>
+          </Button> */}
+          <Link href="/events/upcoming" className="cursor-pointer">
+                      <Button
+                        variant="outline"
+                        size="lg"
+                        className="rounded-full px-8 py-6 text-base font-semibold *uppercase border-[1.5px] transition-all *hover:scale-105 bg-transparent text-primary border-primary hover:bg-primary"
+                      >
+                        Voir les événements
+                      </Button>
+                    </Link>
           {/* <button 
             className="group relative inline-flex items-center px-6 py-3 rounded-full font-medium transition-all"
             style={{
