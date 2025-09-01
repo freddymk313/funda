@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 // Enregistrer les plugins GSAP
 gsap.registerPlugin(ScrollTrigger);
@@ -24,24 +25,24 @@ const Hero = () => {
       { opacity: 0 },
       { opacity: 1, duration: 1 }
     )
-    .fromTo(
-      headingRef.current,
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8 },
-      "-=0.5"
-    )
-    .fromTo(
-      textRef.current,
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6 },
-      "-=0.4"
-    )
-    .fromTo(
-      buttonsRef.current,
-      { y: 10, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.5 },
-      "-=0.3"
-    );
+      .fromTo(
+        headingRef.current,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8 },
+        "-=0.5"
+      )
+      .fromTo(
+        textRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6 },
+        "-=0.4"
+      )
+      .fromTo(
+        buttonsRef.current,
+        { y: 10, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5 },
+        "-=0.3"
+      );
 
     // Animation de parallaxe au scroll
     if (heroRef.current) {
@@ -72,13 +73,13 @@ const Hero = () => {
         backgroundRepeat: "no-repeat"
       }}
     >
-      <div 
+      <div
         ref={overlayRef}
         className="absolute inset-0 bg-black/50 opacity-0"
       ></div>
 
       {/* Éléments décoratifs */}
-       {/* <div className="absolute inset-0 overflow-hidden opacity-30">
+      {/* <div className="absolute inset-0 overflow-hidden opacity-30">
          <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[var(--primary)] animate-float-1"></div>
          <div className="absolute top-1/3 right-1/4 w-48 h-48 rounded-full bg-[var(--accent)] animate-float-2"></div>
          <div className="absolute bottom-1/4 left-1/3 w-32 h-32 rounded-full bg-[var(--ring)] animate-float-3"></div>
@@ -87,7 +88,7 @@ const Hero = () => {
       <div className="container relative z-10 max-w-4xl mx-auto">
         <h1
           ref={headingRef}
-          className="text-4xl md:text-6xl font-bold leading-tight mb-6 text-white"
+          className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-white"
         >
           Apprenez l'informatique{" "}
           <span className="relative inline-block text-[var(--accent)]">
@@ -102,7 +103,7 @@ const Hero = () => {
 
         <p
           ref={textRef}
-          className="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-gray-100"
+          className="mt-4 text-lg *md:text-xl max-w-2xl mx-auto text-gray-100"
         >
           Bienvenue sur Funda, votre plateforme d'apprentissage en informatique.
           Explorez nos ressources, événements et articles pour vous aider à
@@ -111,26 +112,30 @@ const Hero = () => {
 
         {/* Boutons CTA */}
         <div ref={buttonsRef} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] border-primary transition-all *hover:scale-105"
-            style={{
-              backgroundColor: "var(--primary)",
-              color: "var(--primary-foreground)",
-            }}
-          >
-            Découvrir les formations
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="rounded-full px-8 py-6 text-sm font-semibold uppercase border-[1.5px] transition-all *hover:scale-105 bg-transparent text-white border-white hover:bg-white/10"
-          >
-            Voir les événements
-          </Button>
+          <Link href="/events/past" className="">
+            <Button
+              size="lg"
+              className="rounded-full px-8 py-6 *text-sm font-semibold *uppercase border-[1.5px] border-primary transition-all *hover:scale-105"
+              style={{
+                backgroundColor: "var(--primary)",
+                color: "var(--primary-foreground)",
+              }}
+            >
+              Découvrir les webinaires
+            </Button>
+          </Link>
+          <Link href="/events/upcoming" className="">
+            <Button
+              variant="outline"
+              size="lg"
+              className="rounded-full px-8 py-6 text-base font-semibold *uppercase border-[1.5px] transition-all *hover:scale-105 bg-transparent text-white border-white hover:bg-white/10"
+            >
+              Voir les événements
+            </Button>
+          </Link>
         </div>
       </div>
-      
+
       {/* Styles globaux pour les animations */}
       <style jsx global>{`
         @keyframes float-1 {

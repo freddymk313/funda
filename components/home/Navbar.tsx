@@ -116,7 +116,6 @@ const Navbar = () => {
                         >
                           <Link
                             href="/blog"
-
                           >
                             {link.label}
                           </Link>
