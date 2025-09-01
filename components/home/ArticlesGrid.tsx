@@ -216,7 +216,7 @@ export default function ArticlesGrid() {
           <Button
             size={"lg"}
             // className="uppercase text-sm rounded-full"
-            className="event-button group rounded-full px-6 py-[22px] text-sm font-semibold uppercase transition-all"
+            className="event-button group rounded-full px-6 py-[22.5px] font-semibold transition-all"
 
             // className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all hover:gap-3"
             style={{

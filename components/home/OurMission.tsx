@@ -57,7 +57,7 @@ const OurMission = () => {
         className="space-y-6"
       >
         <h2
-          className="text-3xl md:text-4xl *lg:text-[44px] font-bold leading-tight"
+          className="text-3xl md:text-4xl lg:text-[44px] font-bold leading-tight"
           style={{ color: "var(--foreground)" }}
         >
           Donner du pouvoir à la prochaine génération des{' '}

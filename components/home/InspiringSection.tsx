@@ -88,7 +88,7 @@ export default function InspiringSection() {
                 <li 
                   key={index}
                   ref={el => { listItemsRef.current[index] = el as HTMLLIElement }}
-                  className="flex flex-row items-center gap-2 py-2 rounded-xl transition-all hover:bg-[var(--secondary)]"
+                  className="flex flex-row items-center gap-2 py-2 rounded-xl transition-all"
                   style={{ color: "var(--foreground)" }}
                 >
                   <span style={{ color: "var(--primary)" }}>{item.icon}</span>

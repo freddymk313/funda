@@ -133,7 +133,7 @@ export default function Newsletter() {
               <Input
                 type="email"
                 placeholder="Votre adresse email"
-                className="relative flex-1 py-2.5 md:py-5 px-4 rounded-full border-2 focus:border-[var(--primary)]"
+                className="relative flex-1 py-2.5 md:py-5 px-4 md:px-5 shadow-none text-base rounded-full border-2 focus:border-[var(--primary)]"
                 style={{ borderColor: "var(--border)" }}
               />
               {/* <Button
@@ -150,7 +150,7 @@ export default function Newsletter() {
                 className="absolute top-1/2 right-0.5 -translate-y-1/2 rounded-full py-1.5 px-4 bg-[var(--primary)] *hover:bg-[var(--primary)]/50 transition"
                 aria-label="S'abonner à la newsletter"
               >
-                <span className="uppercase text-sm font-semibold">S'abonner</span>
+                <span className="*text-sm font-semibold">S'abonner</span>
               </Button>
             </div>
 

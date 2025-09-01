@@ -88,7 +88,7 @@ const Hero = () => {
       <div className="container relative z-10 max-w-4xl mx-auto">
         <h1
           ref={headingRef}
-          className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-white"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white"
         >
           Apprenez l'informatique{" "}
           <span className="relative inline-block text-[var(--accent)]">
@@ -98,7 +98,7 @@ const Hero = () => {
               style={{ transform: "skewX(-15deg)" }}
             ></span> */}
           </span>{" "}
-          votre avenir !
+          votre avenir
         </h1>
 
         <p
