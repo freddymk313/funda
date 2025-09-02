@@ -96,12 +96,9 @@ export default function UpcomingEvent() {
               </div>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <a href="https://wa.me/243991040032"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://wa.me/243991040032" target="_blank" rel="noopener noreferrer" className="w-full *sm:w-auto">
                   <Button
-                    className="rounded-full px-6 py-[22px] text-base font-semibold *border-[1.5px] transition-all"
+                    className="w-full sm:w-auto rounded-full px-6 py-[22px] text-base font-semibold border-[1.5px] transition-all"
                     size="lg"
                     style={{
                       backgroundColor: "var(--primary)",
@@ -112,20 +109,16 @@ export default function UpcomingEvent() {
                   </Button>
                 </a>
 
-                <Link href={"/events/upcoming"}>
+                <Link href={"/events/upcoming"} className="w-full *sm:w-auto">
                   <Button
                     variant="outline"
-                        className="rounded-full px-8 py-3 text-base font-semibold *uppercase border-[1.5px] transition-all bg-transparent text-primary border-primary hover:bg-primary"
-                    // className="rounded-full px-6 py-3 w-full md:w-auto text-base font-semibold transition-transform"
-                    // style={{
-                    //   borderColor: "var(--primary)",
-                    //   color: "var(--primary)",
-                    // }}
+                    className="w-full sm:w-auto rounded-full px-8 py-3 text-base font-semibold border-[1.5px] transition-all bg-transparent text-primary border-primary hover:bg-primary"
                   >
                     Voir les détails
                   </Button>
                 </Link>
               </div>
+
             </div>
           </div>
         </div>
