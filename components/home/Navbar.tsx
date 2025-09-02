@@ -12,7 +12,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react"
 import { useState } from "react"
 
 const links = [
@@ -20,7 +20,7 @@ const links = [
   {
     label: "Événements",
     children: [
-      { label: "Événements a venir", href: "/events/upcoming" },
+      { label: "Événements à venir", href: "/events/upcoming" },
       { label: "Événements passés", href: "/events/past" },
     ],
   },
@@ -30,7 +30,8 @@ const links = [
 
 const Navbar = () => {
   const pathname = usePathname()
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
   return (
     <header className="shadow-sm">
@@ -42,14 +43,20 @@ const Navbar = () => {
 
         <div className="flex items-center gap-6">
           {/* Menu desktop */}
-          <NavigationMenu className="hidden md:flex gap-6 ml-6 font-semibold text-base text-gray-700 items-center">
+          <NavigationMenu className="hidden md:flex gap-6 ml-6 font-semibold *text-base text-gray-700 items-center">
             <NavigationMenuList>
               {links.map((link) => (
                 <NavigationMenuItem key={link.label}>
                   {link.children ? (
                     <>
-                      <NavigationMenuTrigger className={`px-3 ${pathname === link.href ? 'text-primary' : 'hover:text-primary'
-                        }`}>{link.label}</NavigationMenuTrigger>
+                      <NavigationMenuTrigger
+                        className={`px-3 text-base ${pathname === link.href
+                          ? "text-primary"
+                          : "hover:text-primary"
+                          }`}
+                      >
+                        {link.label}
+                      </NavigationMenuTrigger>
                       <NavigationMenuContent className="p-2 bg-white shadow-white">
                         <ul className="flex flex-col gap-2 w-48">
                           {link.children.map((sublink) => (
@@ -68,9 +75,14 @@ const Navbar = () => {
                       </NavigationMenuContent>
                     </>
                   ) : (
-                    <NavigationMenuLink asChild className="text-base gap-4 hover:bg-none">
-                      <Link href={link.href} className={`px-3 ${pathname === link.href ? 'text-primary' : 'hover:text-primary'
-                        }`}>
+                    <NavigationMenuLink asChild className="text-base">
+                      <Link
+                        href={link.href}
+                        className={`px-3 ${pathname === link.href
+                          ? "text-primary"
+                          : "hover:text-primary"
+                          }`}
+                      >
                         {link.label}
                       </Link>
                     </NavigationMenuLink>
@@ -80,13 +92,14 @@ const Navbar = () => {
             </NavigationMenuList>
           </NavigationMenu>
 
-          {/* Bouton and menu mobile */}
+          {/* Bouton + menu mobile */}
           <div className="flex flex-row items-center gap-1">
-            <a href="https://wa.me/243991040032"
+            <a
+              href="https://wa.me/243991040032"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="rounded-full py-[22.5px] text-base font-semibold *uppercase">
+              <Button className="rounded-full py-[22.5px] text-base font-semibold ">
                 Rejoindre
               </Button>
             </a>
@@ -100,31 +113,66 @@ const Navbar = () => {
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
 
-              <div>
-                {isMenuOpen && (
-                  <div
-                    className="absolute top-16 left-0 right-0 bg-background border-b border-border z-10 shadow-lg"
-                  >
-                    <ul className="flex flex-col px-4 py-6 mt-5">
-                      {links.map((link, idx) => (
-                        <li
-                          key={idx}
-                          className={`w-full px-4 py-3 text-lg text-left font-semibold rounded-lg transition-colors ${pathname === link.href
-                            ? "bg-accent/10 text-accent *font-medium"
-                            : "text-muted-foreground hover:bg-muted"
-                            }`}
-                        >
+              {/* Menu mobile */}
+              {isMenuOpen && (
+                <div className="absolute top-16 left-0 right-0 bg-background border-b border-border z-10 shadow-lg">
+                  <ul className="flex flex-col px-4 py-6 mt-5 gap-2">
+                    {links.map((link) => (
+                      <li key={link.label} className="w-full">
+                        {link.children ? (
+                          <div>
+                            {/* Lien parent avec dropdown */}
+                            <button
+                              onClick={() =>
+                                setOpenDropdown(
+                                  openDropdown === link.label ? null : link.label
+                                )
+                              }
+                              className={`w-full flex justify-between items-center px-4 py-3 text-lg font-semibold rounded-lg transition-colors ${openDropdown === link.label
+                                  ? "bg-accent/10 text-accent"
+                                  : "text-muted-foreground hover:bg-muted"
+                                }`}
+                            >
+                              {link.label}
+                              <ChevronDown
+                                size={18}
+                                className={`transition-transform ${openDropdown === link.label ? "rotate-180" : ""
+                                  }`}
+                              />
+                            </button>
+
+                            {/* Sous-liens */}
+                            {openDropdown === link.label && (
+                              <ul className="ml-4 mt-2 flex flex-col gap-2">
+                                {link.children.map((sublink) => (
+                                  <li key={sublink.label}>
+                                    <Link
+                                      href={sublink.href}
+                                      className="block px-4 py-2 text-base rounded-md font-semibold hover:bg-muted"
+                                    >
+                                      {sublink.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        ) : (
                           <Link
-                            href="/blog"
+                            href={link.href}
+                            className={`block w-full px-4 py-3 text-lg font-semibold rounded-lg transition-colors ${pathname === link.href
+                                ? "bg-accent/10 text-accent"
+                                : "text-muted-foreground hover:bg-muted"
+                              }`}
                           >
                             {link.label}
                           </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -133,4 +181,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar;
+export default Navbar
