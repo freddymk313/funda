@@ -148,7 +148,7 @@ const ContactPage = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full uppercase *absolute flex items-center rounded-full px-6 py-6 text-sm font-medium"
+                  className="w-full *uppercase *absolute flex items-center rounded-full px-6 py-6 text-base font-medium"
                   // className="w-full md:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-medium transition-all hover:gap-3"
                   style={{
                     backgroundColor: "var(--primary)",
@@ -156,7 +156,7 @@ const ContactPage = () => {
                   }}
                 >
                   <span>Envoyer le message</span>
-                  <Send className="w-5 h-5" />
+                  <Send className="w-4 h-4" />
                 </Button>
               </div>
             </form>
