@@ -30,18 +30,6 @@ const upcomingEvents = [
   },
 ]
 
-const eventCategories = [
-  { name: "Tous", count: upcomingEvents.length },
-  { name: "Workshop", count: 1 },
-  { name: "Conférence", count: 1 },
-  { name: "Hackathon", count: 1 },
-  { name: "Webinaire", count: 1 },
-  { name: "Meetup", count: 1 },
-  { name: "Formation", count: 1 }
-]
-
-const eventLevels = ["Tous niveaux", "Débutant", "Intermediaire", "Avancé"]
-
 const UpComingEventPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('Tous')
@@ -63,25 +51,25 @@ const UpComingEventPage = () => {
       duration: 0.8,
       ease: "power3.out"
     })
-      // .from(sectionRef.current?.querySelector("p")!, {
-      //   y: 30,
-      //   opacity: 0,
-      //   duration: 0.6,
-      //   ease: "power3.out"
-      // }, "-=0.4")
-      // .from(".event-filters", {
-      //   y: 20,
-      //   opacity: 0,
-      //   duration: 0.5,
-      //   ease: "power3.out"
-      // }, "-=0.3")
-      // .from(".event-card", {
-      //   y: 40,
-      //   opacity: 0,
-      //   stagger: 0.1,
-      //   duration: 0.6,
-      //   ease: "back.out(1.2)"
-      // }, "-=0.2")
+    // .from(sectionRef.current?.querySelector("p")!, {
+    //   y: 30,
+    //   opacity: 0,
+    //   duration: 0.6,
+    //   ease: "power3.out"
+    // }, "-=0.4")
+    // .from(".event-filters", {
+    //   y: 20,
+    //   opacity: 0,
+    //   duration: 0.5,
+    //   ease: "power3.out"
+    // }, "-=0.3")
+    // .from(".event-card", {
+    //   y: 40,
+    //   opacity: 0,
+    //   stagger: 0.1,
+    //   duration: 0.6,
+    //   ease: "back.out(1.2)"
+    // }, "-=0.2")
 
     return () => {
       tl.kill()
@@ -125,29 +113,65 @@ const UpComingEventPage = () => {
 
           </div>
 
-          {/* Aucun résultat */}
-          {filteredEvents.length === 0 && (
-            <div className="text-center py-16">
-              <div className="text-6xl mb-4">📅</div>
-              <h3 className="text-xl font-semibold mb-2" style={{ color: "var(--foreground)" }}>
-                Aucun événement trouvé
-              </h3>
-              <p style={{ color: "var(--muted-foreground)" }}>
-                Essayez de modifier vos critères de recherche ou consultez nos événements passés
-              </p>
-              <Link
-                href="/events/past"
-                className="inline-flex items-center gap-2 mt-4 px-6 py-3 rounded-lg font-medium transition-all hover:gap-3"
-                style={{
-                  backgroundColor: "var(--primary)",
-                  color: "var(--primary-foreground)"
-                }}
-              >
-                <span>Voir les événements passés</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-16">
+            <div className="grid md:grid-cols-2 gap-10 items-center">
+              {/* Image ou affiche */}
+              <div className="relative w-full *h-80 rounded-xl overflow-hidden">
+                <Image
+                  src="/img/meet.jpg"
+                  alt={filteredEvents[0].title}
+                  // fill
+                  width={1280}
+                  height={720}
+                  className="object-cover"
+                />
+              </div>
+
+              {/* Infos principales */}
+              <div>
+                <h2 className="text-3xl font-bold text-[var(--foreground)] mb-4">
+                  {filteredEvents[0].title}
+                </h2>
+                <p className="text-lg text-[var(--muted-foreground)] mb-6">
+                  {filteredEvents[0].description}
+                </p>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center gap-3">
+                    <Calendar className="w-5 h-5 text-[var(--primary)]" />
+                    <span>{filteredEvents[0].date}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-5 h-5 text-[var(--primary)]" />
+                    <span>{filteredEvents[0].time}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <MapPin className="w-5 h-5 text-[var(--primary)]" />
+                    <span>{filteredEvents[0].location}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Users className="w-5 h-5 text-[var(--primary)]" />
+                    <span>Intervenant : {filteredEvents[0].speaker}</span>
+                  </div>
+                </div>
+
+                {/* Bouton d'inscription */}
+                <Link
+                  href={filteredEvents[0].registrationLink}
+                  target="_blank"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-medium transition-all *hover:gap-3"
+                  style={{
+                    backgroundColor: "var(--primary)",
+                    color: "var(--primary-foreground)"
+                  }}
+                >
+                  <span>Rejoindre l’événement</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
-          )}
+          </div>
+
 
           {/* Newsletter */}
           <div className="mt-20 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] rounded-2xl p-8 md:p-12 text-white">

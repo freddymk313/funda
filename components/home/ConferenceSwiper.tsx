@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { EffectCards, Pagination, Navigation, Autoplay } from "swiper/modules"
 import Image from "next/image"
+import { Play } from "lucide-react"
 
 // Import Swiper styles
 import "swiper/css"
@@ -12,10 +13,10 @@ import "swiper/css/navigation"
 
 export default function ConferenceSwiper() {
   const slides = [
-    { src: "/img/meet.jpg", title: "Conférence IA 2024" },
-    { src: "/img/meet-2.jpg", title: "Développement Web" },
-    { src: "/img/meet-3.jpg", title: "Cloud & Cybersécurité" },
-    { src: "/img/meet-4.jpg", title: "Big Data & IA" },
+    { src: "/img/meet.jpg", title: "Conférence IA 2024", video: "https://www.facebook.com/video1" },
+    { src: "/img/meet-2.jpg", title: "Développement Web", video: "https://www.facebook.com/video2" },
+    { src: "/img/meet-3.jpg", title: "Cloud & Cybersécurité", video: "https://www.facebook.com/video3" },
+    { src: "/img/meet-4.jpg", title: "Big Data & IA", video: "https://www.facebook.com/video4" },
   ]
 
   return (
@@ -45,6 +46,18 @@ export default function ConferenceSwiper() {
             {/* Overlay avec titre */}
             <div className="absolute bottom-0 w-full bg-black/50 text-white p-4 text-center">
               <h3 className="text-lg font-semibold">{slide.title}</h3>
+            </div>
+
+            {/* Bouton Play centré */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <a
+                href={slide.video} // lien spécifique à chaque slide
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/40 transition"
+              >
+                <Play className="w-8 h-8 text-white" fill="white" />
+              </a>
             </div>
           </SwiperSlide>
         ))}
