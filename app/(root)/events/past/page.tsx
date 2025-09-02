@@ -227,7 +227,7 @@ const PastEventsPage = () => {
               </div>
 
               {/* Barre de recherche */}
-              <div className="event-filters w-full lg:w-auto">
+              {/* <div className="event-filters w-full lg:w-auto">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" style={{ color: "var(--muted-foreground)" }} />
                   <input
@@ -239,13 +239,13 @@ const PastEventsPage = () => {
                     style={{ borderColor: "var(--border)" }}
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Filtres */}
-            <div className="event-filters flex flex-wrap gap-4">
+            {/* <div className="event-filters flex flex-wrap gap-4"> */}
               {/* Filtre par catégorie */}
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <Filter className="w-4 h-4" style={{ color: "var(--muted-foreground)" }} />
                 <select
                   value={selectedCategory}
@@ -259,9 +259,9 @@ const PastEventsPage = () => {
                     </option>
                   ))}
                 </select>
-              </div>
+              </div> */}
 
-              <select
+              {/* <select
                 value={selectedPlatform}
                 onChange={(e) => setSelectedPlatform(e.target.value)}
                 className="px-3 py-2 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
@@ -272,8 +272,8 @@ const PastEventsPage = () => {
                     {platform}
                   </option>
                 ))}
-              </select>
-            </div>
+              </select> */}
+            {/* </div> */}
           </div>
 
           {/* Grille d'événements */}
@@ -301,7 +301,7 @@ const PastEventsPage = () => {
                         <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-2 mx-auto">
                           <Play className="w-8 h-8 text-white" fill="white" />
                         </div>
-                        <span className="text-white font-medium">Replay disponible</span>
+                        {/* <span className="text-white font-medium">Replay disponible</span> */}
                       </div>
                     </div>
                   </div>
@@ -326,14 +326,14 @@ const PastEventsPage = () => {
                         <Clock className="w-4 h-4 flex-shrink-0" />
                         <span>{event.time}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm" style={{ color: "var(--muted-foreground)" }}>
+                      {/* <div className="flex items-center gap-2 text-sm" style={{ color: "var(--muted-foreground)" }}>
                         <MapPin className="w-4 h-4 flex-shrink-0" />
                         <span>{event.location}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm" style={{ color: "var(--muted-foreground)" }}>
+                      </div> */}
+                      {/* <div className="flex items-center gap-2 text-sm" style={{ color: "var(--muted-foreground)" }}>
                         <Users className="w-4 h-4 flex-shrink-0" />
                         <span>{event.attendees}</span>
-                      </div>
+                      </div> */}
                       <div className="text-sm" style={{ color: "var(--muted-foreground)" }}>
                         <span className="font-medium">Intervenant:</span> {event.speaker}
                       </div>
@@ -354,7 +354,7 @@ const PastEventsPage = () => {
                         href={event.replayUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-full text-sm uppercase font-medium transition-all hover:gap-3"
+                        className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-full *text-sm *uppercase font-medium transition-all hover:gap-3"
                         style={{
                           backgroundColor: "var(--primary)",
                           color: "var(--primary-foreground)"
@@ -369,7 +369,7 @@ const PastEventsPage = () => {
                         <a
                           href={event.slidesUrl}
                           download
-                          className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm uppercase border-2 transition-all hover:gap-3"
+                          className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-full *text-sm *uppercase border-2 transition-all hover:gap-3"
                           style={{
                             borderColor: "var(--primary)",
                             color: "var(--primary)"
