@@ -88,7 +88,7 @@ const Hero = () => {
       <div className="container relative z-10 max-w-4xl mx-auto">
         <h1
           ref={headingRef}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6 text-white"
         >
           Apprenez l'informatique{" "}
           <span className="relative inline-block text-[var(--accent)]">
@@ -103,7 +103,7 @@ const Hero = () => {
 
         <p
           ref={textRef}
-          className="mt-4 text-lg *md:text-xl max-w-2xl mx-auto text-gray-100"
+          className="mt-3 md:mt-4 text-lg *md:text-xl max-w-2xl mx-auto text-gray-100"
         >
           Bienvenue sur Funda, votre plateforme d'apprentissage en informatique.
           Explorez nos ressources, événements et articles pour vous aider à
@@ -111,29 +111,34 @@ const Hero = () => {
         </p>
 
         {/* Boutons CTA */}
-        <div ref={buttonsRef} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/events/past" className="cursor-pointer">
-            <Button
-              size="lg"
-              className="rounded-full px-8 py-[22.5px] *text-sm font-semibold *uppercase border-[1.5px] border-primary transition-all *hover:scale-105"
-              style={{
-                backgroundColor: "var(--primary)",
-                color: "var(--primary-foreground)",
-              }}
-            >
-              Découvrir les webinaires
-            </Button>
-          </Link>
-          <Link href="/events/upcoming" className="cursor-pointer">
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full px-8 py-[22.5px] text-base font-semibold *uppercase border-[1.5px] transition-all *hover:scale-105 bg-transparent text-white border-white hover:bg-white/10"
-            >
-              Voir les événements
-            </Button>
-          </Link>
-        </div>
+        {/* Boutons CTA */}
+<div
+  ref={buttonsRef}
+  className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+>
+  <Link href="/events/past" className="w-full sm:w-auto cursor-pointer">
+    <Button
+      size="lg"
+      className="w-full sm:w-auto rounded-full px-8 py-[22.5px] text-base font-semibold border-[1.5px] border-primary transition-all"
+      style={{
+        backgroundColor: "var(--primary)",
+        color: "var(--primary-foreground)",
+      }}
+    >
+      Découvrir les webinaires
+    </Button>
+  </Link>
+
+  <Link href="/events/upcoming" className="w-full sm:w-auto cursor-pointer">
+    <Button
+      variant="outline"
+      size="lg"
+      className="w-full sm:w-auto rounded-full px-8 py-[22.5px] text-base font-semibold border-[1.5px] transition-all bg-transparent text-white border-white hover:bg-white/10"
+    >
+      Voir les événements
+    </Button>
+  </Link>
+</div>
       </div>
 
       {/* Styles globaux pour les animations */}
