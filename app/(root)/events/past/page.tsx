@@ -6,6 +6,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Calendar, Clock, MapPin, Users, Play, Facebook, Youtube, Download, Filter, Search, ArrowLeft } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 
 // Enregistrer le plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -39,7 +41,7 @@ const pastEvents = [
     speaker: "Équipe Funda",
     attendees: "15 équipes",
     category: "Hackathon",
-    replayUrl: "https://youtube.com/watch?v=abcdefg",
+    replayUrl: "https://youtu.be/v-KZ3cEW7Bo?si=0pdhjeNP_OVM0Zir",
     platform: "youtube",
     slidesUrl: null,
     resources: ["Photos", "Projets", "Résultats"]
@@ -71,7 +73,7 @@ const pastEvents = [
     speaker: "Blockchain Specialist",
     attendees: "120 participants",
     category: "Conférence",
-    replayUrl: "https://youtube.com/watch?v=hijklmn",
+    replayUrl: "https://youtu.be/v-KZ3cEW7Bo?si=0pdhjeNP_OVM0Zir",
     platform: "youtube",
     slidesUrl: "/slides/blockchain-conf.pdf",
     resources: ["Slides", "Whitepaper", "Liens utiles"]
@@ -103,7 +105,7 @@ const pastEvents = [
     speaker: "Senior Designer",
     attendees: "25 participants",
     category: "Formation",
-    replayUrl: "https://youtube.com/watch?v=opqrstuv",
+    replayUrl: "https://youtu.be/v-KZ3cEW7Bo?si=0pdhjeNP_OVM0Zir",
     platform: "youtube",
     slidesUrl: "/slides/ux-training.pdf",
     resources: ["Slides", "Maquettes", "Resources design"]
@@ -168,12 +170,12 @@ const PastEventsPage = () => {
 
   const filteredEvents = pastEvents.filter(event => {
     const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         event.description.toLowerCase().includes(searchTerm.toLowerCase())
+      event.description.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesCategory = selectedCategory === 'Tous' || event.category === selectedCategory
-    const matchesPlatform = selectedPlatform === 'Toutes' || 
-                           (selectedPlatform === 'Facebook' && event.platform === 'facebook') ||
-                           (selectedPlatform === 'YouTube' && event.platform === 'youtube')
-    
+    const matchesPlatform = selectedPlatform === 'Toutes' ||
+      (selectedPlatform === 'Facebook' && event.platform === 'facebook') ||
+      (selectedPlatform === 'YouTube' && event.platform === 'youtube')
+
     return matchesSearch && matchesCategory && matchesPlatform
   })
 
@@ -190,20 +192,20 @@ const PastEventsPage = () => {
       {/* Section Hero */}
       <section className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white">
         <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-4xl">
-          <Link 
-            href="/events/upcoming" 
+          <Link
+            href="/events/upcoming"
             className="inline-flex items-center gap-2 mb-6 text-white/80 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             Retour aux événements à venir
           </Link>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Événements Passés</h1>
           <p className="text-xl opacity-90 max-w-2xl mx-auto">
             Revivez nos événements passés grâce aux replays et ressources disponibles
           </p>
         </div>
-        
+
         {/* Éléments décoratifs */}
         {/* <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="absolute top-1/4 left-1/4 w-48 h-48 rounded-full bg-white animate-float-1"></div>
@@ -244,8 +246,8 @@ const PastEventsPage = () => {
 
             {/* Filtres */}
             {/* <div className="event-filters flex flex-wrap gap-4"> */}
-              {/* Filtre par catégorie */}
-              {/* <div className="flex items-center gap-2">
+            {/* Filtre par catégorie */}
+            {/* <div className="flex items-center gap-2">
                 <Filter className="w-4 h-4" style={{ color: "var(--muted-foreground)" }} />
                 <select
                   value={selectedCategory}
@@ -261,7 +263,7 @@ const PastEventsPage = () => {
                 </select>
               </div> */}
 
-              {/* <select
+            {/* <select
                 value={selectedPlatform}
                 onChange={(e) => setSelectedPlatform(e.target.value)}
                 className="px-3 py-2 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
@@ -283,15 +285,35 @@ const PastEventsPage = () => {
                 <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-full flex flex-col">
                   {/* Image avec badge replay */}
                   <div className="relative h-48 overflow-hidden">
-                    <Image
+                    {/* <Image
                       src={event.image}
                       alt={event.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                    /> */}
+                    <div className="relative h-48 overflow-hidden">
+                      {event.platform === "youtube" ? (
+                        <iframe
+                          src={event.replayUrl.replace("watch?v=", "embed/")}
+                          title={event.title}
+                          className="w-full h-full"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        ></iframe>
+                      ) : (
+                        <iframe
+                          src={event.replayUrl}
+                          title={event.title}
+                          className="w-full h-full"
+                          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                          allowFullScreen
+                        ></iframe>
+                      )}
+                    </div>
+
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 rounded-full text-sm text-white  bg-primary font-medium *bg-white/90 backdrop-blur-sm"
-                        // style={{ color: "var(--muted-foreground)" }}
+                      // style={{ color: "var(--muted-foreground)" }}
                       >
                         {event.category}
                       </span>
@@ -400,39 +422,39 @@ const PastEventsPage = () => {
           )}
 
           {/* Call to Action */}
-          <div className="mt-20 bg-white rounded-2xl p-8 md:p-12 shadow-lg">
-            <div className="text-center max-w-3xl mx-auto">
-              <h3 className="text-2xl font-bold mb-4" style={{ color: "var(--foreground)" }}>
-                Ne manquez pas nos prochains événements
-              </h3>
-              <p className="mb-8" style={{ color: "var(--muted-foreground)" }}>
-                Inscrivez-vous à notre newsletter pour être informé des événements à venir
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/events/upcoming"
-                  className="flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all hover:gap-3"
-                  style={{
-                    backgroundColor: "var(--primary)",
-                    color: "var(--primary-foreground)"
-                  }}
-                >
-                  <span className='text-center'>Voir les événements à venir</span>
-                  <ArrowLeft className="w-4 h-4 rotate-180" />
-                </Link>
-                <Link
-                  href="/newsletter"
-                  className="flex items-center gap-2 px-6 py-3 rounded-full border-2 transition-all hover:gap-3"
-                  style={{
-                    borderColor: "var(--primary)",
-                    color: "var(--primary)"
-                  }}
-                >
-                  <span className='text-center'>S'inscrire à la newsletter</span>
-                </Link>
+          {/* Call to Action / Newsletter */}
+          <div className="mt-20 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] rounded-2xl p-8 md:p-12 text-white">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-2xl font-bold mb-4">Ne manquez pas nos prochains événements</h3>
+                <p className="opacity-90 mb-6">
+                  Inscrivez-vous à notre newsletter pour recevoir les annonces de nos futurs événements
+                </p>
+              </div>
+              <div className="space-y-4">
+                <div className="relative w-full mt-8">
+                  <Input
+                    type="email"
+                    placeholder="Votre adresse email"
+                    className="w-full py-[22px] pl-4 pr-28 rounded-full bg-white/20 border border-primary/30 placeholder:text-white/70 text-white focus:border-[var(--primary)]"
+                    style={{ borderColor: "var(--border)" }}
+                  />
+                  <Button
+                    size="lg"
+                    className="absolute top-1/2 right-1 -translate-y-1/2 rounded-full bg-white text-[var(--primary)] px-5 py-2 font-medium hover:bg-gray-100 transition-all"
+                    aria-label="S'abonner à la newsletter"
+                  >
+                    <span className="text-sm font-semibold">S'abonner</span>
+                  </Button>
+                </div>
+
+                <p className="text-sm opacity-70 text-center">
+                  Vous pouvez vous désabonner à tout moment
+                </p>
               </div>
             </div>
           </div>
+
         </div>
 
         {/* Éléments décoratifs */}
