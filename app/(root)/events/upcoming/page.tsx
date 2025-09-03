@@ -99,7 +99,7 @@ const UpComingEventPage = () => {
       <section className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white">
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Événements à Venir</h1>
-          <p className="text-xl opacity-90 max-w-2xl mx-auto">
+          <p className="md:text-lg opacity-90 max-w-2xl mx-auto">
             Découvrez nos prochains événements, conférences et ateliers pour développer vos compétences
           </p>
         </div>
@@ -159,14 +159,14 @@ const UpComingEventPage = () => {
                 <Link
                   href={filteredEvents[0].registrationLink}
                   target="_blank"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-medium transition-all *hover:gap-3"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 w-full  rounded-full font-medium transition-all *hover:gap-3"
                   style={{
                     backgroundColor: "var(--primary)",
                     color: "var(--primary-foreground)"
                   }}
                 >
-                  <span>Rejoindre l’événement</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span className='text-center'>Rejoindre l’événement</span>
+                  {/* <ArrowRight className="w-4 h-4" /> */}
                 </Link>
               </div>
             </div>
