@@ -103,7 +103,7 @@ const Hero = () => {
 
         <p
           ref={textRef}
-          className="mt-3 md:mt-4 text-lg *md:text-xl max-w-2xl mx-auto text-gray-100"
+          className="mt-3 md:mt-4 md:text-lg *md:text-xl max-w-2xl mx-auto text-gray-100"
         >
           Bienvenue sur Funda, votre plateforme d'apprentissage en informatique.
           Explorez nos ressources, événements et articles pour vous aider à
