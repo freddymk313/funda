@@ -148,7 +148,7 @@ const Navbar = () => {
                                   <li key={sublink.label}>
                                     <Link
                                       href={sublink.href}
-                                      className="block px-4 py-2 text-base rounded-md font-semibold hover:bg-muted"
+                                      className="block px-4 py-2 text-lg rounded-md text-muted-foreground font-semibold *hover:bg-muted"
                                     >
                                       {sublink.label}
                                     </Link>
