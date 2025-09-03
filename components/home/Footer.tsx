@@ -216,9 +216,9 @@ export default function Footer() {
               <Link href="/terms" className="text-sm opacity-70 hover:opacity-100 transition-all">
                 Conditions d'utilisation
               </Link>
-              <Link href="/cookies" className="text-sm opacity-70 hover:opacity-100 transition-all">
+              {/* <Link href="/cookies" className="text-sm opacity-70 hover:opacity-100 transition-all">
                 Préférences cookies
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
