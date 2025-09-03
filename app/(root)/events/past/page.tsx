@@ -201,7 +201,7 @@ const PastEventsPage = () => {
           </Link>
 
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Événements Passés</h1>
-          <p className="text-xl opacity-90 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg opacity-90 max-w-2xl mx-auto">
             Revivez nos événements passés grâce aux replays et ressources disponibles
           </p>
         </div>
