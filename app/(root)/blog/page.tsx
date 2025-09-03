@@ -150,10 +150,10 @@ const BlogPage = () => {
   return (
     <div className="relative overflow-hidden">
       {/* Section Hero */}
-      <section className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white">
+      <section className="relative py-28 px-4 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white">
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Blog Funda</h1>
-          <p className="text-xl opacity-90 max-w-2xl mx-auto">
+          <p className="md:text-lg opacity-90 max-w-2xl mx-auto">
             Découvrez nos articles, tutoriels et actualités pour maîtriser l'informatique
           </p>
         </div>
@@ -222,7 +222,7 @@ const BlogPage = () => {
               </div>
 
               {/* Tags populaires */}
-              <div className="bg-white hidden md:block rounded-xl p-6 shadow-lg">
+              {/* <div className="bg-white hidden md:block rounded-xl p-6 shadow-lg">
                 <h3 className="text-lg font-semibold mb-4" style={{ color: "var(--foreground)" }}>
                   Tags populaires
                 </h3>
@@ -241,7 +241,7 @@ const BlogPage = () => {
                     </span>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               {/* Newsletter */}
               <div className="hidden md:block bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] rounded-xl p-6 text-white">
@@ -255,7 +255,7 @@ const BlogPage = () => {
                     placeholder="Votre email"
                     className="w-full px-4 *py-2 rounded-xl bg-white/20 border border-white/30 placeholder-white/90 text-white"
                   />
-                  <button className="w-full uppercase text-sm bg-white text-[var(--primary)] py-2 rounded-full font-semibold hover:bg-gray-100 transition-all">
+                  <button className="w-full text-base bg-white text-[var(--primary)] py-2 rounded-full font-semibold hover:bg-gray-100 transition-all">
                     S'abonner
                   </button>
                 </div>
