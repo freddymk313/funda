@@ -16,14 +16,14 @@ gsap.registerPlugin(ScrollTrigger)
 const upcomingEvents = [
   {
     id: 1,
-    title: "Atelier d'initiation à Python",
+    title: "Le role du cloud computing dans la transformation numerique",
     description: "Découvrez les bases de la programmation Python avec des exercices pratiques et interactifs. Parfait pour les débutants.",
     image: "/images/events/python-workshop.jpg",
     date: "25 Janvier 2025",
     time: "14:00 - 16:00",
-    location: "En ligne (Zoom)",
+    location: "En ligne (Google Meet)",
     speaker: "Dr. Jonas MUBISA",
-    capacity: "50 participants",
+    // capacity: "50 participants",
     category: "Workshop",
     level: "Débutant",
     registrationLink: "#"
@@ -159,14 +159,24 @@ const UpComingEventPage = () => {
                 <Link
                   href={filteredEvents[0].registrationLink}
                   target="_blank"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 w-full  rounded-full font-medium transition-all *hover:gap-3"
-                  style={{
-                    backgroundColor: "var(--primary)",
-                    color: "var(--primary-foreground)"
-                  }}
+                // className="inline-flex items-center gap-2 px-6 py-2.5 w-full  rounded-full font-medium transition-all *hover:gap-3"
+                // style={{
+                //   backgroundColor: "var(--primary)",
+                //   color: "var(--primary-foreground)"
+                // }}
                 >
-                  <span className='text-center'>Rejoindre l’événement</span>
+                  {/* <span className='text-center'>Rejoindre l’événement</span> */}
                   {/* <ArrowRight className="w-4 h-4" /> */}
+                  <Button
+                    className="w-full sm:w-auto rounded-full px-6 py-[22px] text-base font-semibold border-[1.5px] transition-all"
+                    size="lg"
+                    style={{
+                      backgroundColor: "var(--primary)",
+                      color: "var(--primary-foreground)",
+                    }}
+                  >
+                    Rejoindre l’événement
+                  </Button>
                 </Link>
               </div>
             </div>
