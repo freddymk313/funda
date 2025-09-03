@@ -57,11 +57,11 @@ const ContactPage = () => {
     <div className="relative overflow-hidden">
       {/* Section Hero */}
       <section
-        className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white"
+        className="relative py-28 px-4 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white"
       >
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contactez-nous</h1>
-          <p className="text-xl opacity-90 max-w-2xl mx-auto">
+          <p className="md:text-lg opacity-90 max-w-2xl mx-auto">
             Nous sommes là pour répondre à vos questions et vous accompagner dans votre apprentissage.
           </p>
         </div>
