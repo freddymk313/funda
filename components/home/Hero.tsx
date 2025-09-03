@@ -65,7 +65,7 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative py-4 px-4 md:px-16 lg:px-20 flex flex-col items-center justify-center text-center pt-20 md:pt-32 pb-20 min-h-[90vh] overflow-hidden"
+      className="relative py-4 px-4 md:px-16 lg:px-20 flex flex-col items-center justify-center text-center pt-20 md:pt-32 pb-20 min-h-[60vh] md:min-h-[90vh] overflow-hidden"
       style={{
         backgroundImage: "url('/img/1.webp')",
         backgroundSize: "cover",
@@ -88,7 +88,7 @@ const Hero = () => {
       <div className="container relative z-10 max-w-4xl mx-auto">
         <h1
           ref={headingRef}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6 text-white"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 md:mb-6 text-white"
         >
           Apprenez l'informatique{" "}
           <span className="relative inline-block text-[var(--accent)]">
@@ -103,7 +103,7 @@ const Hero = () => {
 
         <p
           ref={textRef}
-          className="mt-3 md:mt-4 md:text-lg *md:text-xl max-w-2xl mx-auto text-gray-100"
+          className="*mt-3 md:mt-4 md:text-lg *md:text-xl max-w-2xl mx-auto text-gray-100"
         >
           Bienvenue sur Funda, votre plateforme d'apprentissage en informatique.
           Explorez nos ressources, événements et articles pour vous aider à
