@@ -45,7 +45,7 @@ export default function UpcomingEvent() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-20 bg-[var(--muted)]">
+    <section ref={sectionRef} className="py-12 md:py-20 bg-[var(--muted)]">
       <div className="container mx-auto px-4 md:px-16 lg:px-20">
         <div
           ref={cardRef}
@@ -77,13 +77,13 @@ export default function UpcomingEvent() {
             {/* Content */}
             <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
               <h3
-                className="event-title text-2xl md:text-3xl font-bold mb-6"
+                className="event-title text-xl md:text-2xl font-bold mb-5 md:mb-6"
                 style={{ color: "var(--foreground)" }}
               >
                 Le role du cloud computing dans la transformation numerique
               </h3>
 
-              <div className="space-y-4">
+              <div className="space-y-2 md:space-y-4">
                 <div className="event-detail flex items-center gap-3">
                   <Clock className="w-5 h-5 text-[var(--primary)]" />
                   <span className="text-[var(--muted-foreground)]">19h00 - 20h00</span>
@@ -95,7 +95,7 @@ export default function UpcomingEvent() {
                 </div>
               </div>
 
-              <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <div className="mt-5 md:mt-10 flex flex-col sm:flex-row gap-4">
                 <a href="https://wa.me/243991040032" target="_blank" rel="noopener noreferrer" className="w-full *sm:w-auto">
                   <Button
                     className="w-full sm:w-auto rounded-full px-6 py-[22px] text-base font-semibold border-[1.5px] transition-all"
