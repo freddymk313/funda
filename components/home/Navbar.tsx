@@ -143,7 +143,7 @@ const Navbar = () => {
 
                             {/* Sous-liens */}
                             {openDropdown === link.label && (
-                              <ul className="ml-4 mt-2 flex flex-col *gap-2 *pt-3 border-t border-muted-foreground/90">
+                              <ul className="ml-4 mt-2 flex flex-col *gap-2 *pt-3 border-t border-muted-foreground/40">
                                 {link.children.map((sublink) => (
                                   <li key={sublink.label}>
                                     <Link

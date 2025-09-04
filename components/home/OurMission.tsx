@@ -26,16 +26,17 @@ const OurMission = () => {
       }
     });
 
-    tl.fromTo(
-      textRef.current,
-      { x: -30, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
-    ).fromTo(
-      imageRef.current,
-      { x: 30, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-      "-=0.5"
-    );
+    // tl.fromTo(
+      // textRef.current,
+      // { x: -30, opacity: 0 },
+      // { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+    // )
+    // .fromTo(
+    //   imageRef.current,
+    //   { x: 30, opacity: 0 },
+    //   { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+    //   "-=0.5"
+    // );
 
     return () => {
       tl.kill();
