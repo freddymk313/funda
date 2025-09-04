@@ -57,9 +57,9 @@ export default function Footer() {
         <div className="absolute bottom-1/3 right-1/4 w-48 h-48 rounded-full bg-[var(--accent)] animate-float-2"></div>
       </div> */}
 
-      <div className="container mx-auto px-4 md:px-16 lg:px-20 pt-16 relative z-10">
+      <div className="container mx-auto px-4 md:px-16 lg:px-20 pt-12 md:pt-16 relative z-10">
         {/* Contenu principal */}
-        <div className="*grid *grid-cols-1 *md:grid-cols-2 *lg:grid-cols-3 gap-y-12 *gap-12 *border-2 flex flex-col md:flex-row">
+        <div className="*grid *grid-cols-1 *md:grid-cols-2 *lg:grid-cols-3 gap-y-8 md:gap-y-12 *gap-12 *border-2 flex flex-col md:flex-row">
           {/* Colonne 1 - Logo et description */}
           <div
             ref={el => { columnsRef.current[0] = el as HTMLDivElement }}
@@ -104,7 +104,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "Accueil", href: "/" },
-                { label: "Événements", href: "/events" },
+                { label: "Événements", href: "/events/upcoming" },
                 { label: "Blog", href: "/blog" },
                 { label: "Ressources", href: "/resources" },
                 { label: "Contact", href: "/contact" }
@@ -204,16 +204,16 @@ export default function Footer() {
         </div>
 
         {/* Bas du footer */}
-        <div className="footer-bottom border-t border-white/10 mt-16 py-8 text-center md:text-left">
+        <div className="footer-bottom border-t border-white/10 mt-12 md:mt-16 py-8 text-center md:text-left">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm opacity-70">
               © {new Date().getFullYear()} Funda. Tous droits réservés.
             </p>
-            <div className="flex gap-6">
-              <Link href="/privacy" className="text-sm opacity-70 hover:opacity-100 transition-all">
+            <div className="flex gap-3 md:gap-6">
+              <Link href="/privacy" className="md:text-sm opacity-70 hover:opacity-100 transition-all">
                 Politique de confidentialité
               </Link>
-              <Link href="/terms" className="text-sm opacity-70 hover:opacity-100 transition-all">
+              <Link href="/terms" className="md:text-sm opacity-70 hover:opacity-100 transition-all">
                 Conditions d'utilisation
               </Link>
               {/* <Link href="/cookies" className="text-sm opacity-70 hover:opacity-100 transition-all">
