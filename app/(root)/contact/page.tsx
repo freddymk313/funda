@@ -57,7 +57,7 @@ const ContactPage = () => {
     <div className="relative overflow-hidden">
       {/* Section Hero */}
       <section
-        className="relative py-28 px-4 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white"
+        className="relative py-24 md:py-28 px-4 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white"
       >
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contactez-nous</h1>
@@ -70,14 +70,14 @@ const ContactPage = () => {
       {/* Section principale */}
       <section
         // ref={sectionRef}
-        className="relative py-20 *px-6 bg-[var(--muted)]"
+        className="relative py-12 md:py-20 *px-6 bg-[var(--muted)]"
       >
         <div className="container mx-auto px-4 md:px-16 lg:px-20 *max-w-6xl">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Formulaire de contact */}
             <form
               ref={formRef}
-              className="bg-white rounded-2xl shadow-xl p-8 md:p-10"
+              className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-10"
             >
               <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ color: "var(--foreground)" }}>
                 Envoyez-nous un message
@@ -89,11 +89,11 @@ const ContactPage = () => {
                     <label htmlFor="name" className="block *text-sm font-medium mb-2" style={{ color: "var(--muted-foreground)" }}>
                       Nom complet <span className="text-primary">*</span>
                     </label>
-                    <Input
+                    <input
                       type="text"
                       id="name"
                       required
-                      className="flex-1 py-2.5 md:py-5 px-4 rounded-2xl border-2 focus:border-[var(--primary)]"
+                      className="flex-1 py-2 w-full px-4 rounded-2xl border-2 focus:border-[var(--primary)]"
                       placeholder='Eddy Banza'
                     // className="w-full px-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
                     // style={{ borderColor: "var(--border)" }}
@@ -103,11 +103,11 @@ const ContactPage = () => {
                     <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: "var(--muted-foreground)" }}>
                       Email <span className="text-primary">*</span>
                     </label>
-                    <Input
+                    <input
                       type="email"
                       id="email"
                       required
-                      className="flex-1 py-2.5 md:py-5 px-4 rounded-2xl border-2 focus:border-[var(--primary)]"
+                      className="flex-1 py-2 w-full px-4 rounded-2xl border-2 focus:border-[var(--primary)]"
                       placeholder='eddybanza@gmail.com'
                     // className="w-full px-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
                     // style={{ borderColor: "var(--border)" }}
@@ -119,11 +119,11 @@ const ContactPage = () => {
                   <label htmlFor="subject" className="block text-sm font-medium mb-2" style={{ color: "var(--muted-foreground)" }}>
                     Sujet <span className="text-primary">*</span>
                   </label>
-                  <Input
+                  <input
                     type="text"
                     id="subject"
                     required
-                    className="flex-1 py-2.5 md:py-5 px-4 rounded-2xl border-2 focus:border-[var(--primary)]"
+                    className="flex-1 py-2 w-full px-4 rounded-2xl border-2 focus:border-[var(--primary)]"
                     placeholder='Demande...'
                   // className="w-full px-4 py-3 rounded-lg border-2 focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)] transition-all"
                   // style={{ borderColor: "var(--border)" }}
