@@ -61,7 +61,7 @@ export default function Newsletter() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 overflow-hidden"
+      className="relative py-12 md:py-24 overflow-hidden"
       style={{ backgroundColor: "var(--background)" }}
     >
       {/* Éléments décoratifs */}
@@ -71,7 +71,7 @@ export default function Newsletter() {
       </div> */}
 
       <div className="container mx-auto px-4 md:px-16 lg:px-20 *max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Contenu image */}
           <div
             ref={imageRef}
@@ -96,7 +96,7 @@ export default function Newsletter() {
           </div>
 
           {/* Contenu texte */}
-          <div ref={textRef} className="space-y-6">
+          <div ref={textRef} className="space-y-4 md:space-y-6">
             <div className="flex items-center gap-3 mb-4">
               <Mail className="w-8 h-8" style={{ color: "var(--primary)" }} />
               <span
@@ -121,7 +121,7 @@ export default function Newsletter() {
             </h2>
 
             <p
-              className="text-lg"
+              className="md:text-lg"
               style={{ color: "var(--muted-foreground)" }}
             >
               Recevez directement dans votre boîte mail nos dernières ressources,
@@ -129,7 +129,7 @@ export default function Newsletter() {
             </p>
 
             {/* Formulaire */}
-            <div ref={formRef} className="flex flex-col sm:flex-row mt-8">
+            <div ref={formRef} className="flex flex-col sm:flex-row mt-4 md:mt-8">
               <Input
                 type="email"
                 placeholder="Votre adresse email"
