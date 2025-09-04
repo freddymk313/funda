@@ -102,14 +102,14 @@ export default function ArticlesGrid() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-24 *px-6 overflow-hidden">
+    <section ref={sectionRef} className="relative py-12 md:py-24 *px-6 overflow-hidden">
       {/* Fond décoratif */}
       <div className="absolute inset-0 bg-[var(--muted)] -z-10"></div>
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent opacity-20 -z-10"></div>
 
       <div className="container mx-auto px-4 md:px-16 lg:px-20">
         {/* En-tête */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-8 md:mb-16 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             <span className="block mb-2" style={{ color: "var(--foreground)" }}>Explorez nos</span>
             <span
@@ -120,7 +120,7 @@ export default function ArticlesGrid() {
             </span>
           </h2>
           <p
-            className="text-lg"
+            className="text-base md:text-lg"
             style={{ color: "var(--muted-foreground)" }}
           >
             Découvrez nos dernières publications et ressources pour développer vos compétences en informatique.
@@ -128,7 +128,7 @@ export default function ArticlesGrid() {
         </div>
 
         {/* Grille d'articles */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {articles.map((article, index) => (
             <article key={index} className="blog-post group">
               <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-full flex flex-col">
@@ -212,7 +212,7 @@ export default function ArticlesGrid() {
         </div>
 
         {/* Bouton "Voir plus" */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-10 md:mt-16">
           <Button
             size={"lg"}
             // className="uppercase text-sm rounded-full"
