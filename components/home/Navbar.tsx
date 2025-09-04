@@ -129,7 +129,7 @@ const Navbar = () => {
                                 )
                               }
                               className={`w-full flex justify-between items-center px-4 py-3 text-lg font-semibold rounded-lg transition-colors ${openDropdown === link.label
-                                  ? "bg-accent/10 text-accent"
+                                  ? "*bg-accent/10 text-muted-foreground"
                                   : "text-muted-foreground hover:bg-muted"
                                 }`}
                             >
@@ -148,7 +148,7 @@ const Navbar = () => {
                                   <li key={sublink.label}>
                                     <Link
                                       href={sublink.href}
-                                      className="block px-4 py-2 text-lg rounded-md text-muted-foreground font-semibold *hover:bg-muted"
+                                      className="block px-4 py-2 text-base rounded-md text-muted-foreground font-semibold *hover:bg-muted"
                                     >
                                       {sublink.label}
                                     </Link>
