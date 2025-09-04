@@ -86,12 +86,12 @@ export default function UpcomingEvent() {
               <div className="space-y-2 md:space-y-4">
                 <div className="event-detail flex items-center gap-3">
                   <Clock className="w-5 h-5 text-[var(--primary)]" />
-                  <span className="text-[var(--muted-foreground)]">19h00 - 20h00</span>
+                  <span className="text-[var(--muted-foreground)] text-base">19h00 - 20h00</span>
                 </div>
 
                 <div className="event-detail flex items-center gap-3">
                   <User className="w-5 h-5 text-[var(--primary)]" />
-                  <span className="text-[var(--muted-foreground)]">Albert GUBANJA</span>
+                  <span className="text-[var(--muted-foreground)] text-base">Albert GUBANJA</span>
                 </div>
               </div>
 
