@@ -58,12 +58,12 @@ export default function InspiringSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-24 *px-4 *md:px-16 *lg:px-20 overflow-hidden">
+    <section ref={sectionRef} className="relative py-12 md:py-24 *px-4 *md:px-16 *lg:px-20 overflow-hidden">
       <div className="container mx-auto *max-w-6xl px-4 md:px-16 lg:px-20">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
           {/* Contenu texte */}
           <div ref={textRef} className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
               <span className="block mb-2" style={{ color: "var(--foreground)" }}>Decovrez nos</span>
               <span 
                 className="relative inline-block uppercase"
@@ -74,7 +74,7 @@ export default function InspiringSection() {
               <span></span>
             </h2>
 
-            <p className="text-lg" style={{ color: "var(--muted-foreground)" }}>
+            <p className="text-base md:text-lg" style={{ color: "var(--muted-foreground)" }}>
               Explorez une variété de contenus inspirants pour enrichir vos connaissances et 
               développer vos compétences en informatique.
             </p>
@@ -88,7 +88,7 @@ export default function InspiringSection() {
                 <li 
                   key={index}
                   ref={el => { listItemsRef.current[index] = el as HTMLLIElement }}
-                  className="flex flex-row items-center gap-2 py-2 rounded-xl transition-all"
+                  className="flex flex-row items-center gap-2 py-1 md:py-2 rounded-xl transition-all"
                   style={{ color: "var(--foreground)" }}
                 >
                   <span style={{ color: "var(--primary)" }}>{item.icon}</span>
