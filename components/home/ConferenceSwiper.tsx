@@ -45,7 +45,7 @@ export default function ConferenceSwiper() {
 
             {/* Overlay avec titre */}
             <div className="absolute bottom-0 w-full bg-black/50 text-white p-4 text-center">
-              <h3 className="text-lg font-semibold">{slide.title}</h3>
+              <h3 className="md:text-lg font-semibold">{slide.title}</h3>
             </div>
 
             {/* Bouton Play centré */}
