@@ -128,7 +128,7 @@ const Navbar = () => {
                                   openDropdown === link.label ? null : link.label
                                 )
                               }
-                              className={`w-full flex justify-between items-center px-4 py-3 text-lg font-semibold rounded-lg transition-colors ${openDropdown === link.label
+                              className={`w-full flex justify-between items-center px-4 py-3 *text-lg font-semibold rounded-lg transition-colors ${openDropdown === link.label
                                   ? "*bg-accent/10 text-muted-foreground"
                                   : "text-muted-foreground hover:bg-muted"
                                 }`}
@@ -143,12 +143,12 @@ const Navbar = () => {
 
                             {/* Sous-liens */}
                             {openDropdown === link.label && (
-                              <ul className="ml-4 mt-2 flex flex-col gap-2">
+                              <ul className="ml-4 mt-2 flex flex-col *gap-2 *pt-3 border-t border-muted-foreground/90">
                                 {link.children.map((sublink) => (
                                   <li key={sublink.label}>
                                     <Link
                                       href={sublink.href}
-                                      className="block px-4 py-2 text-base rounded-md text-muted-foreground font-semibold *hover:bg-muted"
+                                      className="block *px-4 py-2 text-base rounded-md text-muted-foreground font-semibold *hover:bg-muted"
                                     >
                                       {sublink.label}
                                     </Link>
@@ -160,7 +160,7 @@ const Navbar = () => {
                         ) : (
                           <Link
                             href={link.href}
-                            className={`block w-full px-4 py-3 text-lg font-semibold rounded-lg transition-colors ${pathname === link.href
+                            className={`block w-full px-4 py-2.5 *text-lg font-semibold rounded-lg transition-colors ${pathname === link.href
                                 ? "bg-accent/10 text-accent"
                                 : "text-muted-foreground hover:bg-muted"
                               }`}
