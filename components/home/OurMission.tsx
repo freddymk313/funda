@@ -45,7 +45,7 @@ const OurMission = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative container px-4 md:px-16 lg:px-20 mx-auto grid md:grid-cols-2 gap-12 items-center py-24 overflow-hidden"
+      className="*relative container px-4 md:px-16 lg:px-20 mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center py-12 md:py-24 overflow-hidden"
     >
       {/* Fond décoratif */}
       {/* <div className="absolute -top-20 -right-24 w-64 h-64 rounded-full bg-[var(--accent)] opacity-10 blur-3xl -z-10"></div>
@@ -54,7 +54,7 @@ const OurMission = () => {
       {/* Contenu texte */}
       <div
         ref={textRef}
-        className="space-y-6"
+        className="space-y-4 md:space-y-6"
       >
         <h2
           className="text-3xl md:text-4xl lg:text-[44px] font-bold leading-tight"
@@ -93,22 +93,22 @@ const OurMission = () => {
         </div>
 
         {/* <div className="pt-4"> */}
-          {/* <Button 
+        {/* <Button 
           size="lg"
             className="rounded-full *px-8 py-6 text-base font-semibold border border-primary *uppercase *shadow-lg *hover:shadow-xl transition-all"
           >
             Découvrir notre approche
           </Button> */}
-          <Link href="/events/upcoming" className="cursor-pointer">
-                      <Button
-                        variant="outline"
-                        size="lg"
-                        className="rounded-full px-8 py-[22.5px] text-base font-semibold *uppercase border-[1.5px] transition-all *hover:scale-105 bg-transparent text-primary border-primary hover:bg-primary"
-                      >
-                        Voir les événements
-                      </Button>
-                    </Link>
-          {/* <button 
+        <Link href="/events/upcoming" className="cursor-pointer">
+          <Button
+            variant="outline"
+            size="lg"
+            className="rounded-full px-8 py-[22.5px] text-base font-semibold *uppercase border-[1.5px] transition-all *hover:scale-105 bg-transparent text-primary border-primary hover:bg-primary"
+          >
+            Voir les événements
+          </Button>
+        </Link>
+        {/* <button 
             className="group relative inline-flex items-center px-6 py-3 rounded-full font-medium transition-all"
             style={{
               backgroundColor: "var(--primary)",
