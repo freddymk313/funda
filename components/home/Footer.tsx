@@ -65,7 +65,7 @@ export default function Footer() {
             ref={el => { columnsRef.current[0] = el as HTMLDivElement }}
             className="footer-logo md:mr-20 w-full md:w-[50%]"
           >
-            <Link href="/" className="inline-block mb-6">
+            <Link href="/" className="inline-block mb-4 md:mb-6">
               <Image
                 src="/logo/logo-3.png"
                 alt="Funda Logo"
@@ -73,7 +73,7 @@ export default function Footer() {
                 height={47}
               />
             </Link>
-            <p className="mb-6 opacity-80">
+            <p className="mb-4 md:mb-6 opacity-80">
               Funda est une plateforme numérique dédiée à guider les nouveaux apprenants en informatique. Nous simplifions votre parcours en vous orientant vers les meilleures formations et programmes de mentorat adaptés à vos besoins. Funda encourage l’auto-apprentissage et vous aide à exploiter pleinement les ressources en ligne pour acquérir des compétences numériques à votre rythme.
             </p>
             <div className="flex gap-4">
@@ -98,7 +98,7 @@ export default function Footer() {
           {/* Colonne 2 - Liens rapides */}
           <div
             ref={el => { columnsRef.current[1] = el as HTMLDivElement }}
-            className="space-y-4 w-full md:w-[25%]"
+            className="space-y-3 md:space-y-4 w-full md:w-[25%]"
           >
             <h3 className="text-lg font-semibold mb-4">Liens rapides</h3>
             <ul className="space-y-3">
@@ -152,10 +152,10 @@ export default function Footer() {
           {/* Colonne 4 - Contact */}
           <div
             ref={el => { columnsRef.current[3] = el as HTMLDivElement }}
-            className="space-y-6 w-full md:w-[25%]"
+            className="space-y-4 md:space-y-6 w-full md:w-[25%]"
           >
             <h3 className="text-lg font-semibold">Contactez-nous</h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3 md:space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
                 <span className="opacity-80">
@@ -210,10 +210,10 @@ export default function Footer() {
               © {new Date().getFullYear()} Funda. Tous droits réservés.
             </p>
             <div className="flex gap-3 md:gap-6">
-              <Link href="/privacy" className="md:text-sm opacity-70 hover:opacity-100 transition-all">
+              <Link href="/privacy" className="text-sm opacity-70 hover:opacity-100 transition-all">
                 Politique de confidentialité
               </Link>
-              <Link href="/terms" className="md:text-sm opacity-70 hover:opacity-100 transition-all">
+              <Link href="/terms" className="text-sm opacity-70 hover:opacity-100 transition-all">
                 Conditions d'utilisation
               </Link>
               {/* <Link href="/cookies" className="text-sm opacity-70 hover:opacity-100 transition-all">
