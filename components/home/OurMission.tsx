@@ -77,14 +77,14 @@ const OurMission = () => {
 
         <div className="space-y-4">
           <p
-            className="text-lg leading-relaxed"
+            className="md:text-lg leading-relaxed"
             style={{ color: "var(--muted-foreground)" }}
           >
             Chez Funda, nous pensons que tout le monde mérite d'avoir accès à une
             formation de qualité.
           </p>
           <p
-            className="text-lg leading-relaxed"
+            className="md:text-lg leading-relaxed"
             style={{ color: "var(--muted-foreground)" }}
           >
             Notre mission est d'accompagner les jeunes, étudiants et passionnés
