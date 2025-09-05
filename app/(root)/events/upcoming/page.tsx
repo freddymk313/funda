@@ -96,14 +96,29 @@ const UpComingEventPage = () => {
   return (
     <div className="relative overflow-hidden">
       {/* Section Hero */}
-      <section className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white">
-        <div className="container mx-auto max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Événements à Venir</h1>
-          <p className="md:text-lg opacity-90 max-w-2xl mx-auto">
-            Découvrez nos prochains événements, conférences et ateliers pour développer vos compétences
-          </p>
-        </div>
-      </section>
+      {/* Section Hero */}
+<section className="relative py-28 px-6 text-center text-white">
+  {/* Image de fond */}
+  <div className="absolute inset-0 -z-10">
+    <Image
+      src="/img/past-2.webp" // 🔗 ton image
+      alt="Événements à venir"
+      fill
+      className="object-cover"
+      priority
+    />
+    {/* Overlay sombre */}
+    <div className="absolute inset-0 bg-black/60"></div>
+  </div>
+
+  <div className="container mx-auto max-w-4xl relative z-10">
+    <h1 className="text-4xl md:text-5xl font-bold mb-6">Événements à Venir</h1>
+    <p className="md:text-lg opacity-90 max-w-2xl mx-auto">
+      Découvrez nos prochains événements, conférences et ateliers pour développer vos compétences
+    </p>
+  </div>
+</section>
+
 
       {/* Section principale */}
       <section ref={sectionRef} className="py-20 bg-[var(--muted)]">
