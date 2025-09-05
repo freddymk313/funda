@@ -56,10 +56,22 @@ const ContactPage = () => {
   return (
     <div className="relative overflow-hidden">
       {/* Section Hero */}
-      <section
-        className="relative py-24 md:py-28 px-4 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white"
-      >
-        <div className="container mx-auto max-w-4xl">
+      {/* Section Hero */}
+      <section className="relative py-24 md:py-28 px-4 text-center text-white">
+        {/* Image en background */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/img/contact-1.avif"
+            alt="Image de contact"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Overlay sombre pour le contraste */}
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+
+        <div className="container mx-auto max-w-4xl relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contactez-nous</h1>
           <p className="md:text-lg opacity-90 max-w-2xl mx-auto">
             Nous sommes là pour répondre à vos questions et vous accompagner dans votre apprentissage.
