@@ -190,8 +190,21 @@ const PastEventsPage = () => {
   return (
     <div className="relative overflow-hidden">
       {/* Section Hero */}
-      <section className="relative py-28 px-6 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white">
-        <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-4xl">
+      <section className="relative py-28 px-6 text-center text-white">
+        {/* Image de fond */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/img/past-1.png" // 🔗 ajoute ton image ici
+            alt="Événements passés"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Overlay sombre */}
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-4xl relative z-10">
           <Link
             href="/events/upcoming"
             className="inline-flex items-center gap-2 mb-6 text-white/80 hover:text-white transition-colors"
@@ -205,13 +218,8 @@ const PastEventsPage = () => {
             Revivez nos événements passés grâce aux replays et ressources disponibles
           </p>
         </div>
-
-        {/* Éléments décoratifs */}
-        {/* <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute top-1/4 left-1/4 w-48 h-48 rounded-full bg-white animate-float-1"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-32 h-32 rounded-full bg-white animate-float-2"></div>
-        </div> */}
       </section>
+
 
       {/* Section principale */}
       <section ref={sectionRef} className="relative py-20 *px-6 bg-[var(--muted)]">
