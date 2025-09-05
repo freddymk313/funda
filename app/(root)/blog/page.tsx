@@ -142,7 +142,7 @@ const BlogPage = () => {
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
+      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesCategory = !selectedCategory || post.category === selectedCategory
     return matchesSearch && matchesCategory
   })
@@ -150,19 +150,26 @@ const BlogPage = () => {
   return (
     <div className="relative overflow-hidden">
       {/* Section Hero */}
-      <section className="relative py-28 px-4 text-center bg-gradient-to-br from-[var(--primary)] to-[var(--foreground)] text-white">
-        <div className="container mx-auto max-w-4xl">
+      <section className="relative py-28 px-4 text-center text-white">
+        {/* Image de fond */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/img/blog-3.jpg"
+            alt="Image du blog"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Overlay sombre */}
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <div className="container mx-auto max-w-4xl relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Blog Funda</h1>
           <p className="md:text-lg opacity-90 max-w-2xl mx-auto">
             Découvrez nos articles, tutoriels et actualités pour maîtriser l'informatique
           </p>
         </div>
-        
-        {/* Éléments décoratifs */}
-        {/* <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute top-1/4 left-1/4 w-48 h-48 rounded-full bg-white animate-float-1"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-32 h-32 rounded-full bg-white animate-float-2"></div>
-        </div> */}
       </section>
 
       {/* Section principale */}
@@ -198,9 +205,8 @@ const BlogPage = () => {
                   <li>
                     <button
                       onClick={() => setSelectedCategory('')}
-                      className={`w-full text-left py-2 px-3 rounded-lg transition-all ${
-                        !selectedCategory ? 'bg-[var(--primary)] text-white' : 'hover:bg-[var(--secondary)]'
-                      }`}
+                      className={`w-full text-left py-2 px-3 rounded-lg transition-all ${!selectedCategory ? 'bg-[var(--primary)] text-white' : 'hover:bg-[var(--secondary)]'
+                        }`}
                     >
                       Tous les articles
                     </button>
@@ -209,9 +215,8 @@ const BlogPage = () => {
                     <li key={index}>
                       <button
                         onClick={() => setSelectedCategory(category.name)}
-                        className={`w-full text-left py-2 px-3 rounded-lg transition-all flex justify-between items-center ${
-                          selectedCategory === category.name ? 'bg-[var(--primary)] text-white' : 'hover:bg-[var(--secondary)]'
-                        }`}
+                        className={`w-full text-left py-2 px-3 rounded-lg transition-all flex justify-between items-center ${selectedCategory === category.name ? 'bg-[var(--primary)] text-white' : 'hover:bg-[var(--secondary)]'
+                          }`}
                       >
                         <span>{category.name}</span>
                         <span className="text-sm opacity-70">({category.count})</span>
@@ -361,11 +366,10 @@ const BlogPage = () => {
                     {[1, 2, 3].map((page) => (
                       <button
                         key={page}
-                        className={`w-10 h-10 rounded-lg flex items-center justify-center font-medium transition-all ${
-                          page === 1
+                        className={`w-10 h-10 rounded-lg flex items-center justify-center font-medium transition-all ${page === 1
                             ? 'bg-[var(--primary)] text-white'
                             : 'bg-white text-gray-600 hover:bg-[var(--secondary)]'
-                        }`}
+                          }`}
                       >
                         {page}
                       </button>
