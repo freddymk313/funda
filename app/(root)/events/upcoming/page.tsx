@@ -158,12 +158,14 @@ const UpComingEventPage = () => {
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
             <div className="grid md:grid-cols-2 gap-10 items-center">
               {/* Image */}
-              <div className="relative w-full h-80 rounded-xl overflow-hidden">
+              <div className="relative w-full *h-full rounded-xl overflow-hidden">
                 {event.image && (
                   <Image
                     src={urlFor(event.image).url()}
                     alt={event.title}
-                    fill
+                    // fill
+                    width={1280} 
+                    height={720}
                     className="object-cover"
                   />
                 )}
@@ -193,7 +195,7 @@ const UpComingEventPage = () => {
                 {event.registrationLink && (
                   <Link href={event.registrationLink} target="_blank">
                     <Button
-                      className="rounded-full px-6 py-[22px] text-base font-semibold border-[1.5px] transition-all"
+                      className="rounded-full px-6 py-[22px] text-base w-full font-semibold border-[1.5px] transition-all"
                       size="lg"
                       style={{
                         backgroundColor: "var(--primary)",
