@@ -59,7 +59,7 @@ export default function UpcomingEvent({ event }: { event: any }) {
             <div className="event-image relative w-full md:w-1/2 min-h-[400px]">
               {event.image && (
                 <Image
-                  src={urlFor(event.image).width(600).height(400).url()}
+                  src={urlFor(event.image).url()}
                   alt={event.title}
                   fill
                   className="object-cover md:mt-2"
@@ -91,7 +91,7 @@ export default function UpcomingEvent({ event }: { event: any }) {
               <div className="mt-5 md:mt-10 flex flex-col sm:flex-row gap-4">
                 {event.registrationLink && (
                   <a href={event.registrationLink} target="_blank" rel="noopener noreferrer">
-                    <Button className="rounded-full px-6 py-[22px] text-base font-semibold border-[1.5px] transition-all"
+                    <Button size="lg" className="rounded-full px-6 py-[22px] text-base font-semibold border-[1.5px] transition-all"
                       style={{ backgroundColor: "var(--primary)", color: "var(--primary-foreground)" }}
                     >
                       S'inscrire maintenant
