@@ -6,10 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-// Update the import path below to the correct relative path where your 'image' utility is located.
-// For example, if 'image.ts' is in 'sanity' folder at the project root, use:
 import { urlFor } from "../../sanity/lib/image"
-// Or adjust the path as needed based on your project structure.
 
 gsap.registerPlugin(ScrollTrigger)
 
