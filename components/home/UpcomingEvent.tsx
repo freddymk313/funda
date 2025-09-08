@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -7,10 +6,14 @@ import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+// Update the import path below to the correct relative path where your 'image' utility is located.
+// For example, if 'image.ts' is in 'sanity' folder at the project root, use:
+import { urlFor } from "../../sanity/lib/image"
+// Or adjust the path as needed based on your project structure.
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default function UpcomingEvent() {
+export default function UpcomingEvent({ event }: { event: any }) {
   const sectionRef = useRef<HTMLElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
 
@@ -26,23 +29,12 @@ export default function UpcomingEvent() {
         toggleActions: "play none none none",
       },
     })
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: cardRef.current,
-        start: "top 70%",
-      },
-    })
-
-    tl.from(".event-date", { scale: 0.8, opacity: 0, duration: 0.6 })
-      .from(".event-image", { scale: 1.1, opacity: 0, duration: 0.7 }, "-=0.3")
-      .from(".event-title", { y: 20, opacity: 0, duration: 0.4 }, "-=0.3")
-      .from(".event-detail", { y: 10, opacity: 0, stagger: 0.1, duration: 0.3 }, "-=0.2")
-
-    return () => {
-      tl.kill()
-    }
   }, [])
+
+  const dateObj = new Date(event.date)
+  const month = dateObj.toLocaleString("fr-FR", { month: "long" })
+  const day = dateObj.getDate()
+  const year = dateObj.getFullYear()
 
   return (
     <section ref={sectionRef} className="py-12 md:py-20 bg-[var(--muted)]">
@@ -58,20 +50,21 @@ export default function UpcomingEvent() {
               style={{ backgroundColor: "var(--primary)", color: "var(--primary-foreground)" }}
             >
               <Calendar className="w-8 h-8 mb-2" />
-              <span className="text-sm font-medium uppercase tracking-wider">Janvier</span>
-              <span className="text-4xl font-bold mt-1">25</span>
-              <span className="text-sm mt-2">2025</span>
+              <span className="text-sm font-medium uppercase tracking-wider">{month}</span>
+              <span className="text-4xl font-bold mt-1">{day}</span>
+              <span className="text-sm mt-2">{year}</span>
             </div>
 
             {/* Image */}
-            <div className="event-image relative w-full md:w-1/2 min-h-[400px] md:min-h-[400px]">
-              <Image
-                src="/img/meet.jpg"
-                alt="Atelier de programmation Python"
-                fill
-                className="object-cover md:mt-2"
-                priority
-              />
+            <div className="event-image relative w-full md:w-1/2 min-h-[400px]">
+              {event.image && (
+                <Image
+                  src={urlFor(event.image).width(600).height(400).url()}
+                  alt={event.title}
+                  fill
+                  className="object-cover md:mt-2"
+                />
+              )}
             </div>
 
             {/* Content */}
@@ -80,45 +73,37 @@ export default function UpcomingEvent() {
                 className="event-title text-xl md:text-2xl font-bold mb-5 md:mb-6"
                 style={{ color: "var(--foreground)" }}
               >
-                Le role du cloud computing dans la transformation numerique
+                {event.title}
               </h3>
 
               <div className="space-y-2 md:space-y-4">
                 <div className="event-detail flex items-center gap-3">
                   <Clock className="w-5 h-5 text-[var(--primary)]" />
-                  <span className="text-[var(--muted-foreground)] text-base">19h00 - 20h00</span>
+                  <span className="text-[var(--muted-foreground)] text-base">{event.time}</span>
                 </div>
 
                 <div className="event-detail flex items-center gap-3">
                   <User className="w-5 h-5 text-[var(--primary)]" />
-                  <span className="text-[var(--muted-foreground)] text-base">Albert GUBANJA</span>
+                  <span className="text-[var(--muted-foreground)] text-base">{event.speaker}</span>
                 </div>
               </div>
 
               <div className="mt-5 md:mt-10 flex flex-col sm:flex-row gap-4">
-                <a href="https://wa.me/243991040032" target="_blank" rel="noopener noreferrer" className="w-full *sm:w-auto">
-                  <Button
-                    className="w-full sm:w-auto rounded-full px-6 py-[22px] text-base font-semibold border-[1.5px] transition-all"
-                    size="lg"
-                    style={{
-                      backgroundColor: "var(--primary)",
-                      color: "var(--primary-foreground)",
-                    }}
-                  >
-                    S'inscrire maintenant
-                  </Button>
-                </a>
-
-                <Link href={"/events/upcoming"} className="w-full *sm:w-auto">
-                  <Button
-                    variant="outline"
-                    className="w-full sm:w-auto rounded-full px-8 py-3 text-base font-semibold border-[1.5px] transition-all bg-transparent text-primary border-primary hover:bg-primary"
-                  >
+                {event.registrationLink && (
+                  <a href={event.registrationLink} target="_blank" rel="noopener noreferrer">
+                    <Button className="rounded-full px-6 py-[22px] text-base font-semibold border-[1.5px] transition-all"
+                      style={{ backgroundColor: "var(--primary)", color: "var(--primary-foreground)" }}
+                    >
+                      S'inscrire maintenant
+                    </Button>
+                  </a>
+                )}
+                <Link href={`/events/${event.slug.current}`}>
+                  <Button variant="outline" className="rounded-full px-8 py-3 text-base font-semibold border-[1.5px] bg-transparent text-primary border-primary hover:bg-primary hover:text-white">
                     Voir les détails
                   </Button>
                 </Link>
               </div>
-
             </div>
           </div>
         </div>
