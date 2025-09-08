@@ -153,7 +153,7 @@ const UpComingEventPage = () => {
       </section>
 
       {/* Section principale */}
-      <section className="py-20 bg-[var(--muted)]">
+      <section className="py-12 md:py-20 bg-[var(--muted)]">
         <div className="container mx-auto px-4 md:px-16 lg:px-20 *max-w-5xl">
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
             <div className="grid md:grid-cols-2 gap-10 items-center">
