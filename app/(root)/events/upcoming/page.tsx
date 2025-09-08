@@ -114,9 +114,9 @@ const UpComingEventPage = () => {
       .then(setEvent)
   }, [])
 
-  // if (!event) {
-  //   return <p className="text-center py-20">Chargement de l’événement...</p>
-  // }
+  if (!event) {
+    return <p className="text-center py-20">Chargement de l’événement...</p>
+  }
 
   const dateObj = new Date(event.date)
   const formattedDate = dateObj.toLocaleDateString("fr-FR", {
