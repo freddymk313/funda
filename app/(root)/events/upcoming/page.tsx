@@ -8,6 +8,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { client } from "../../../../sanity/lib/client"
+import { urlFor } from "../../../../sanity/lib/image"
 
 // Enregistrer le plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -93,147 +95,119 @@ const UpComingEventPage = () => {
     }
   }
 
+  const [event, setEvent] = useState<any | null>(null)
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "event"] | order(date asc)[0]{
+          _id,
+          title,
+          date,
+          time,
+          speaker,
+          image,
+          registrationLink,
+          slug
+        }`
+      )
+      .then(setEvent)
+  }, [])
+
+  if (!event) {
+    return <p className="text-center py-20">Chargement de l’événement...</p>
+  }
+
+  const dateObj = new Date(event.date)
+  const formattedDate = dateObj.toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  })
+
+
   return (
     <div className="relative overflow-hidden">
       {/* Section Hero */}
       {/* Section Hero */}
-<section className="relative py-28 px-6 text-center text-white">
-  {/* Image de fond */}
-  <div className="absolute inset-0 -z-10">
-    <Image
-      src="/img/past-2.webp" // 🔗 ton image
-      alt="Événements à venir"
-      fill
-      className="object-cover"
-      priority
-    />
-    {/* Overlay sombre */}
-    <div className="absolute inset-0 bg-black/60"></div>
-  </div>
+      <section className="relative py-28 px-6 text-center text-white">
+        {/* Image de fond */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/img/past-2.webp" // 🔗 ton image
+            alt="Événements à venir"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Overlay sombre */}
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
 
-  <div className="container mx-auto max-w-4xl relative z-10">
-    <h1 className="text-4xl md:text-5xl font-bold mb-6">Événements à Venir</h1>
-    <p className="md:text-lg opacity-90 max-w-2xl mx-auto">
-      Découvrez nos prochains événements, conférences et ateliers pour développer vos compétences
-    </p>
-  </div>
-</section>
-
+        <div className="container mx-auto max-w-4xl relative z-10">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Événements à Venir</h1>
+          <p className="md:text-lg opacity-90 max-w-2xl mx-auto">
+            Découvrez nos prochains événements, conférences et ateliers pour développer vos compétences
+          </p>
+        </div>
+      </section>
 
       {/* Section principale */}
-      <section ref={sectionRef} className="py-20 bg-[var(--muted)]">
-        <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-7xl">
-          {/* Grille d'événements */}
-          <div className="bg-white rounded-xl">
-
-          </div>
-
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-16">
+      <section className="py-20 bg-[var(--muted)]">
+        <div className="container mx-auto px-4 md:px-16 lg:px-20 *max-w-5xl">
+          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
             <div className="grid md:grid-cols-2 gap-10 items-center">
-              {/* Image ou affiche */}
-              <div className="relative w-full *h-80 rounded-xl overflow-hidden">
-                <Image
-                  src="/img/meet.jpg"
-                  alt={filteredEvents[0].title}
-                  // fill
-                  width={1280}
-                  height={720}
-                  className="object-cover"
-                />
+              {/* Image */}
+              <div className="relative w-full h-80 rounded-xl overflow-hidden">
+                {event.image && (
+                  <Image
+                    src={urlFor(event.image).url()}
+                    alt={event.title}
+                    fill
+                    className="object-cover"
+                  />
+                )}
               </div>
 
-              {/* Infos principales */}
+              {/* Infos */}
               <div>
                 <h2 className="text-3xl font-bold text-[var(--foreground)] mb-4">
-                  {filteredEvents[0].title}
+                  {event.title}
                 </h2>
-                <p className="text-lg text-[var(--muted-foreground)] mb-6">
-                  {filteredEvents[0].description}
-                </p>
 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3">
                     <Calendar className="w-5 h-5 text-[var(--primary)]" />
-                    <span>{filteredEvents[0].date}</span>
+                    <span>{formattedDate}</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Clock className="w-5 h-5 text-[var(--primary)]" />
-                    <span>{filteredEvents[0].time}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-[var(--primary)]" />
-                    <span>{filteredEvents[0].location}</span>
+                    <span>{event.time}</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Users className="w-5 h-5 text-[var(--primary)]" />
-                    <span>Intervenant : {filteredEvents[0].speaker}</span>
+                    <span>Intervenant : {event.speaker}</span>
                   </div>
                 </div>
 
-                {/* Bouton d'inscription */}
-                <Link
-                  href={filteredEvents[0].registrationLink}
-                  target="_blank"
-                // className="inline-flex items-center gap-2 px-6 py-2.5 w-full  rounded-full font-medium transition-all *hover:gap-3"
-                // style={{
-                //   backgroundColor: "var(--primary)",
-                //   color: "var(--primary-foreground)"
-                // }}
-                >
-                  {/* <span className='text-center'>Rejoindre l’événement</span> */}
-                  {/* <ArrowRight className="w-4 h-4" /> */}
-                  <Button
-                    className="w-full sm:w-auto rounded-full px-6 py-[22px] text-base font-semibold border-[1.5px] transition-all"
-                    size="lg"
-                    style={{
-                      backgroundColor: "var(--primary)",
-                      color: "var(--primary-foreground)",
-                    }}
-                  >
-                    Rejoindre l’événement
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-
-
-          {/* Newsletter */}
-          <div className="mt-20 bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] rounded-2xl p-8 md:p-12 text-white">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-bold mb-4">Ne manquez aucun événement</h3>
-                <p className="opacity-90 mb-6">
-                  Inscrivez-vous à notre newsletter pour recevoir les annonces de nos prochains événements
-                </p>
-              </div>
-              <div className="space-y-4">
-                <div className="relative w-full mt-8">
-                  <Input
-                    type="email"
-                    placeholder="Votre adresse email"
-                    className="w-full py-[22px] pl-4 pr-28 rounded-full bg-white/20 border border-primary/30 placeholder:text-white/70 text-white focus:border-[var(--primary)]"
-                    style={{ borderColor: "var(--border)" }}
-                  />
-                  <Button
-                    size="lg"
-                    className="absolute top-1/2 right-1 -translate-y-1/2 rounded-full bg-white text-[var(--primary)] px-5 py-2 font-medium hover:bg-gray-100 transition-all"
-                    aria-label="S'abonner à la newsletter"
-                  >
-                    <span className="*uppercase text-sm font-semibold">S'abonner</span>
-                  </Button>
-                </div>
-
-                <p className="text-sm opacity-70 text-center">
-                  Vous pouvez vous désabonner à tout moment
-                </p>
+                {event.registrationLink && (
+                  <Link href={event.registrationLink} target="_blank">
+                    <Button
+                      className="rounded-full px-6 py-[22px] text-base font-semibold border-[1.5px] transition-all"
+                      size="lg"
+                      style={{
+                        backgroundColor: "var(--primary)",
+                        color: "var(--primary-foreground)",
+                      }}
+                    >
+                      Rejoindre l’événement
+                    </Button>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
         </div>
-
-        {/* Éléments décoratifs */}
-        {/* <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent opacity-20 -z-10"></div> */}
       </section>
 
       {/* Styles d'animation */}
