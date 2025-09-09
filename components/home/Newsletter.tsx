@@ -16,7 +16,7 @@ export default function Newsletter() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
   const imageRef = useRef<HTMLDivElement>(null)
-  const formRef = useRef<HTMLDivElement>(null)
+  const formRef = useRef<HTMLFormElement>(null)
   const particlesRef = useRef<HTMLDivElement>(null)
   const [email, setEmail] = useState("")
   const [isSubscribed, setIsSubscribed] = useState(false)
