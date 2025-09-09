@@ -47,7 +47,7 @@ const Hero = () => {
       return particles;
     };
 
-    const particles = createParticles();
+    const particles = createParticles() ?? [];
 
     // Animation d'entrée principale
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -88,7 +88,7 @@ const Hero = () => {
       "-=0.3"
     )
     .fromTo(
-      buttonsRef.current?.children,
+      buttonsRef.current ? Array.from(buttonsRef.current.children) : [],
       { y: 40, opacity: 0, scale: 0.8 },
       { 
         y: 0, 
@@ -129,12 +129,8 @@ const Hero = () => {
 
     // Animation continue pour le texte d'accent
     gsap.to(accentTextRef.current, {
-      textShadow: [
-        "0 0 20px var(--accent), 0 0 40px var(--accent)",
-        "0 0 30px var(--accent), 0 0 60px var(--accent)",
-        "0 0 20px var(--accent), 0 0 40px var(--accent)"
-      ],
-      duration: 3,
+      textShadow: "0 0 30px var(--accent), 0 0 60px var(--accent)",
+      duration: 1.5,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut"
