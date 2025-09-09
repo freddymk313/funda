@@ -210,7 +210,7 @@ export default function ArticlesGrid() {
           {articles.map((article, index) => (
             <article 
               key={index}
-              ref={el => { if (el) cardsRef.current[index] = el }}
+              ref={(el: HTMLDivElement | null) => { if (el) cardsRef.current[index] = el }}
               className="group relative"
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
