@@ -342,7 +342,7 @@ const Navbar = () => {
                           </button>
 
                           <ul
-                            ref={el => dropdownRefs.current[link.label] = el}
+                            ref={el => { dropdownRefs.current[link.label] = el }}
                             className="ml-4 overflow-hidden"
                             style={{ height: 0 }}
                           >
