@@ -85,10 +85,10 @@ export default function UpcomingEvent({ event }: { event: any }) {
                 </div>
               </div>
 
-              <div className="mt-5 md:mt-10 flex flex-col sm:flex-row gap-4">
+              <div className="mt-5 md:mt-8 flex flex-col sm:flex-row gap-4">
                 {event.registrationLink && (
                   <a href={event.registrationLink} target="_blank" rel="noopener noreferrer">
-                    <Button size="lg" className="rounded-full px-6 py-[22px] text-base font-semibold border-[1.5px] transition-all"
+                    <Button size="lg" className="rounded-full px-6 py-[22px] w-full md:w-auto text-base font-semibold border-[1.5px] transition-all"
                       style={{ backgroundColor: "var(--primary)", color: "var(--primary-foreground)" }}
                     >
                       S'inscrire maintenant
@@ -96,7 +96,7 @@ export default function UpcomingEvent({ event }: { event: any }) {
                   </a>
                 )}
                 <Link href={`/events/${event.slug.current}`}>
-                  <Button variant="outline" className="rounded-full px-8 py-3 text-base font-semibold border-[1.5px] bg-transparent text-primary border-primary hover:bg-primary hover:text-white">
+                  <Button variant="outline" className="rounded-full w-full md:w-auto px-8 py-3 text-base font-semibold border-[1.5px] bg-transparent text-primary border-primary hover:bg-primary hover:text-white">
                     Voir les détails
                   </Button>
                 </Link>
