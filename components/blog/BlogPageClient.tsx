@@ -116,8 +116,12 @@ const BlogPageClient = ({ posts }: { posts: any[] }) => {
                           </div>
                           <div className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
-                            {post.date}
-                          </div>
+                            {new Date(post.date).toLocaleDateString("fr-FR", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })}
+                        </div>
                         </div>
 
                         <div className="flex flex-wrap gap-2 mb-4">
