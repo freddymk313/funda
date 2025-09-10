@@ -12,6 +12,22 @@ export default async function Home() {
     `*[_type == "event"] | order(date asc)[0]`
   )
 
+  const query = `*[_type == "blog"] | order(date desc) {
+  _id,
+  title,
+  slug,
+  excerpt,
+  content,
+  image,
+  category,
+  tags,
+  author,
+  date,
+  readTime
+}`
+
+const articles = await client.fetch(query)
+
   return (
     <div className="min-h-screen flex flex-col">
       <Hero />
@@ -21,7 +37,7 @@ export default async function Home() {
       <UpcomingEvent event={event} />
 
       <InspiringSection />
-      <ArticlesGrid />
+      <ArticlesGrid articles={articles} />
       <Newsletter />
     </div>
   );
