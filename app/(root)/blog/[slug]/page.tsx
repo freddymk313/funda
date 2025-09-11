@@ -1,10 +1,5 @@
-// Assuming this is app/(root)/blog/[slug]/page.tsx
-
-// No need to import PageProps from next/types for App Router pages
-// The types are inferred correctly by Next.js itself.
-
-import BlogDetailPage from "@/components/blog/BlogDetailPage";
-import { client } from "@/sanity/lib/client";
+import BlogDetailPage from "@/components/blog/BlogDetailPage"
+import { client } from "@/sanity/lib/client"
 
 const query = `
   *[_type == "blog" && slug.current == $slug][0]{
@@ -27,15 +22,24 @@ const query = `
       readTime
     }
   }
-`;
+`
 
-// For Next.js App Router, the params are directly typed like this:
-export default async function Page({ params }: { params: { slug: string } }) {
-  const post = await client.fetch(query, { slug: params.slug });
+// Génère les slugs statiquement
+export async function generateStaticParams() {
+  const posts = await client.fetch(`*[_type == "blog"]{ "slug": slug.current }`)
+  
+  return posts.map((post: { slug: string }) => ({
+    slug: post.slug,
+  }))
+}
+
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = await client.fetch(query, { slug })
 
   if (!post) {
-    return <div className="text-center py-20">Article introuvable.</div>;
+    return <div className="text-center py-20">Article introuvable.</div>
   }
 
-  return <BlogDetailPage post={post} />;
+  return <BlogDetailPage post={post} />
 }
