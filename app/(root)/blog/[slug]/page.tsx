@@ -1,9 +1,6 @@
-// app/(root)/blog/[slug]/page.tsx
-
-// @ts-nocheck   ← ajoute ça tout en haut
-
 import BlogDetailPage from "@/components/blog/BlogDetailPage"
 import { client } from "@/sanity/lib/client"
+import { JSX } from "react"
 
 const query = `
   *[_type == "blog" && slug.current == $slug][0]{
@@ -32,7 +29,7 @@ export default async function Page({
   params,
 }: {
   params: { slug: string }
-}) {
+}) : Promise<JSX.Element> {
   const post = await client.fetch(query, { slug: params.slug })
 
   if (!post) {
