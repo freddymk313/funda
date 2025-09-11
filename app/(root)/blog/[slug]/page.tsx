@@ -1,4 +1,4 @@
-// app/blog/[slug]/page.tsx
+// app/(root)/blog/[slug]/page.tsx
 import BlogDetailPage from "@/components/blog/BlogDetailPage"
 import { client } from "@/sanity/lib/client"
 
@@ -25,13 +25,11 @@ const query = `
   }
 `
 
-interface BlogPageProps {
-  params: {
-    slug: string
-  }
-}
-
-export default async function Page({ params }: BlogPageProps) {
+export default async function Page({
+  params,
+}: {
+  params: { slug: string }
+}) {
   const post = await client.fetch(query, { slug: params.slug })
 
   if (!post) {
