@@ -28,7 +28,7 @@ const query = `
 export default async function Page({
   params,
 }: {
-  params: { slug: string }
+  params: { slug: any }
 }) : Promise<JSX.Element> {
   const post = await client.fetch(query, { slug: params.slug })
 
