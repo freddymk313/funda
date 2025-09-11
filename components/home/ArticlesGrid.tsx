@@ -170,7 +170,6 @@ export default function ArticlesGrid({ articles }: { articles: any }) {
                       : article.excerpt}
                   </p>
 
-
                   {/* Métadonnées */}
                   <div className="flex items-center justify-between gap-4 text-sm mb-4" style={{ color: "var(--muted-foreground)" }}>
                     <div className="flex items-center gap-1">

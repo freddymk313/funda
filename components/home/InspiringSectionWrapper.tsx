@@ -7,9 +7,7 @@ const lastPastEventsQuery = `
     title,
     replayUrl,
     platform,
-    image {
-      asset->{url}
-    }
+    image,
   }
 `
 
