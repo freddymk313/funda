@@ -25,7 +25,13 @@ const query = `
   }
 `
 
-export default async function Page({ params }: { params: { slug: string } }) {
+interface BlogPageProps {
+  params: {
+    slug: string
+  }
+}
+
+export default async function Page({ params }: BlogPageProps) {
   const post = await client.fetch(query, { slug: params.slug })
 
   if (!post) {
@@ -34,4 +40,3 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return <BlogDetailPage post={post} />
 }
-
