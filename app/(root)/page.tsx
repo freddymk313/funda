@@ -36,7 +36,7 @@ const articles = await client.fetch(query)
 
       <UpcomingEvent event={event} />
 
-      <InspiringSection />
+      <InspiringSection events={articles} />
       <ArticlesGrid articles={articles} />
       <Newsletter />
     </div>
