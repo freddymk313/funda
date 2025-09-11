@@ -10,6 +10,7 @@ import "swiper/css/effect-cards"
 import { urlFor } from "@/sanity/lib/image"
 
 export default function ConferenceSwiper({ events }: { events: any[] }) {
+  console.log("Events in ConferenceSwiper:", events)
   return (
     // <div className="w-[300px] md:w-[400px] h-[420px] md:h-[500px] mx-auto">
     //   <Swiper
