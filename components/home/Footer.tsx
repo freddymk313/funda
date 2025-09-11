@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Facebook, MessageCircleDashed, Youtube, Linkedin, Mail, MapPin, Phone, Send, ChevronRight } from "lucide-react"
+import { Facebook, MessageCircleDashed, Youtube, Linkedin, Mail, MapPin, Phone, Send, ChevronRight, MessageCircle } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "../ui/button"
@@ -79,7 +79,7 @@ export default function Footer() {
             <div className="flex gap-4">
               {[
                 { icon: <Facebook className="w-5 h-5" />, label: "Facebook" },
-                { icon: <MessageCircleDashed className="w-5 h-5" />, label: "Whatsapp" },
+                { icon: <MessageCircle className="w-5 h-5" />, label: "Whatsapp" },
                 { icon: <Youtube className="w-5 h-5" />, label: "Youtube" },
                 { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn" }
               ].map((social, index) => (
