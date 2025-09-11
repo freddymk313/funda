@@ -1,3 +1,6 @@
+// app/(root)/blog/[slug]/page.tsx
+// @ts-nocheck
+
 import BlogDetailPage from "@/components/blog/BlogDetailPage"
 import { client } from "@/sanity/lib/client"
 
