@@ -2,7 +2,7 @@ import { client } from "@/sanity/lib/client"
 // import { pastEventsQuery } from "@/sanity/queries/pastEvents"
 import PastEventsPageClient from "@/components/events/PastEventsPageClient"
 
-export const pastEventsQuery = `
+const pastEventsQuery = `
   *[_type == "pastEvent"] | order(date desc) {
     _id,
     title,
