@@ -165,8 +165,11 @@ export default function ArticlesGrid({ articles }: { articles: any }) {
                   </h3>
 
                   <p className="text-gray-600 mb-4 flex-1" style={{ color: "var(--muted-foreground)" }}>
-                    {article.excerpt}
+                    {article.excerpt.length > 120
+                      ? `${article.excerpt.slice(0, 120)}…`
+                      : article.excerpt}
                   </p>
+
 
                   {/* Métadonnées */}
                   <div className="flex items-center justify-between gap-4 text-sm mb-4" style={{ color: "var(--muted-foreground)" }}>
