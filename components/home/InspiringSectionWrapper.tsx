@@ -13,5 +13,6 @@ const lastPastEventsQuery = `
 
 export default async function InspiringSectionWrapper() {
   const pastEvents = await client.fetch(lastPastEventsQuery)
+  console.log("Events fech:", pastEvents)
   return <InspiringSection events={pastEvents} />
 }

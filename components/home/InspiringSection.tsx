@@ -14,6 +14,8 @@ export default function InspiringSection({ events }: { events: any[] }) {
   const imageRef = useRef<HTMLDivElement>(null)
   const listItemsRef = useRef<HTMLLIElement[]>([])
 
+  console.log("events: ", events)
+
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
