@@ -23,7 +23,7 @@ const pastEventsQuery = `
   }
 `
 export default async function PastEventsPage() { 
-  const events = await client.fetch(pastEventsQuery)
+  const events = await client.fetch(pastEventsQuery, {}, { cache: "no-store"})
 
   return <PastEventsPageClient events={events} />
 }
