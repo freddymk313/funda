@@ -16,6 +16,6 @@ const query = `*[_type == "blog"] | order(date desc) {
 }`
 
 export default async function BlogPage() {
-  const posts = await client.fetch(query)
+  const posts = await client.fetch(query, {}, { cache: "no-store"})
   return <BlogPageClient posts={posts} />
 }

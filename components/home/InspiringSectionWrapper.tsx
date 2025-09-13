@@ -29,7 +29,7 @@ const lastPastEventsQuery = `
 // `
 
 export default async function InspiringSectionWrapper() {
-  const pastEvents = await client.fetch(lastPastEventsQuery)
+  const pastEvents = await client.fetch(lastPastEventsQuery, {}, { cache: "no-store"})
   console.log("Events fech:", pastEvents)
   return <InspiringSection events={pastEvents} />
 }
