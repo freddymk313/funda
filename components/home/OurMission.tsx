@@ -19,152 +19,83 @@ const OurMission = () => {
   const particlesRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  useEffect(() => {
-    // Création des particules décoratives
-    const createParticles = () => {
-      if (!particlesRef.current) return [];
-      
-      const particles = [];
-      const colors = ['var(--primary)', 'var(--accent)', 'var(--ring)', '#4DCFE0'];
-      
-      for (let i = 0; i < 18; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'absolute rounded-full opacity-30';
-        particle.style.width = `${Math.random() * 14 + 4}px`;
-        particle.style.height = particle.style.width;
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.top = `${Math.random() * 100}%`;
-        particle.style.animation = `float ${Math.random() * 8 + 4}s ease-in-out infinite`;
-        particle.style.animationDelay = `${Math.random() * 3}s`;
-        
-        particlesRef.current.appendChild(particle);
-        particles.push(particle);
-      }
-      
-      return particles;
-    };
+ useEffect(() => {
+  if (!sectionRef.current) return;
 
-    const particles = createParticles();
+  // Création des particules décoratives
+  const createParticles = () => {
+    if (!particlesRef.current) return [];
+    const colors = ['var(--primary)', 'var(--accent)', 'var(--ring)', '#4DCFE0'];
+    const particles: HTMLDivElement[] = [];
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none"
-      }
-    });
+    for (let i = 0; i < 18; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'absolute rounded-full opacity-30';
+      particle.style.width = `${Math.random() * 14 + 4}px`;
+      particle.style.height = particle.style.width;
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animation = `float ${Math.random() * 8 + 4}s ease-in-out infinite`;
+      particle.style.animationDelay = `${Math.random() * 3}s`;
+      particlesRef.current.appendChild(particle);
+      particles.push(particle);
+    }
+    return particles;
+  };
 
-    tl.fromTo(particles, 
-      { scale: 0, opacity: 0, y: 20 },
-      { 
-        scale: 1, 
-        opacity: 0.4, 
-        y: 0,
-        duration: 1.2, 
-        stagger: 0.04,
-        ease: "back.out(1.8)"
-      }
-    )
-    .fromTo(textRef.current, {
-      x: -50,
-      opacity: 0,
-      filter: "blur(12px)",
-      scale: 0.95
-    }, {
-      x: 0,
-      opacity: 1,
-      filter: "blur(0px)",
-      scale: 1,
-      duration: 1.1,
-      ease: "power3.out"
-    }, "-=0.8")
-    .fromTo(".mission-badge", {
-      y: -20,
-      opacity: 0,
-      scale: 0.8
-    }, {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 0.8,
-      ease: "back.out(1.7)"
-    }, "-=0.6")
-    .fromTo(".mission-heading", {
-      y: 40,
-      opacity: 0,
-      filter: "blur(10px)"
-    }, {
-      y: 0,
-      opacity: 1,
-      filter: "blur(0px)",
-      duration: 0.9,
-      ease: "power3.out"
-    }, "-=0.5")
-    .fromTo(".mission-text", {
-      y: 30,
-      opacity: 0,
-      stagger: 0.15
-    }, {
-      y: 0,
-      opacity: 1,
-      duration: 0.7,
-      ease: "back.out(1.6)"
-    }, "-=0.4")
-    .fromTo(imageRef.current, {
-      x: 60,
-      opacity: 0,
-      rotationY: 8,
-      scale: 1.1
-    }, {
-      x: 0,
-      opacity: 1,
-      rotationY: 0,
-      scale: 1,
-      duration: 1,
-      ease: "power3.out"
-    }, "-=0.4")
-    .fromTo(".mission-button", {
-      y: 25,
-      opacity: 0,
-      scale: 0.9
-    }, {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 0.6,
-      ease: "back.out(1.8)"
-    }, "-=0.3");
+  const particles = createParticles();
 
-    // Animation continue des particules
-    gsap.to(particles, {
-      y: (i) => i % 2 === 0 ? -20 : 20,
-      x: (i) => i % 3 === 0 ? -15 : 15,
-      rotation: 35,
-      duration: 6,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
+  // Assurer affichage initial des éléments
+  gsap.set([textRef.current, imageRef.current], { opacity: 1, x: 0, scale: 1 });
+  gsap.set(".mission-badge, .mission-heading, .mission-text, .mission-button", { opacity: 1 });
 
-    // Animation de pulsation pour le badge
-    gsap.to(".mission-badge", {
-      scale: 1.05,
-      boxShadow: "0 0 0 6px rgba(0, 150, 178, 0.15)",
-      duration: 2,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 1
-    });
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: sectionRef.current,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    }
+  });
 
-    return () => {
-      tl.kill();
-      if (particlesRef.current) {
-        particlesRef.current.innerHTML = '';
-      }
-    };
-  }, []);
+  tl.fromTo(particles,
+    { scale: 0, opacity: 0, y: 20 },
+    { scale: 1, opacity: 0.4, y: 0, duration: 1.2, stagger: 0.04, ease: "back.out(1.8)" }
+  )
+  .fromTo(textRef.current, { x: -50, opacity: 0, filter: "blur(12px)", scale: 0.95 }, 
+          { x: 0, opacity: 1, filter: "blur(0px)", scale: 1, duration: 1.1, ease: "power3.out" }, "-=0.8")
+  .fromTo(imageRef.current, { x: 60, opacity: 0, rotationY: 8, scale: 1.1 }, 
+          { x: 0, opacity: 1, rotationY: 0, scale: 1, duration: 1, ease: "power3.out" }, "-=0.6");
+
+  // Animation continue des particules
+  gsap.to(particles, {
+    y: (i) => i % 2 === 0 ? -20 : 20,
+    x: (i) => i % 3 === 0 ? -15 : 15,
+    rotation: 35,
+    duration: 6,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  });
+
+  // Pulsation badge
+  gsap.to(".mission-badge", {
+    scale: 1.05,
+    boxShadow: "0 0 0 6px rgba(0, 150, 178, 0.15)",
+    duration: 2,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+    delay: 1
+  });
+
+  return () => {
+    tl.kill();
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    if (particlesRef.current) particlesRef.current.innerHTML = '';
+  };
+}, []);
+
 
   return (
     <section

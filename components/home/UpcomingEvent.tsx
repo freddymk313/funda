@@ -18,152 +18,61 @@ export default function UpcomingEvent() {
   const particlesRef = useRef<HTMLDivElement>(null)
   const [isHovered, setIsHovered] = useState(false)
 
-  useEffect(() => {
-    // Création des particules décoratives
-    const createParticles = () => {
-      if (!particlesRef.current) return [];
-      
-      const particles = [];
-      const colors = ['var(--primary)', 'var(--accent)', 'var(--ring)', '#4DCFE0'];
-      
-      for (let i = 0; i < 15; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'absolute rounded-full opacity-40';
-        particle.style.width = `${Math.random() * 12 + 4}px`;
-        particle.style.height = particle.style.width;
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.top = `${Math.random() * 100}%`;
-        particle.style.animation = `float ${Math.random() * 8 + 4}s ease-in-out infinite`;
-        particle.style.animationDelay = `${Math.random() * 3}s`;
-        particle.style.filter = 'blur(2px)';
-        
-        particlesRef.current.appendChild(particle);
-        particles.push(particle);
-      }
-      
-      return particles;
-    };
+ useEffect(() => {
+  if (!sectionRef.current) return;
 
-    const particles = createParticles();
+  const createParticles = () => {
+    if (!particlesRef.current) return [];
+    const colors = ['var(--primary)', 'var(--accent)', 'var(--ring)', '#4DCFE0'];
+    const particles: HTMLDivElement[] = [];
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-    })
-
-    tl.fromTo(particles, 
-      { scale: 0, opacity: 0, y: 20 },
-      { 
-        scale: 1, 
-        opacity: 0.4, 
-        y: 0,
-        duration: 1.2, 
-        stagger: 0.05,
-        ease: "back.out(1.8)"
-      }
-    )
-    .fromTo(cardRef.current, {
-      opacity: 0,
-      y: 80,
-      rotationY: -5,
-      scale: 0.95
-    }, {
-      opacity: 1,
-      y: 0,
-      rotationY: 0,
-      scale: 1,
-      duration: 1.1,
-      ease: "power3.out"
-    }, "-=0.8")
-    .fromTo(".event-date", { 
-      scale: 0.8, 
-      opacity: 0,
-      rotation: -10 
-    }, { 
-      scale: 1, 
-      opacity: 1,
-      rotation: 0,
-      duration: 0.8,
-      ease: "back.out(1.7)"
-    }, "-=0.6")
-    .fromTo(".event-image", { 
-      scale: 1.15, 
-      opacity: 0,
-      filter: "blur(10px)" 
-    }, { 
-      scale: 1, 
-      opacity: 1,
-      filter: "blur(0px)",
-      duration: 0.9,
-      ease: "power2.out"
-    }, "-=0.5")
-    .fromTo(".event-title", { 
-      y: 30, 
-      opacity: 0,
-      filter: "blur(8px)" 
-    }, { 
-      y: 0, 
-      opacity: 1,
-      filter: "blur(0px)",
-      duration: 0.7,
-      ease: "power3.out"
-    }, "-=0.4")
-    .fromTo(".event-detail", { 
-      y: 20, 
-      opacity: 0,
-      stagger: 0.15 
-    }, { 
-      y: 0, 
-      opacity: 1,
-      duration: 0.6,
-      ease: "back.out(1.6)"
-    }, "-=0.3")
-    .fromTo(".event-button", { 
-      y: 25, 
-      opacity: 0,
-      scale: 0.9,
-      stagger: 0.1 
-    }, { 
-      y: 0, 
-      opacity: 1,
-      scale: 1,
-      duration: 0.5,
-      ease: "back.out(1.8)"
-    }, "-=0.2")
-
-    // Animation continue des particules
-    gsap.to(particles, {
-      y: (i) => i % 2 === 0 ? -15 : 15,
-      x: (i) => i % 3 === 0 ? -10 : 10,
-      rotation: 30,
-      duration: 5,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    })
-
-    // Animation de pulsation pour la date
-    gsap.to(".event-date", {
-      scale: 1.02,
-      boxShadow: "0 8px 25px rgba(0, 150, 178, 0.3)",
-      duration: 2,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 1
-    })
-
-    return () => {
-      tl.kill()
-      if (particlesRef.current) {
-        particlesRef.current.innerHTML = '';
-      }
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'absolute rounded-full opacity-40';
+      particle.style.width = `${Math.random() * 12 + 4}px`;
+      particle.style.height = particle.style.width;
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animation = `float ${Math.random() * 8 + 4}s ease-in-out infinite`;
+      particle.style.animationDelay = `${Math.random() * 3}s`;
+      particle.style.filter = 'blur(2px)';
+      particlesRef.current.appendChild(particle);
+      particles.push(particle);
     }
-  }, [])
+    return particles;
+  };
+
+  const particles = createParticles();
+
+  // Affichage initial
+  gsap.set([cardRef.current], { opacity: 1, y: 0, scale: 1 });
+  gsap.set(".event-date, .event-image, .event-title, .event-detail, .event-button", { opacity: 1 });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: sectionRef.current,
+      start: "top 85%",
+      toggleActions: "play none none none",
+    },
+  });
+
+  tl.fromTo(particles, { scale: 0, opacity: 0, y: 20 }, 
+            { scale: 1, opacity: 0.4, y: 0, duration: 1.2, stagger: 0.05, ease: "back.out(1.8)" })
+    .fromTo(cardRef.current, { opacity: 0, y: 80, rotationY: -5, scale: 0.95 }, 
+            { opacity: 1, y: 0, rotationY: 0, scale: 1, duration: 1.1, ease: "power3.out" }, "-=0.8");
+
+  gsap.to(particles, { y: (i) => i % 2 === 0 ? -15 : 15, x: (i) => i % 3 === 0 ? -10 : 10, rotation: 30, duration: 5, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+  gsap.to(".event-date", { scale: 1.02, boxShadow: "0 8px 25px rgba(0, 150, 178, 0.3)", duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1 });
+
+  return () => {
+    tl.kill();
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    if (particlesRef.current) particlesRef.current.innerHTML = '';
+  };
+}, []);
+
 
   return (
     <section ref={sectionRef} className="relative py-16 md:py-28 overflow-hidden">
