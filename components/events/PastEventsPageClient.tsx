@@ -40,7 +40,7 @@ const PastEventsPageClient = ({ events }: { events: any[] }) => {
   return (
     <div className="relative overflow-hidden">
       {/* Hero */}
-      <section className="relative py-28 px-6 text-center text-white">
+      <section className="relative py-24 md:py-28 px-4 text-center text-white">
         <div className="absolute inset-0 -z-10">
           <Image
             src="/img/past-1.png"
@@ -69,7 +69,7 @@ const PastEventsPageClient = ({ events }: { events: any[] }) => {
       </section>
 
       {/* Liste des événements */}
-      <section ref={sectionRef} className="relative py-20 bg-[var(--muted)]">
+      <section ref={sectionRef} className="relative py-12 md:py-20 bg-[var(--muted)]">
         <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-7xl">
           <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
             {filteredEvents.map((event) => (
