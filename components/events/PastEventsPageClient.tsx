@@ -78,13 +78,13 @@ const PastEventsPageClient = ({ events }: { events: any[] }) => {
                   {/* Vidéo / Image */}
                   <div className="relative h-48 overflow-hidden">
                     {event.platform === "youtube" ? (
-                      <iframe
-                        src={event.replayUrl.replace("watch?v=", "embed/")}
-                        title={event.title}
+                      <a
+                        href={event.replayUrl}
+                        // title={event.title}
                         className="w-full h-full"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
+                        // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        // allowFullScreen
+                      ></a>
                     ) : (
                       <iframe
                         src={event.replayUrl}
