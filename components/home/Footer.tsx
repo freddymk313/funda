@@ -19,115 +19,56 @@ export default function Footer() {
   const [email, setEmail] = useState("")
   const [isSubscribed, setIsSubscribed] = useState(false)
 
-  useEffect(() => {
-    // Création des particules décoratives
-    const createParticles = () => {
-      if (!particlesRef.current) return [];
-      
-      const particles = [];
-      const colors = ['#4DCFE0', '#0096B2', '#006F82', '#0799ba'];
-      
-      for (let i = 0; i < 30; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'absolute rounded-full opacity-20';
-        particle.style.width = `${Math.random() * 8 + 2}px`;
-        particle.style.height = particle.style.width;
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.top = `${Math.random() * 100}%`;
-        particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
-        particle.style.animationDelay = `${Math.random() * 4}s`;
-        particle.style.filter = 'blur(1px)';
-        
-        particlesRef.current.appendChild(particle);
-        particles.push(particle);
-      }
-      
-      return particles;
-    };
+useEffect(() => {
+  if (!footerRef.current) return;
 
-    const particles = createParticles();
+  const createParticles = () => {
+    if (!particlesRef.current) return [];
+    const colors = ['#4DCFE0', '#0096B2', '#006F82', '#0799ba'];
+    const particles: HTMLDivElement[] = [];
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: footerRef.current,
-        start: "top 90%",
-        toggleActions: "play none none none"
-      }
-    })
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'absolute rounded-full opacity-20';
+      particle.style.width = `${Math.random() * 8 + 2}px`;
+      particle.style.height = particle.style.width;
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
+      particle.style.animationDelay = `${Math.random() * 4}s`;
+      particle.style.filter = 'blur(1px)';
+      particlesRef.current.appendChild(particle);
+      particles.push(particle);
+    }
+    return particles;
+  };
 
-    tl.fromTo(particles, 
-      { scale: 0, opacity: 0, y: 20 },
-      { 
-        scale: 1, 
-        opacity: 0.3, 
-        y: 0,
-        duration: 1.5, 
-        stagger: 0.02,
-        ease: "back.out(1.8)"
-      }
-    )
-    .fromTo(".footer-logo", {
-      y: 40,
-      opacity: 0,
-      scale: 0.9
-    }, {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 0.9,
-      ease: "power3.out"
-    }, "-=1.0")
-    .fromTo(".footer-column", {
-      y: 50,
-      opacity: 0,
-      stagger: 0.15
-    }, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: "back.out(1.6)"
-    }, "-=0.8")
-    .fromTo(".footer-bottom", {
-      y: 30,
-      opacity: 0
-    }, {
-      y: 0,
-      opacity: 1,
-      duration: 0.6
-    }, "-=0.4")
+  const particles = createParticles();
 
-    // Animation continue des particules
-    gsap.to(particles, {
-      y: (i) => i % 2 === 0 ? -10 : 10,
-      x: (i) => i % 3 === 0 ? -8 : 8,
-      rotation: 20,
-      duration: 8,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    })
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: footerRef.current,
+      start: "top 90%",
+      toggleActions: "play none none none"
+    }
+  });
 
-    // Animation de scroll to top
-    gsap.to(".scroll-top", {
-      scrollTrigger: {
-        trigger: footerRef.current,
-        start: "top 50%",
-        toggleActions: "play none none none"
-      },
-      opacity: 1,
-      y: 0,
-      duration: 0.8,
-      ease: "power3.out"
-    })
+  tl.fromTo(particles, { scale: 0, opacity: 0, y: 20 }, { scale: 1, opacity: 0.3, y: 0, duration: 1.5, stagger: 0.02, ease: "back.out(1.8)" })
+    .fromTo(".footer-logo", { y: 40, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.9, ease: "power3.out" }, "-=1")
+    .fromTo(".footer-column", { y: 50, opacity: 0, stagger: 0.15 }, { y: 0, opacity: 1, duration: 0.8, ease: "back.out(1.6)" }, "-=0.8")
+    .fromTo(".footer-bottom", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.4");
 
-    return () => { 
-      tl.kill();
-      if (particlesRef.current) {
-        particlesRef.current.innerHTML = '';
-      }
-    };
-  }, [])
+  gsap.to(particles, { y: (i) => i % 2 === 0 ? -10 : 10, x: (i) => i % 3 === 0 ? -8 : 8, rotation: 20, duration: 8, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  gsap.to(".scroll-top", { scrollTrigger: { trigger: footerRef.current, start: "top 50%", toggleActions: "play none none none" }, opacity: 1, y: 0, duration: 0.8, ease: "power3.out" });
+
+  return () => {
+    tl.kill();
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    if (particlesRef.current) particlesRef.current.innerHTML = '';
+  };
+}, []);
+
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault()
