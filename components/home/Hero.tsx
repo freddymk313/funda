@@ -21,128 +21,97 @@ const Hero = () => {
   const particlesRef = useRef<HTMLDivElement>(null);
   const accentTextRef = useRef<HTMLSpanElement>(null);
 
-  useEffect(() => {
-    // Création des particules décoratives
-    const createParticles = () => {
-      if (!particlesRef.current) return;
-      
-      const particles = [];
-      const colors = ['var(--primary)', 'var(--accent)', 'var(--ring)', '#ffffff'];
-      
-      for (let i = 0; i < 15; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'absolute rounded-full opacity-20';
-        particle.style.width = `${Math.random() * 20 + 5}px`;
-        particle.style.height = particle.style.width;
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.top = `${Math.random() * 100}%`;
-        particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
-        particle.style.animationDelay = `${Math.random() * 5}s`;
-        
-        particlesRef.current.appendChild(particle);
-        particles.push(particle);
-      }
-      
-      return particles;
-    };
+useEffect(() => {
+  if (!heroRef.current) return;
 
-    const particles = createParticles() ?? [];
+  const hero = heroRef.current;
 
-    // Animation d'entrée principale
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  // Assurer l'affichage initial
+  gsap.set([overlayRef.current, headingRef.current, textRef.current, buttonsRef.current, accentTextRef.current], {
+    opacity: 1,
+    y: 0,
+    scale: 1
+  });
 
-    tl.fromTo(
-      overlayRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1.2 }
-    )
-    .fromTo(
-      particles,
-      { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 0.2, duration: 1, stagger: 0.1 },
-      "-=0.8"
-    )
-    .fromTo(
-      headingRef.current,
-      { y: 60, opacity: 0, rotationX: -45 },
-      { y: 0, opacity: 1, rotationX: 0, duration: 1.2 },
-      "-=0.6"
-    )
-    .fromTo(
-      accentTextRef.current,
-      { scale: 0.8, opacity: 0, textShadow: "0 0 0px var(--accent)" },
-      { 
-        scale: 1, 
-        opacity: 1, 
-        duration: 0.8,
-        textShadow: "0 0 20px var(--accent), 0 0 40px var(--accent)",
-        ease: "back.out(1.7)"
-      },
-      "-=0.4"
-    )
-    .fromTo(
-      textRef.current,
-      { y: 30, opacity: 0, filter: "blur(10px)" },
-      { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.8 },
-      "-=0.3"
-    )
-    .fromTo(
-      buttonsRef.current ? Array.from(buttonsRef.current.children) : [],
-      { y: 40, opacity: 0, scale: 0.8 },
-      { 
-        y: 0, 
-        opacity: 1, 
-        scale: 1, 
-        duration: 0.6, 
-        stagger: 0.15,
-        ease: "back.out(1.5)"
-      },
-      "-=0.2"
-    );
+  // Création des particules décoratives
+  const createParticles = () => {
+    if (!particlesRef.current) return [];
+    const colors = ['var(--primary)', 'var(--accent)', 'var(--ring)', '#ffffff'];
+    const particles: HTMLDivElement[] = [];
 
-    // Animation de parallaxe au scroll
-    if (heroRef.current) {
-      gsap.to(heroRef.current, {
-        y: 80,
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1.5,
-        },
-      });
-
-      // Animation des particules au scroll
-      gsap.to(particles, {
-        y: (i) => i % 2 === 0 ? -50 : 50,
-        x: (i) => i % 3 === 0 ? -30 : 30,
-        rotation: 180,
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'absolute rounded-full opacity-20';
+      particle.style.width = `${Math.random() * 20 + 5}px`;
+      particle.style.height = particle.style.width;
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      particlesRef.current.appendChild(particle);
+      particles.push(particle);
     }
 
-    // Animation continue pour le texte d'accent
-    gsap.to(accentTextRef.current, {
-      textShadow: "0 0 30px var(--accent), 0 0 60px var(--accent)",
-      duration: 1.5,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
+    return particles;
+  };
 
-    return () => {
-      tl.kill();
-      if (particlesRef.current) {
-        particlesRef.current.innerHTML = '';
-      }
-    };
-  }, []);
+  const particles = createParticles();
+
+  // Timeline animée
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+  tl.from(headingRef.current, { y: 40, opacity: 0, duration: 1.2 })
+    .from(accentTextRef.current, { scale: 0.8, opacity: 0, duration: 0.8 }, "-=0.6")
+    .from(textRef.current, { y: 20, opacity: 0, duration: 0.8 }, "-=0.5")
+    .from(buttonsRef.current ? Array.from(buttonsRef.current.children) : [], {
+      y: 30,
+      opacity: 0,
+      scale: 0.9,
+      stagger: 0.15,
+      duration: 0.6,
+      ease: "back.out(1.5)"
+    }, "-=0.4");
+
+  // Animation parallaxe et particules au scroll
+  gsap.to(hero, {
+    y: 50,
+    scrollTrigger: {
+      trigger: hero,
+      start: "top top",
+      end: "bottom top",
+      scrub: 1.5
+    }
+  });
+
+  gsap.to(particles, {
+    y: (i) => i % 2 === 0 ? -30 : 30,
+    x: (i) => i % 3 === 0 ? -20 : 20,
+    rotation: 180,
+    scrollTrigger: {
+      trigger: hero,
+      start: "top top",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+
+  // Animation continue du texte accent
+  gsap.to(accentTextRef.current, {
+    textShadow: "0 0 30px var(--accent), 0 0 60px var(--accent)",
+    duration: 1.5,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  });
+
+  return () => {
+    tl.kill();
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    if (particlesRef.current) particlesRef.current.innerHTML = '';
+  };
+}, []);
+
 
   return (
     <section
