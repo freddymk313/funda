@@ -21,119 +21,59 @@ export default function Newsletter() {
   const [email, setEmail] = useState("")
   const [isSubscribed, setIsSubscribed] = useState(false)
 
-  useEffect(() => {
-    // Création des particules décoratives
-    const createParticles = () => {
-      if (!particlesRef.current) return [];
-      
-      const particles = [];
-      const colors = ['var(--primary)', 'var(--accent)', 'var(--ring)', '#4DCFE0'];
-      
-      for (let i = 0; i < 25; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'absolute rounded-full opacity-40';
-        particle.style.width = `${Math.random() * 12 + 4}px`;
-        particle.style.height = particle.style.width;
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.top = `${Math.random() * 100}%`;
-        particle.style.animation = `float ${Math.random() * 8 + 4}s ease-in-out infinite`;
-        particle.style.animationDelay = `${Math.random() * 3}s`;
-        particle.style.filter = 'blur(2px)';
-        
-        particlesRef.current.appendChild(particle);
-        particles.push(particle);
-      }
-      
-      return particles;
-    };
+useEffect(() => {
+  if (!sectionRef.current) return;
 
-    const particles = createParticles();
+  const createParticles = () => {
+    if (!particlesRef.current) return [];
+    const colors = ['var(--primary)', 'var(--accent)', 'var(--ring)', '#4DCFE0'];
+    const particles: HTMLDivElement[] = [];
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none"
-      }
-    })
-
-    tl.fromTo(particles, 
-      { scale: 0, opacity: 0, y: 20 },
-      { 
-        scale: 1, 
-        opacity: 0.4, 
-        y: 0,
-        duration: 1.2, 
-        stagger: 0.03,
-        ease: "back.out(1.8)"
-      }
-    )
-    .fromTo(textRef.current, {
-      x: -40,
-      opacity: 0,
-      filter: "blur(10px)"
-    }, {
-      x: 0,
-      opacity: 1,
-      filter: "blur(0px)",
-      duration: 1,
-      ease: "power3.out"
-    }, "-=0.8")
-    .fromTo(imageRef.current, {
-      x: 40,
-      opacity: 0,
-      scale: 1.1,
-      rotationY: 5
-    }, {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-      rotationY: 0,
-      duration: 1,
-      ease: "power3.out"
-    }, "-=0.6")
-    .fromTo(formRef.current, {
-      y: 30,
-      opacity: 0,
-      scale: 0.95
-    }, {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 0.8,
-      ease: "back.out(1.8)"
-    }, "-=0.4")
-
-    // Animation continue des particules
-    gsap.to(particles, {
-      y: (i) => i % 2 === 0 ? -15 : 15,
-      x: (i) => i % 3 === 0 ? -10 : 10,
-      rotation: 25,
-      duration: 6,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    })
-
-    // Animation de pulsation pour le badge
-    gsap.to(".newsletter-badge", {
-      scale: 1.05,
-      boxShadow: "0 0 0 6px rgba(0, 150, 178, 0.15)",
-      duration: 2,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 1
-    })
-
-    return () => { 
-      tl.kill();
-      if (particlesRef.current) {
-        particlesRef.current.innerHTML = '';
-      }
+    for (let i = 0; i < 25; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'absolute rounded-full opacity-40';
+      particle.style.width = `${Math.random() * 12 + 4}px`;
+      particle.style.height = particle.style.width;
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animation = `float ${Math.random() * 8 + 4}s ease-in-out infinite`;
+      particle.style.animationDelay = `${Math.random() * 3}s`;
+      particle.style.filter = 'blur(2px)';
+      particlesRef.current.appendChild(particle);
+      particles.push(particle);
     }
-  }, [])
+    return particles;
+  };
+
+  const particles = createParticles();
+
+  gsap.set([textRef.current, imageRef.current, formRef.current], { opacity: 1, x: 0, y: 0, scale: 1 });
+  gsap.set(".newsletter-badge", { opacity: 1, scale: 1 });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: sectionRef.current,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    }
+  });
+
+  tl.fromTo(particles, { scale: 0, opacity: 0, y: 20 }, { scale: 1, opacity: 0.4, y: 0, duration: 1.2, stagger: 0.03, ease: "back.out(1.8)" })
+    .fromTo(textRef.current, { x: -40, opacity: 0, filter: "blur(10px)" }, { x: 0, opacity: 1, filter: "blur(0px)", duration: 1, ease: "power3.out" }, "-=0.8")
+    .fromTo(imageRef.current, { x: 40, opacity: 0, scale: 1.1, rotationY: 5 }, { x: 0, opacity: 1, scale: 1, rotationY: 0, duration: 1, ease: "power3.out" }, "-=0.6")
+    .fromTo(formRef.current, { y: 30, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.8)" }, "-=0.4");
+
+  gsap.to(particles, { y: (i) => i % 2 === 0 ? -15 : 15, x: (i) => i % 3 === 0 ? -10 : 10, rotation: 25, duration: 6, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  gsap.to(".newsletter-badge", { scale: 1.05, boxShadow: "0 0 0 6px rgba(0,150,178,0.15)", duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut", delay: 1 });
+
+  return () => {
+    tl.kill();
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    if (particlesRef.current) particlesRef.current.innerHTML = '';
+  };
+}, []);
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()

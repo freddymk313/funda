@@ -19,164 +19,61 @@ export default function InspiringSection() {
   const gradientRef = useRef<HTMLDivElement>(null)
   const [isHovered, setIsHovered] = useState(false)
 
-  useEffect(() => {
-    // Création des particules décoratives
-    const createParticles = () => {
-      if (!particlesRef.current) return [];
-      
-      const particles = [];
-      const colors = ['var(--primary)', 'var(--accent)', 'var(--ring)', '#4DCFE0', '#0096B2'];
-      
-      for (let i = 0; i < 12; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'absolute rounded-full';
-        particle.style.width = `${Math.random() * 20 + 6}px`;
-        particle.style.height = particle.style.width;
-        particle.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]}, transparent)`;
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.top = `${Math.random() * 100}%`;
-        particle.style.opacity = `${Math.random() * 0.4 + 0.1}`;
-        particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
-        particle.style.animationDelay = `${Math.random() * 4}s`;
-        particle.style.filter = 'blur(4px)';
-        
-        particlesRef.current.appendChild(particle);
-        particles.push(particle);
-      }
-      
-      return particles;
-    };
+useEffect(() => {
+  if (!sectionRef.current) return;
 
-    const particles = createParticles();
+  const createParticles = () => {
+    if (!particlesRef.current) return [];
+    const colors = ['var(--primary)', 'var(--accent)', 'var(--ring)', '#4DCFE0', '#0096B2'];
+    const particles: HTMLDivElement[] = [];
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top 85%",
-        toggleActions: "play none none none",
-        markers: false
-      }
-    })
-
-    // Animation du gradient d'arrière-plan
-    gsap.fromTo(gradientRef.current, 
-      { opacity: 0, scale: 0.8 },
-      { 
-        opacity: 1, 
-        scale: 1, 
-        duration: 2, 
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true
-        }
-      }
-    )
-
-    tl.fromTo(particles, 
-      { scale: 0, opacity: 0, y: 20 },
-      { 
-        scale: 1, 
-        opacity: 0.4, 
-        y: 0,
-        duration: 1.5, 
-        stagger: 0.08,
-        ease: "back.out(1.8)"
-      }
-    )
-    .fromTo(headingRef.current, {
-      y: 60,
-      opacity: 0,
-      filter: "blur(15px)",
-      scale: 0.95
-    }, {
-      y: 0,
-      opacity: 1,
-      filter: "blur(0px)",
-      scale: 1,
-      duration: 1.2,
-      ease: "power3.out"
-    }, "-=0.8")
-    .fromTo(".section-badge", {
-      y: -20,
-      opacity: 0,
-      scale: 0.8
-    }, {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 0.8,
-      ease: "back.out(1.7)"
-    }, "-=0.6")
-    .fromTo(textRef.current, {
-      x: -40,
-      opacity: 0,
-      rotationY: -5
-    }, {
-      x: 0,
-      opacity: 1,
-      rotationY: 0,
-      duration: 1,
-      ease: "power3.out"
-    }, "-=0.5")
-    .fromTo(".feature-item", {
-      y: 30,
-      opacity: 0,
-      scale: 0.9,
-      rotationX: -10
-    }, {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      rotationX: 0,
-      stagger: 0.2,
-      duration: 0.8,
-      ease: "back.out(1.8)"
-    }, "-=0.4")
-    .fromTo(".conference-swiper", {
-      x: 50,
-      opacity: 0,
-      rotationY: -8,
-      scale: 0.95
-    }, {
-      x: 0,
-      opacity: 1,
-      rotationY: 0,
-      scale: 1,
-      duration: 1.1,
-      ease: "power3.out"
-    }, "-=0.4")
-
-    // Animation continue des particules
-    gsap.to(particles, {
-      y: (i) => i % 2 === 0 ? -20 : 20,
-      x: (i) => i % 3 === 0 ? -15 : 15,
-      rotation: 60,
-      duration: 6,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    })
-
-    // Animation de pulsation pour le CTA
-    gsap.to(".cta-button", {
-      scale: 1.02,
-      boxShadow: "0 10px 40px rgba(0, 150, 178, 0.3)",
-      duration: 2,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    })
-
-    return () => { 
-      tl.kill();
-      if (particlesRef.current) {
-        particlesRef.current.innerHTML = '';
-      }
+    for (let i = 0; i < 12; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'absolute rounded-full';
+      particle.style.width = `${Math.random() * 20 + 6}px`;
+      particle.style.height = particle.style.width;
+      particle.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]}, transparent)`;
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.opacity = `${Math.random() * 0.4 + 0.1}`;
+      particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
+      particle.style.animationDelay = `${Math.random() * 4}s`;
+      particle.style.filter = 'blur(4px)';
+      particlesRef.current.appendChild(particle);
+      particles.push(particle);
     }
-  }, [])
+    return particles;
+  };
+
+  const particles = createParticles();
+
+  // Affichage initial pour éviter les flashes
+  gsap.set([headingRef.current, textRef.current], { opacity: 1, y: 0, scale: 1 });
+  gsap.set(".section-badge, .feature-item, .conference-swiper, .cta-button", { opacity: 1 });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: sectionRef.current,
+      start: "top 85%",
+      toggleActions: "play none none none",
+    }
+  });
+
+  tl.fromTo(particles, { scale: 0, opacity: 0, y: 20 }, 
+            { scale: 1, opacity: 0.4, y: 0, duration: 1.5, stagger: 0.08, ease: "back.out(1.8)" })
+    .fromTo(headingRef.current, { y: 60, opacity: 0, filter: "blur(15px)", scale: 0.95 }, 
+            { y: 0, opacity: 1, filter: "blur(0px)", scale: 1, duration: 1.2, ease: "power3.out" }, "-=0.8");
+
+  gsap.to(particles, { y: (i) => i % 2 === 0 ? -20 : 20, x: (i) => i % 3 === 0 ? -15 : 15, rotation: 60, duration: 6, repeat: -1, yoyo: true, ease: "sine.inOut" });
+  gsap.to(".cta-button", { scale: 1.02, boxShadow: "0 10px 40px rgba(0, 150, 178, 0.3)", duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+  return () => {
+    tl.kill();
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    if (particlesRef.current) particlesRef.current.innerHTML = '';
+  };
+}, []);
+
 
   const features = [
     { 
