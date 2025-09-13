@@ -28,16 +28,14 @@ export default function ConferenceSwiper({ events }: { events: any[] }) {
             className="relative flex items-center justify-center bg-white rounded-2xl overflow-hidden shadow-xl"
             // className="relative flex items-center justify-center rounded-2xl overflow-hidden shadow-xl bg-white"
           >
-            {ev.image?.asset?.url && (
               <Image
                 // src={ev.image.asset.url}
-                src={urlFor(ev.image).url()}
+                src={ev.imageUrl || urlFor(ev.image).url()}
                 alt={ev.title}
                 fill
                 className="object-cover"
                 quality={90}
               />
-            )}
 
             <div className="absolute inset-0 flex items-center justify-center">
               <a

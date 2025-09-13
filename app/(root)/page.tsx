@@ -2,7 +2,7 @@ import Hero from "@/components/home/Hero";
 import OurMission from "@/components/home/OurMission";
 import UpcomingEvent from "@/components/home/UpcomingEvent";
 import Newsletter from "@/components/home/Newsletter";
-import InspiringSection from "@/components/home/InspiringSection";
+import InspiringSectionWrapper from "@/components/home/InspiringSectionWrapper";
 import ArticlesGrid from "@/components/home/ArticlesGrid";
 // Make sure the following file exists: <projectRoot>/sanity/client.ts
 import { client } from "../../sanity/lib/client";
@@ -36,7 +36,7 @@ const articles = await client.fetch(query)
 
       <UpcomingEvent event={event} />
 
-      <InspiringSection events={articles} />
+      <InspiringSectionWrapper />
       <ArticlesGrid articles={articles} />
       <Newsletter />
     </div>
