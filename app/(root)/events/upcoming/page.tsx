@@ -130,7 +130,7 @@ const UpComingEventPage = () => {
     <div className="relative overflow-hidden">
       {/* Section Hero */}
       {/* Section Hero */}
-      <section className="relative py-28 px-6 text-center text-white">
+      <section className="relative py-24 md:py-28 px-4 text-center text-white">
         {/* Image de fond */}
         <div className="absolute inset-0 -z-10">
           <Image
@@ -155,7 +155,7 @@ const UpComingEventPage = () => {
       {/* Section principale */}
       <section className="py-12 md:py-20 bg-[var(--muted)]">
         <div className="container mx-auto px-4 md:px-16 lg:px-20 *max-w-5xl">
-          <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-2xl shadow-lg p-4 md:p-12">
             <div className="grid md:grid-cols-2 gap-10 items-center">
               {/* Image */}
               <div className="relative w-full *h-full rounded-xl overflow-hidden">
