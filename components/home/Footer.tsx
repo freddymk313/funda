@@ -7,6 +7,7 @@ import { Facebook, MessageCircleDashed, Youtube, Linkedin, Mail, MapPin, Phone, 
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "../ui/button"
+import {FaWhatsapp} from "react-icons/fa6"
 
 // Enregistrer le plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -79,7 +80,7 @@ export default function Footer() {
             <div className="flex gap-4">
               {[
                 { icon: <Facebook className="w-5 h-5" />, label: "Facebook" },
-                { icon: <MessageCircle className="w-5 h-5" />, label: "Whatsapp" },
+                { icon: <FaWhatsapp className="w-5 h-5" />, label: "Whatsapp" },
                 { icon: <Youtube className="w-5 h-5" />, label: "Youtube" },
                 { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn" }
               ].map((social, index) => (
