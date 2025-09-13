@@ -47,67 +47,55 @@ const Navbar = () => {
   const dropdownRefs = useRef<{[key: string]: HTMLUListElement | null}>({})
 
   // Animation de la navbar au scroll
-  useEffect(() => {
-    if (!headerRef.current) return
+ // Remplacer dans ton useEffect pour le scroll
+useEffect(() => {
+  if (!headerRef.current) return
+  const header = headerRef.current
 
-    const header = headerRef.current
-    const headerHeight = header.offsetHeight
+  // Position initiale à 0 pour éviter que le header soit hors écran
+  gsap.set(header, { y: 0 })
 
-    // Initialiser la position hors écran
-    gsap.set(header, { y: -headerHeight })
+  const trigger = ScrollTrigger.create({
+    trigger: "body",
+    start: "top top",
+    end: "max",
+    onUpdate: (self) => {
+      const scrollY = self.scroll()
 
-    // Animation d'entrée au scroll
-    ScrollTrigger.create({
-      trigger: "body",
-      start: "top top",
-      end: "max",
-      onUpdate: (self) => {
-        const scrollY = self.scroll()
-        
-        if (scrollY > 100 && !isScrolled) {
-          setIsScrolled(true)
-          // Animation d'entrée depuis le haut
-          gsap.to(header, {
-            y: 0,
-            duration: 0.6,
-            ease: "power2.out",
-            overwrite: true
-          })
-        } else if (scrollY <= 100 && isScrolled) {
-          setIsScrolled(false)
-          // Animation de sortie vers le haut
-          gsap.to(header, {
-            y: -headerHeight,
-            duration: 0.4,
-            ease: "power2.in",
-            overwrite: true
-          })
-        }
-
-        // Effet de réduction légère de la hauteur et opacité lors du scroll
-        if (scrollY > 50) {
-          gsap.to(header, {
-            paddingTop: "0.5rem",
-            paddingBottom: "0.5rem",
-            duration: 0.3,
-            ease: "power2.out"
-          })
-        } else {
-          gsap.to(header, {
-            paddingTop: "1rem",
-            paddingBottom: "1rem",
-            duration: 0.3,
-            ease: "power2.out"
-          })
-        }
+      if (scrollY > 100 && !isScrolled) {
+        setIsScrolled(true)
+        gsap.to(header, {
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          overwrite: true
+        })
+      } else if (scrollY <= 100 && isScrolled) {
+        setIsScrolled(false)
+        gsap.to(header, {
+          y: 0, // On laisse y = 0 pour qu'il reste visible
+          duration: 0.4,
+          ease: "power2.in",
+          overwrite: true
+        })
       }
-    })
 
-    // Nettoyage
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      // Ajustement padding lors du scroll
+      const padding = scrollY > 50 ? "0.5rem" : "1rem"
+      gsap.to(header, {
+        paddingTop: padding,
+        paddingBottom: padding,
+        duration: 0.3,
+        ease: "power2.out"
+      })
     }
-  }, [isScrolled])
+  })
+
+  return () => {
+    trigger.kill()
+  }
+}, [isScrolled])
+
 
   // Animation d'ouverture/fermeture du menu mobile
   useEffect(() => {
