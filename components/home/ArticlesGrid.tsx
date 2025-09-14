@@ -218,6 +218,7 @@ export default function ArticlesGrid({ articles }: { articles: any }) {
 
         {/* Bouton "Voir plus" */}
         <div className="text-center mt-10 md:mt-16">
+          <Link href="/blog" className="w-full sm:w-auto cursor-pointer">
           <Button
             size={"lg"}
             // className="uppercase text-sm rounded-full"
@@ -232,6 +233,7 @@ export default function ArticlesGrid({ articles }: { articles: any }) {
             <span>Voir tous les articles</span>
             {/* <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" /> */}
           </Button>
+          </Link>
         </div>
       </div>
     </section>
