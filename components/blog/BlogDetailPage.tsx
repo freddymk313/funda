@@ -85,7 +85,7 @@ const BlogDetailPage = ({ post }: { post: any }) => {
   return (
     <div className="relative overflow-hidden bg-background">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/40">
+      {/* <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/40">
         <div className="container mx-auto px-4 md:px-16 lg:px-20 py-4">
           <div className="flex items-center justify-between">
             <Link
@@ -119,15 +119,15 @@ const BlogDetailPage = ({ post }: { post: any }) => {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Article */}
       <article className="pb-20">
         {/* En-tête de l'article */}
-        <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-4xl">
+        <div className="container mx-auto px-4 md:px-16 lg:px-20 *max-w-4xl">
           <div className="py-8 md:py-12">
             {/* Catégorie */}
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <span
                 className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium"
                 style={{
@@ -137,7 +137,7 @@ const BlogDetailPage = ({ post }: { post: any }) => {
               >
                 {post.category}
               </span>
-            </div>
+            </div> */}
 
             {/* Titre */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 text-foreground">
@@ -150,11 +150,16 @@ const BlogDetailPage = ({ post }: { post: any }) => {
             </p>
 
             {/* Métadonnées */}
-            <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-8">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center justify-between gap-6 text-sm text-muted-foreground mb-8">
+              {/* <div className="flex items-center gap-2">
                 <User className="w-4 h-4" />
                 <span>{post.author}</span>
-              </div>
+              </div> */}
+                
+                <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4" />
+                    <span>{post.readTime}</span>
+                  </div>
               
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
@@ -167,15 +172,11 @@ const BlogDetailPage = ({ post }: { post: any }) => {
                 </span>
               </div>
               
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>{post.readTime}</span>
-              </div>
               
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <Eye className="w-4 h-4" />
                 <span>{post.views || '1.2k'} vues</span>
-              </div>
+              </div> */}
             </div>
 
             {/* Tags */}
@@ -208,43 +209,19 @@ const BlogDetailPage = ({ post }: { post: any }) => {
         </div>
 
         {/* Contenu de l'article */}
-        <div ref={contentRef} className="container mx-auto px-4 md:px-16 lg:px-20 max-w-3xl">
+        <div ref={contentRef} className="container mx-auto px-4 md:px-16 lg:px-20 *max-w-3xl">
           <div className="blog-content prose prose-lg md:prose-xl max-w-none">
             <PortableText value={post.content} />
           </div>
 
           {/* Actions de l'article */}
-          <div className="flex items-center justify-center gap-4 mt-12 pt-8 border-t border-border/40">
-            <button
-              onClick={() => setIsLiked(!isLiked)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all ${
-                isLiked
-                  ? 'text-red-500 bg-red-500/10'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
-              }`}
-            >
-              <Heart className="w-5 h-5" fill={isLiked ? 'currentColor' : 'none'} />
-              <span>{post.likes || '42'}</span>
-            </button>
-
+          <div className="flex items-center justify-center gap-4 mt-8 pt-8 border-t border-border/40">
             <button
               onClick={handleShare}
               className="flex items-center gap-2 px-6 py-3 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-all"
             >
               <Share2 className="w-5 h-5" />
               <span>Partager</span>
-            </button>
-
-            <button
-              onClick={() => setIsBookmarked(!isBookmarked)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all ${
-                isBookmarked
-                  ? 'text-yellow-500 bg-yellow-500/10'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
-              }`}
-            >
-              <Bookmark className="w-5 h-5" fill={isBookmarked ? 'currentColor' : 'none'} />
-              <span>Sauvegarder</span>
             </button>
           </div>
 
@@ -287,10 +264,10 @@ const BlogDetailPage = ({ post }: { post: any }) => {
 
       {/* Section articles similaires */}
       {post.relatedPosts && post.relatedPosts.length > 0 && (
-        <section className="py-16 bg-muted/30">
-          <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-6xl">
+        <section className="py-8 md:py-10 bg-muted/30">
+          <div className="container mx-auto px-4 *md:px-16 *lg:px-20 max-w-6xl">
             <h2 className="text-2xl md:text-3xl font-bold mb-8 text-foreground">
-              Articles similaires
+              Articles récent
             </h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -330,35 +307,6 @@ const BlogDetailPage = ({ post }: { post: any }) => {
           </div>
         </section>
       )}
-
-      {/* Newsletter */}
-      <section className="py-16 bg-primary/5">
-        <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-3xl text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
-            Restez informé
-          </h2>
-          <p className="text-muted-foreground mb-6">
-            Recevez nos derniers articles et actualités directement dans votre boîte mail.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Votre adresse email"
-              className="flex-1 px-4 py-3 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary"
-            />
-            <button
-              className="px-6 py-3 rounded-lg font-medium"
-              style={{
-                backgroundColor: "var(--primary)",
-                color: "var(--primary-foreground)"
-              }}
-            >
-              S'abonner
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
