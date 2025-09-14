@@ -133,7 +133,7 @@ export default function ArticlesGrid({ articles }: { articles: any }) {
         <div className="grid md:grid-cols-3 gap-4 md:gap-6">
           {articles.slice(-3).map((article: any, index: any) => (
             <article key={index} className="blog-post group">
-              <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-full flex flex-col">
+              <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-full flex flex-col">
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
                   <Image
@@ -191,7 +191,7 @@ export default function ArticlesGrid({ articles }: { articles: any }) {
                     {article.tags.map((tag: any, index: any) => (
                       <span
                         key={index}
-                        className="px-2 py-1 rounded text-xs"
+                        className="px-2.5 py-1 rounded-full text-xs"
                         style={{
                           backgroundColor: "var(--secondary)",
                           color: "var(--muted-foreground)"

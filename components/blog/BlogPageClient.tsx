@@ -76,7 +76,7 @@ const BlogPageClient = ({ posts }: { posts: any[] }) => {
               <div className="grid md:grid-cols-2 gap-6">
                 {filteredPosts.map((post: any) => (
                   <article key={post.slug.current} className="blog-post group">
-                    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-full flex flex-col">
+                    <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all h-full flex flex-col">
                       <div className="relative h-48 overflow-hidden">
                         <Image
                           src={urlFor(post.image).width(600).height(400).url()}
@@ -128,7 +128,7 @@ const BlogPageClient = ({ posts }: { posts: any[] }) => {
                           {post.tags.map((tag: string, index: number) => (
                             <span
                               key={index}
-                              className="px-2 py-1 rounded text-xs"
+                              className="px-2.5 py-1 rounded-full text-xs"
                               style={{
                                 backgroundColor: "var(--secondary)",
                                 color: "var(--muted-foreground)"

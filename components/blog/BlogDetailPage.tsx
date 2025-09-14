@@ -122,7 +122,7 @@ const BlogDetailPage = ({ post }: { post: any }) => {
       </nav> */}
 
       {/* Article */}
-      <article className="pb-20">
+      <article className="pb-8 md:pb-12">
         {/* En-tête de l'article */}
         <div className="container mx-auto px-4 md:px-16 lg:px-20 *max-w-4xl">
           <div className="py-8 md:py-12">
@@ -184,8 +184,12 @@ const BlogDetailPage = ({ post }: { post: any }) => {
               {post.tags.map((tag: string, index: number) => (
                 <span
                   key={index}
-                  className="px-3 py-1 rounded-full text-xs font-medium border border-border/50 bg-background/50"
-                  style={{ color: "var(--muted-foreground)" }}
+                  className="px-3 py-1 rounded-full text-xs font-medium *border *border-border/50 *bg-background/50"
+                  // style={{ color: "var(--muted-foreground)" }}
+                  style={{
+                          backgroundColor: "var(--secondary)",
+                          color: "var(--muted-foreground)"
+                        }}
                 >
                   #{tag}
                 </span>
@@ -215,10 +219,10 @@ const BlogDetailPage = ({ post }: { post: any }) => {
           </div>
 
           {/* Actions de l'article */}
-          <div className="flex items-center justify-center gap-4 mt-8 pt-8 border-t border-border/40">
+          <div className="flex items-center justify-center gap-4 mt-8 pt-8 *border-t *border-border/40">
             <button
               onClick={handleShare}
-              className="flex items-center gap-2 px-6 py-3 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-all"
+              className="flex items-center gap-2 px-6 py-3 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-all"
             >
               <Share2 className="w-5 h-5" />
               <span>Partager</span>
