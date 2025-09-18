@@ -14,6 +14,7 @@ import {
 import { usePathname } from "next/navigation"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { useState } from "react"
+import {FaWhatsapp} from "react-icons/fa6"
 
 const links = [
   { label: "Accueil", href: "/" },
@@ -95,12 +96,13 @@ const Navbar = () => {
           {/* Bouton + menu mobile */}
           <div className="flex flex-row items-center gap-1">
             <a
-              href="https://wa.me/243991040032"
+              href=" https://whatsapp.com/channel/0029Vaq7xx82Jl8IT3kiwg36"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="rounded-full py-[22.5px] text-base font-semibold ">
-                Rejoindre
+              <Button className="rounded-full py-[22.5px] text-base font-semibold">
+                <FaWhatsapp className="h-6 w-6 md:h-7 md:w-7" />
+                <span>Rejoindre</span>
               </Button>
             </a>
 

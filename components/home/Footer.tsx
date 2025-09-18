@@ -79,14 +79,14 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               {[
-                { icon: <Facebook className="w-5 h-5" />, label: "Facebook" },
-                { icon: <FaWhatsapp className="w-5 h-5" />, label: "Whatsapp" },
-                { icon: <Youtube className="w-5 h-5" />, label: "Youtube" },
-                { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn" }
+                { icon: <Facebook className="w-5 h-5" />, label: "Facebook", href: "https://www.facebook.com/funda.cd?mibextid=rS40aB7S9Ucbxw6v" },
+                { icon: <FaWhatsapp className="w-5 h-5" />, label: "Whatsapp", href: " https://whatsapp.com/channel/0029Vaq7xx82Jl8IT3kiwg36" },
+                { icon: <Youtube className="w-5 h-5" />, label: "Youtube", href: "https://youtube.com/@fundaonlinecd?si=bne9J-0f2Bmdqs8L" },
+                { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn", href: "https://www.linkedin.com/company/fundacd/" }
               ].map((social, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href={social.href}
                   aria-label={social.label}
                   className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                 >
