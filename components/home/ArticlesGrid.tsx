@@ -158,13 +158,13 @@ export default function ArticlesGrid({ articles }: { articles: any }) {
 
                 {/* Contenu */}
                 <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-[var(--primary)] transition-colors">
+                  <h3 className="text-lg md:text-xl font-semibold mb-3 group-hover:text-[var(--primary)] transition-colors">
                     <Link href={`/blog/${article.id}`}>
                       {article.title}
                     </Link>
                   </h3>
 
-                  <p className="text-gray-600 mb-4 flex-1" style={{ color: "var(--muted-foreground)" }}>
+                  <p className="text-gray-600 text-base mb-4 flex-1" style={{ color: "var(--muted-foreground)" }}>
                     {article.excerpt.length > 120
                       ? `${article.excerpt.slice(0, 120)}…`
                       : article.excerpt}
