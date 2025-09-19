@@ -6,6 +6,7 @@ import InspiringSectionWrapper from "@/components/home/InspiringSectionWrapper";
 import ArticlesGrid from "@/components/home/ArticlesGrid";
 // Make sure the following file exists: <projectRoot>/sanity/client.ts
 import { client } from "../../sanity/lib/client";
+import Contact from "@/components/home/Contact";
 
 export default async function Home() {
   const event = await client.fetch(
@@ -38,7 +39,8 @@ const articles = await client.fetch(query)
 
       <InspiringSectionWrapper />
       <ArticlesGrid articles={articles} />
-      <Newsletter />
+      {/* <Newsletter /> */}
+      <Contact />
     </div>
   );
 }

@@ -13,8 +13,8 @@ import {
 } from "@/components/ui/navigation-menu"
 import { usePathname } from "next/navigation"
 import { Menu, X, ChevronDown } from "lucide-react"
-import { useState } from "react"
-import {FaWhatsapp} from "react-icons/fa6"
+import { useState, useEffect } from "react"
+import { FaWhatsapp } from "react-icons/fa6"
 
 const links = [
   { label: "Accueil", href: "/" },
@@ -33,12 +33,36 @@ const Navbar = () => {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [isAnimating, setIsAnimating] = useState(false)
+
+  // Fermer le menu quand on change de page
+  useEffect(() => {
+    setIsMenuOpen(false)
+    setOpenDropdown(null)
+  }, [pathname])
+
+  // Empêcher le défilement du body quand le menu est ouvert
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+      setIsAnimating(true)
+    } else {
+      document.body.style.overflow = 'unset'
+      // On laisse un petit délai pour l'animation de fermeture
+      const timer = setTimeout(() => setIsAnimating(false), 300)
+      return () => clearTimeout(timer)
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMenuOpen])
 
   return (
-    <header className="shadow-sm">
+    <header className="shadow-sm sticky top-0 z-50 bg-background">
       <div className="container mx-auto flex items-center justify-between py-4 px-4 md:px-16 lg:px-20">
         {/* Logo */}
-        <Link href="/">
+        <Link href="/" className="flex-shrink-0">
           <Image src={"/logo/logo-3.png"} alt="logo" width={48} height={48} />
         </Link>
 
@@ -99,10 +123,23 @@ const Navbar = () => {
               href=" https://whatsapp.com/channel/0029Vaq7xx82Jl8IT3kiwg36"
               target="_blank"
               rel="noopener noreferrer"
+              className="hidden sm:block"
             >
               <Button className="rounded-full py-[22.5px] text-base font-semibold">
                 <FaWhatsapp className="h-6 w-6 md:h-7 md:w-7" />
                 <span>Rejoindre</span>
+              </Button>
+            </a>
+
+            {/* Version mobile du bouton WhatsApp */}
+            <a
+              href=" https://whatsapp.com/channel/0029Vaq7xx82Jl8IT3kiwg36"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sm:hidden mr-2"
+            >
+              <Button size="icon" className="rounded-full h-10 w-10">
+                <FaWhatsapp className="h-5 w-5" />
               </Button>
             </a>
 
@@ -111,69 +148,111 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 rounded-lg hover:bg-muted transition-colors"
                 aria-label="Menu"
+                aria-expanded={isMenuOpen}
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
 
-              {/* Menu mobile */}
-              {isMenuOpen && (
-                <div className="absolute top-16 left-0 right-0 bg-background border-b border-border z-10 shadow-lg">
-                  <ul className="flex flex-col px-4 py-6 mt-5 gap-2">
-                    {links.map((link) => (
-                      <li key={link.label} className="w-full">
-                        {link.children ? (
-                          <div>
-                            {/* Lien parent avec dropdown */}
-                            <button
-                              onClick={() =>
-                                setOpenDropdown(
-                                  openDropdown === link.label ? null : link.label
-                                )
-                              }
-                              className={`w-full flex justify-between items-center px-4 py-3 *text-lg font-semibold rounded-lg transition-colors ${openDropdown === link.label
-                                  ? "*bg-accent/10 text-muted-foreground"
-                                  : "text-muted-foreground hover:bg-muted"
-                                }`}
-                            >
-                              {link.label}
-                              <ChevronDown
-                                size={18}
-                                className={`transition-transform ${openDropdown === link.label ? "rotate-180" : ""
-                                  }`}
-                              />
-                            </button>
+              {/* Menu mobile avec animation */}
+              {(isMenuOpen || isAnimating) && (
+                <>
+                  {/* Overlay semi-transparent avec animation */}
+                  <div 
+                    className={`fixed inset-0 bg-black/20 z-40 transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}
+                    onClick={() => setIsMenuOpen(false)}
+                  />
+                  
+                  {/* Menu animé qui descend depuis le haut */}
+                  <div className={`fixed top-0 left-0 right-0 bg-background z-50 shadow-lg transform transition-transform duration-300 ease-out ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+                    <div className="container mx-auto py-4 px-4 flex justify-between items-center border-b">
+                      <Link href="/" className="flex-shrink-0">
+                        <Image src={"/logo/logo-3.png"} alt="logo" width={40} height={40} />
+                      </Link>
+                      <button
+                        onClick={() => setIsMenuOpen(false)}
+                        className="p-2 rounded-lg hover:bg-muted transition-colors"
+                        aria-label="Fermer le menu"
+                      >
+                        <X size={24} />
+                      </button>
+                    </div>
+                    
+                    <div className="overflow-y-auto h-[calc(100vh-76px)]">
+                      <ul className="flex flex-col px-4 py-4 gap-1">
+                        {links.map((link) => (
+                          <li key={link.label} className="w-full">
+                            {link.children ? (
+                              <div>
+                                {/* Lien parent avec dropdown */}
+                                <button
+                                  onClick={() =>
+                                    setOpenDropdown(
+                                      openDropdown === link.label ? null : link.label
+                                    )
+                                  }
+                                  className={`w-full flex justify-between items-center px-4 py-3 text-lg font-medium rounded-lg transition-colors ${openDropdown === link.label
+                                      ? "bg-accent text-accent-foreground"
+                                      : "text-foreground hover:bg-muted"
+                                    }`}
+                                >
+                                  {link.label}
+                                  <ChevronDown
+                                    size={18}
+                                    className={`transition-transform ${openDropdown === link.label ? "rotate-180" : ""
+                                      }`}
+                                  />
+                                </button>
 
-                            {/* Sous-liens */}
-                            {openDropdown === link.label && (
-                              <ul className="ml-4 mt-2 flex flex-col *gap-2 *pt-3 border-t border-muted-foreground/40">
-                                {link.children.map((sublink) => (
-                                  <li key={sublink.label}>
-                                    <Link
-                                      href={sublink.href}
-                                      className="block *px-4 py-2 text-base rounded-md text-muted-foreground font-semibold *hover:bg-muted"
-                                    >
-                                      {sublink.label}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
+                                {/* Sous-liens */}
+                                {openDropdown === link.label && (
+                                  <ul className="ml-4 mb-2 flex flex-col gap-1 border-l border-muted pl-3">
+                                    {link.children.map((sublink) => (
+                                      <li key={sublink.label}>
+                                        <Link
+                                          href={sublink.href}
+                                          className="block px-4 py-2.5 text-base rounded-md font-medium hover:bg-muted transition-colors"
+                                          onClick={() => setIsMenuOpen(false)}
+                                        >
+                                          {sublink.label}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </div>
+                            ) : (
+                              <Link
+                                href={link.href}
+                                className={`block w-full px-4 py-3 text-lg font-medium rounded-lg transition-colors ${pathname === link.href
+                                    ? "bg-primary text-primary-foreground"
+                                    : "text-foreground hover:bg-muted"
+                                  }`}
+                                onClick={() => setIsMenuOpen(false)}
+                              >
+                                {link.label}
+                              </Link>
                             )}
-                          </div>
-                        ) : (
-                          <Link
-                            href={link.href}
-                            className={`block w-full px-4 py-2.5 *text-lg font-semibold rounded-lg transition-colors ${pathname === link.href
-                                ? "bg-accent/10 text-accent"
-                                : "text-muted-foreground hover:bg-muted"
-                              }`}
+                          </li>
+                        ))}
+                        
+                        {/* Bouton WhatsApp dans le menu mobile */}
+                        <li className="mt-4 px-4">
+                          <a
+                            href=" https://whatsapp.com/channel/0029Vaq7xx82Jl8IT3kiwg36"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full"
                           >
-                            {link.label}
-                          </Link>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                            <Button className="w-full rounded-full py-3 text-base font-semibold bg-green-600 hover:bg-green-700">
+                              <FaWhatsapp className="h-5 w-5 mr-2" />
+                              Rejoindre sur WhatsApp
+                            </Button>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>
