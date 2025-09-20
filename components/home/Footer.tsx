@@ -185,7 +185,7 @@ export default function Footer() {
             </ul>
 
             {/* Newsletter */}
-            <div className="mt-6">
+            {/* <div className="mt-6">
               <h4 className="text-sm font-medium mb-3">NEWSLETTER</h4>
               <div className="relative w-full">
                 <input
@@ -201,7 +201,7 @@ export default function Footer() {
                   <Send className="w-3 h-3" />
                 </Button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 

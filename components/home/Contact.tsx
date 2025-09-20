@@ -84,7 +84,7 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Formulaire de contact */}
-          <div ref={formRef} className="*bg-card *p-8 *rounded-2xl *shadow-lg *border *border-border/50">
+          <div ref={formRef} className="bg-card p-8 rounded-2xl shadow-lg border border-border/50">
             <h3 className="text-2xl font-semibold mb-8 text-foreground flex items-center gap-3">
               <div className="p-2 bg-primary/10 rounded-lg">
                 <Send className="w-5 h-5 text-primary" />
@@ -135,7 +135,7 @@ export default function Contact() {
               
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium text-foreground/80">
-                  Votre message *
+                  Votre message <span className="text-primary">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -211,7 +211,7 @@ export default function Contact() {
             </div>
 
             {/* Carte de localisation simplifiée */}
-            <div className="bg-card p-6 rounded-2xl shadow-lg border border-border/50">
+            {/* <div className="bg-card p-6 rounded-2xl shadow-lg border border-border/50">
               <h4 className="font-semibold mb-4 text-foreground">Nous trouver</h4>
               <div className="bg-muted/30 rounded-xl h-48 flex items-center justify-center border border-border">
                 <div className="text-center text-muted-foreground">
@@ -220,7 +220,7 @@ export default function Contact() {
                   <p className="text-xs mt-1">15, chaussée de Kasenga, Bel air</p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
