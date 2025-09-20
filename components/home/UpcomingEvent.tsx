@@ -53,13 +53,13 @@ export default function UpcomingEvent({ event }: { event: any }) {
             </div>
 
             {/* Image */}
-            <div className="event-image relative w-full md:w-1/2 min-h-[400px]">
+            <div className="event-image relative w-full min-h-full md:min-h-[450px]">
               {event.image && (
                 <Image
                   src={urlFor(event.image).url()}
                   alt={event.title}
                   fill
-                  className="object-cover md:mt-2"
+                  className="object-cover md:object-contain *md:mt-2"
                 />
               )}
             </div>

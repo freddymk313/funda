@@ -144,7 +144,7 @@ export default function ArticlesGrid({ articles }: { articles: any }) {
                   />
                   <div className="absolute top-4 left-4">
                     <span
-                      className="px-3 py-1 rounded-full text-sm font-medium"
+                      className="px-3 py-1 rounded-full text-xs md:text-[13px] font-medium"
                       style={{
                         backgroundColor: "var(--primary)",
                         color: "var(--primary-foreground)"
@@ -165,8 +165,8 @@ export default function ArticlesGrid({ articles }: { articles: any }) {
                   </h3>
 
                   <p className="text-gray-600 text-base mb-4 flex-1" style={{ color: "var(--muted-foreground)" }}>
-                    {article.excerpt.length > 120
-                      ? `${article.excerpt.slice(0, 120)}…`
+                    {article.excerpt.length > 100
+                      ? `${article.excerpt.slice(0, 100)}…`
                       : article.excerpt}
                   </p>
 
