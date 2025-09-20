@@ -86,8 +86,8 @@ export default function Contact() {
           {/* Formulaire de contact */}
           <div ref={formRef} className="bg-card p-8 rounded-2xl shadow-lg border border-border/50">
             <h3 className="text-2xl font-semibold mb-8 text-foreground flex items-center gap-3">
-              <div className="p-2 bg-primary/10 rounded-lg">
-                <Send className="w-5 h-5 text-primary" />
+              <div className="p-3 bg-primary rounded-lg">
+                <Send className="w-6 h-6 text-white" />
               </div>
               Envoyez-nous un message
             </h3>
@@ -96,7 +96,7 @@ export default function Contact() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-foreground/80">
-                    Votre nom *
+                    Votre nom <span className="text-primary">*</span>
                   </label>
                   <input
                     id="name"
@@ -108,7 +108,7 @@ export default function Contact() {
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-foreground/80">
-                    Votre email *
+                    Votre email <span className="text-primary">*</span>
                   </label>
                   <input
                     id="email"
@@ -122,7 +122,7 @@ export default function Contact() {
               
               <div className="space-y-2">
                 <label htmlFor="subject" className="text-sm font-medium text-foreground/80">
-                  Sujet *
+                  Sujet <span className="text-primary">*</span>
                 </label>
                 <input
                   id="subject"
@@ -146,7 +146,7 @@ export default function Contact() {
               </div>
               
               <Button 
-                className="contact-button w-full md:py-[22px] rounded-full text-base font-semibold transition-all duration-300 hover:shadow-lg"
+                className="contact-button w-full md:py-[22px] rounded-full text-base font-semibold transition-all duration-300 *hover:shadow-lg"
               >
                 <Send className="w-5 h-5 mr-3" />
                 Envoyer le message
@@ -158,8 +158,8 @@ export default function Contact() {
           <div ref={infoRef} className="space-y-8">
             <div className="bg-card p-8 rounded-2xl shadow-lg border border-border/50">
               <h3 className="text-2xl font-semibold mb-8 text-foreground flex items-center gap-3">
-                <div className="p-2 bg-primary/10 rounded-lg">
-                  <MapPin className="w-5 h-5 text-primary" />
+                <div className="p-3 bg-primary rounded-lg">
+                  <MapPin className="w-6 h-6 text-white" />
                 </div>
                 Nos coordonnées
               </h3>
