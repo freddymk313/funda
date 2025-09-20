@@ -61,31 +61,30 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative py-16 md:py-28 overflow-hidden bg-gradient-to-b from-background to-muted/30"
+      className="relative py-12 md:py-24 overflow-hidden bg-gradient-to-b from-background to-muted/30"
     >
       <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
       
-      <div className="container mx-auto px-4 md:px-16 lg:px-20 max-w-5xl relative z-10">
+      <div className="container mx-auto px-4 md:px-16 lg:px-20 *max-w-5xl relative z-10">
         {/* En-tête */}
-        <div ref={titleRef} className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-6">
-            <MessageCircle className="w-8 h-8 text-primary" />
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+        <div ref={titleRef} className="text-center mb-8 md:mb-16 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
             <span className="text-foreground">Contactez</span>{' '}
             <span className="text-primary relative">
               -nous
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/40 rounded-full"></span>
+              {/* <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/40 rounded-full"></span> */}
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p 
+          className="text-base md:text-lg"
+                      style={{ color: "var(--muted-foreground)" }} >
             Une question, un projet ou simplement envie d'échanger ? Notre équipe est à votre écoute pour vous accompagner.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Formulaire de contact */}
-          <div ref={formRef} className="bg-card p-8 rounded-2xl shadow-lg border border-border/50">
+          <div ref={formRef} className="*bg-card *p-8 *rounded-2xl *shadow-lg *border *border-border/50">
             <h3 className="text-2xl font-semibold mb-8 text-foreground flex items-center gap-3">
               <div className="p-2 bg-primary/10 rounded-lg">
                 <Send className="w-5 h-5 text-primary" />
@@ -99,22 +98,24 @@ export default function Contact() {
                   <label htmlFor="name" className="text-sm font-medium text-foreground/80">
                     Votre nom *
                   </label>
-                  <Input
+                  <input
                     id="name"
                     type="text"
                     required
-                    className="w-full py-3 px-4 rounded-xl border-border focus:border-primary focus:ring-primary transition-all duration-200"
+                    // className="w-full rounded-lg"
+                    className="w-full py-2 px-4 rounded-xl border border-border focus:border-primary focus:ring-primary transition-all duration-200"
                   />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-foreground/80">
                     Votre email *
                   </label>
-                  <Input
+                  <input
                     id="email"
                     type="email"
                     required
-                    className="w-full py-3 px-4 rounded-xl border-border focus:border-primary focus:ring-primary transition-all duration-200"
+                    // className="w-full rounded-lg"
+                    className="w-full py-2 px-4 rounded-xl border border-border focus:border-primary focus:ring-primary transition-all duration-200"
                   />
                 </div>
               </div>
@@ -123,11 +124,12 @@ export default function Contact() {
                 <label htmlFor="subject" className="text-sm font-medium text-foreground/80">
                   Sujet *
                 </label>
-                <Input
+                <input
                   id="subject"
                   type="text"
                   required
-                  className="w-full py-3 px-4 rounded-xl border-border focus:border-primary focus:ring-primary transition-all duration-200"
+                    // className="w-full rounded-lg border-border focus:border-primary focus:ring-primary"
+                  className="w-full py-2 px-4 rounded-xl border border-border focus:border-primary focus:ring-primary transition-all duration-200"
                 />
               </div>
               
@@ -144,7 +146,7 @@ export default function Contact() {
               </div>
               
               <Button 
-                className="contact-button w-full py-4 rounded-xl text-base font-semibold transition-all duration-300 hover:shadow-lg"
+                className="contact-button w-full md:py-[22px] rounded-full text-base font-semibold transition-all duration-300 hover:shadow-lg"
               >
                 <Send className="w-5 h-5 mr-3" />
                 Envoyer le message

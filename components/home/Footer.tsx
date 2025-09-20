@@ -105,8 +105,8 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { label: "Accueil", href: "/" },
-                { label: "Événements", href: "/events/upcoming" },
-                { label: "Événements", href: "/events/past" },
+                { label: "Événements à venir", href: "/events/upcoming" },
+                { label: "Événements passés", href: "/events/past" },
                 { label: "Blog", href: "/blog" },
                 // { label: "Ressources", href: "/resources" },
                 { label: "Contact", href: "/contact" }
