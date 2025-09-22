@@ -222,9 +222,9 @@ const BlogDetailPage = ({ post }: { post: any }) => {
           <div className="flex items-center justify-center gap-4 mt-8 pt-8 *border-t *border-border/40">
             <button
               onClick={handleShare}
-              className="flex items-center gap-2 px-6 py-3 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-all"
+              className="flex items-center gap-2 px-6 py-2 md:py-2.5 border border-primary rounded-full text-primary hover:text-white hover:bg-primary transition-all"
             >
-              <Share2 className="w-5 h-5" />
+              <Share2 className="w-4 h-4" />
               <span>Partager</span>
             </button>
           </div>
@@ -270,7 +270,7 @@ const BlogDetailPage = ({ post }: { post: any }) => {
       {post.relatedPosts && post.relatedPosts.length > 0 && (
         <section className="py-8 md:py-10 bg-muted/30">
           <div className="container mx-auto px-4 *md:px-16 *lg:px-20 max-w-6xl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-foreground">
+            <h2 className="text-xl md:text-2xl font-bold mb-8 text-foreground">
               Articles récent
             </h2>
             

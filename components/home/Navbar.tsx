@@ -138,10 +138,18 @@ const Navbar = () => {
               rel="noopener noreferrer"
               // className="hidden sm:block"
             >
-              <Button className="rounded-full py-[22.5px] text-base font-semibold">
+              <Button className="*hidden *md:flex rounded-full py-[22.5px] text-base font-semibold">
                 <FaWhatsapp className="h-6 w-6 md:h-7 md:w-7" />
                 <span>Rejoindre</span>
               </Button>
+
+              {/* <button
+              // onClick={handleShare}
+              className="md:hidden flex items-center gap-1 md:gap-2 px-6 py-2.5 md:py-3 border border-primary bg-primary rounded-full text-white hover:text-white hover:bg-primary transition-all"
+            >
+              <FaWhatsapp className="w-4 h-4" />
+              <span className="text-sm font-semibold">Rejoindre</span>
+            </button> */}
             </a>
 
             {/* Burger menu */}

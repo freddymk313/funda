@@ -7,6 +7,7 @@ import { Mail, Phone, MapPin, Send, Clock, Facebook, MessageCircleDashed, Youtub
 import Image from 'next/image'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import {FaWhatsapp} from "react-icons/fa6"
 
 // Enregistrer le plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -198,9 +199,9 @@ const ContactPage = () => {
                   /> */}
 
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2966.1841609656462!2d27.481204699999996!3d-11.6641824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19723ec0cdb98177%3A0xc6af1c88bd7b317b!2scs%20bisounours!5e1!3m2!1sfr!2scd!4v1754569684344!5m2!1sfr!2scd"
-                    width="100%"
-                    height="400"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d185.60688878469486!2d27.50439681050961!3d-11.660226088945041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19723f273e02596d%3A0x33d01072f53ab8fb!2s15%20Chau.%20de%20Kasenga%2C%20Lubumbashi!5e1!3m2!1sfr!2scd!4v1758536565460!5m2!1sfr!2scd"
+                    width="600"
+                    height="450"
                     style={{ border: 0 }}
                     // allowFullScreen=""
                     loading="lazy"
@@ -255,7 +256,7 @@ const ContactPage = () => {
                       <h3 className="font-medium mb-1" style={{ color: "var(--foreground)" }}>Horaires</h3>
                       <p className="text-sm opacity-80" style={{ color: "var(--muted-foreground)" }}>
                         Lundi - Vendredi<br />
-                        9h00 - 18h00
+                        8h00 - 17h00
                       </p>
                     </div>
                   </div>
@@ -269,7 +270,7 @@ const ContactPage = () => {
                       <div className="flex gap-3 mt-2">
                         {[
                           { icon: <Facebook className="w-5 h-5" />, label: "Facebook" },
-                          { icon: <MessageCircleDashed className="w-5 h-5" />, label: "Whatsapp" },
+                          { icon: <FaWhatsapp className="w-5 h-5" />, label: "Whatsapp" },
                           { icon: <Youtube className="w-5 h-5" />, label: "Youtube" },
                           { icon: <Linkedin className="w-5 h-5" />, label: "LinkedIn" }
                         ].map((social, index) => (

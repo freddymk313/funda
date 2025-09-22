@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { client } from "../../../../sanity/lib/client"
 import { urlFor } from "../../../../sanity/lib/image"
+import Loading from "@/components/Loading";
 
 // Enregistrer le plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -115,7 +116,10 @@ const UpComingEventPage = () => {
   }, [])
 
   if (!event) {
-    return <p className="text-center py-20">Chargement de l’événement...</p>
+    return <div className="min-h-[80vh] flex items-center justify-center">
+    <Loading size={25} color="fill-primary mr-2" />
+    <span>Chargement</span>
+    </div>
   }
 
   const dateObj = new Date(event.date)
