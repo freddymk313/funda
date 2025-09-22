@@ -119,7 +119,7 @@ const Hero = () => {
           <Link href="/events/past" className="w-full sm:w-auto cursor-pointer">
             <Button
               size="lg"
-              className="w-full sm:w-auto rounded-full px-8 py-[22.5px] text-base font-semibold border-[1.5px] border-primary transition-all"
+              className="*w-full sm:w-auto rounded-full px-8 py-[22.5px] text-base font-semibold border-[1.5px] border-primary transition-all"
               style={{
                 backgroundColor: "var(--primary)",
                 color: "var(--primary-foreground)",
@@ -133,7 +133,7 @@ const Hero = () => {
             <Button
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto rounded-full px-8 py-[22.5px] text-base font-semibold border-[1.5px] transition-all bg-transparent text-white border-white hover:bg-white/10"
+              className="*w-full sm:w-auto rounded-full px-8 py-[22.5px] text-base font-semibold border-[1.5px] transition-all bg-transparent text-white border-white hover:bg-white/10"
             >
               Voir les événements
             </Button>

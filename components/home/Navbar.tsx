@@ -15,6 +15,7 @@ import { usePathname } from "next/navigation"
 import { Menu, X, ChevronDown } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { FaWhatsapp } from "react-icons/fa6"
+import { TbMenu } from "react-icons/tb"
 
 const links = [
   { label: "Accueil", href: "/" },
@@ -151,7 +152,8 @@ const Navbar = () => {
                 aria-label="Menu"
                 aria-expanded={isMenuOpen}
               >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                {/* {isMenuOpen ? <X size={24} /> : <Menu size={24} />} */}
+                {isMenuOpen ? <TbMenu size={24} /> : <Menu size={24} />}
               </button>
             </div>
           </div>
