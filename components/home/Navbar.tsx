@@ -153,7 +153,7 @@ const Navbar = () => {
                 aria-expanded={isMenuOpen}
               >
                 {/* {isMenuOpen ? <X size={24} /> : <Menu size={24} />} */}
-                {isMenuOpen ? <TbMenu size={24} /> : <Menu size={24} />}
+                {isMenuOpen ? <X size={24} /> : <TbMenu size={24} />}
               </button>
             </div>
           </div>
