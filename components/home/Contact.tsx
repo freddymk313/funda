@@ -84,7 +84,7 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Formulaire de contact */}
-          <div ref={formRef} className="bg-card p-8 rounded-2xl shadow-lg border border-border/50">
+          <div ref={formRef} className="bg-card p-6 md:p-8 rounded-2xl shadow-lg border border-border/50">
             <h3 className="text-2xl font-semibold mb-8 text-foreground flex items-center gap-3">
               <div className="p-3 bg-primary rounded-lg">
                 <Send className="w-6 h-6 text-white" />
@@ -156,7 +156,7 @@ export default function Contact() {
 
           {/* Informations de contact */}
           <div ref={infoRef} className="space-y-8">
-            <div className="bg-card p-8 rounded-2xl shadow-lg border border-border/50">
+            <div className="bg-card p-6 md:p-8 rounded-2xl shadow-lg border border-border/50">
               <h3 className="text-2xl font-semibold mb-8 text-foreground flex items-center gap-3">
                 <div className="p-3 bg-primary rounded-lg">
                   <MapPin className="w-6 h-6 text-white" />

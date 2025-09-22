@@ -197,7 +197,7 @@ const Navbar = () => {
                           }
                           className={`w-full flex justify-between items-center px-4 py-3 text-lg font-medium rounded-lg transition-colors ${
                             openDropdown === link.label
-                              ? "bg-accent text-accent-foreground"
+                              ? "*bg-accent *text-accent-foreground"
                               : "text-foreground hover:bg-muted"
                           }`}
                         >
@@ -211,7 +211,7 @@ const Navbar = () => {
                         </button>
 
                         {openDropdown === link.label && (
-                          <ul className="ml-4 mb-2 flex flex-col gap-1 border-l border-muted pl-3">
+                          <ul className="mx-4 mb-2 flex flex-col gap-1 border-t border-foreground/20 pt-3">
                             {link.children.map((sublink) => (
                               <li key={sublink.label}>
                                 <Link
@@ -231,7 +231,7 @@ const Navbar = () => {
                         href={link.href}
                         className={`block w-full px-4 py-3 text-lg font-medium rounded-lg transition-colors ${
                           pathname === link.href
-                            ? "bg-primary text-primary-foreground"
+                            ? "bg-primary/10 text-primary"
                             : "text-foreground hover:bg-muted"
                         }`}
                         onClick={() => setIsMenuOpen(false)}

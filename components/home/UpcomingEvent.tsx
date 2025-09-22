@@ -53,7 +53,7 @@ export default function UpcomingEvent({ event }: { event: any }) {
             </div>
 
             {/* Image */}
-            <div className="event-image relative w-full h-[550px] md:min-h-[450px]">
+            <div className="event-image relative w-full h-[400px] md:min-h-[450px]">
               {event.image && (
                 <Image
                   src={urlFor(event.image).url()}
