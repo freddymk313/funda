@@ -37,6 +37,11 @@ const PastEventsPageClient = ({ events }: { events: any[] }) => {
   const getPlatformName = (platform: string) =>
     platform === "facebook" ? "Facebook" : "YouTube"
 
+  const getYoutubeId = (url: string) => {
+  const reg = /(?:youtube\.com\/.*v=|youtu\.be\/)([^&?/]+)/;
+  return url.match(reg)?.[1] || "";
+};
+
   return (
     <div className="relative overflow-hidden">
       {/* Hero */}
@@ -78,21 +83,22 @@ const PastEventsPageClient = ({ events }: { events: any[] }) => {
                   {/* Vidéo / Image */}
                   <div className="relative h-48 overflow-hidden">
                     {event.platform === "youtube" ? (
+                      <a href={event.replayUrl} target="_blank" rel="noopener noreferrer">
+    <Image
+      src={`https://img.youtube.com/vi/${getYoutubeId(event.replayUrl)}/hqdefault.jpg`}
+      alt={event.title}
+      fill
+      className="object-cover"
+    />
+  </a>
+                    ) : (
                       <a
                         href={event.replayUrl}
                         // title={event.title}
                         className="w-full h-full"
-                        // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        // allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                         // allowFullScreen
                       ></a>
-                    ) : (
-                      <iframe
-                        src={event.replayUrl}
-                        title={event.title}
-                        className="w-full h-full"
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                        allowFullScreen
-                      ></iframe>
                     )}
 
                     <div className="absolute top-4 left-4">

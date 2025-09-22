@@ -61,7 +61,7 @@ const ContactPage = () => {
         {/* Image en background */}
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/img/blog-2.jpg"
+            src="/img/cont.png"
             alt="Image de contact"
             fill
             className="object-cover"

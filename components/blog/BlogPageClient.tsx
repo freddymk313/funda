@@ -41,7 +41,7 @@ const BlogPageClient = ({ posts }: { posts: any[] }) => {
       <section className="relative py-24 md:py-28 px-4 text-center text-white">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="/img/blog-3.jpg" 
+            src="/img/blog-3.jpg"
             alt="Image du blog"
             fill
             className="object-cover"
@@ -105,8 +105,10 @@ const BlogPageClient = ({ posts }: { posts: any[] }) => {
                           </Link>
                         </h3>
 
-                        <p className="text-gray-600 mb-4 flex-1" style={{ color: "var(--muted-foreground)" }}>
-                          {post.excerpt}
+                        <p className="text-gray-600 text-base mb-4 flex-1" style={{ color: "var(--muted-foreground)" }}>
+                          {post.excerpt.length > 100
+                            ? `${post.excerpt.slice(0, 100)}…`
+                            : post.excerpt}
                         </p>
 
                         <div className="flex items-center justify-between gap-4 text-sm mb-4" style={{ color: "var(--muted-foreground)" }}>
@@ -117,11 +119,11 @@ const BlogPageClient = ({ posts }: { posts: any[] }) => {
                           <div className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
                             {new Date(post.date).toLocaleDateString("fr-FR", {
-                                year: "numeric",
-                                month: "long",
-                                day: "numeric",
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
                             })}
-                        </div>
+                          </div>
                         </div>
 
                         <div className="flex flex-wrap gap-2 mb-4">
